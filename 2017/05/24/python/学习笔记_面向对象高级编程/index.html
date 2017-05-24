@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学习笔记_面向对象高级编程学习日期：2016年9月28日学习课程：面向对象高级编程 - 廖雪峰的官方网站 在面向对象高级编程这个单元中，我们学习了以下几个方面。  __slots__:限制class中的属性，让我们不能随便在运行中添加属性。  @property 这个装饰器可以帮助我们包装属性，让我们只能查看访问属性和有限制的修改类中的属性，还可以帮助我们把类中的属性变为只读。  多重继承 我们可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/python/学习笔记_面向对象高级编程/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习笔记_面向对象高级编程学习日期：2016年9月28日学习课程：面向对象高级编程 - 廖雪峰的官方网站 在面向对象高级编程这个单元中，我们学习了以下几个方面。  __slots__:限制class中的属性，让我们不能随便在运行中添加属性。  @property 这个装饰器可以帮助我们包装属性，让我们只能查看访问属性和有限制的修改类中的属性，还可以帮助我们把类中的属性变为只读。  多重继承 我们可">
+<meta property="og:updated_time" content="2017-02-05T03:24:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="学习笔记_面向对象高级编程学习日期：2016年9月28日学习课程：面向对象高级编程 - 廖雪峰的官方网站 在面向对象高级编程这个单元中，我们学习了以下几个方面。  __slots__:限制class中的属性，让我们不能随便在运行中添加属性。  @property 这个装饰器可以帮助我们包装属性，让我们只能查看访问属性和有限制的修改类中的属性，还可以帮助我们把类中的属性变为只读。  多重继承 我们可">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python/学习笔记_面向对象高级编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_面向对象高级编程/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.290Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-面向对象高级编程"><a href="#学习笔记-面向对象高级编程" class="headerlink" title="学习笔记_面向对象高级编程"></a>学习笔记_面向对象高级编程</h1><p><em>学习日期：2016年9月28日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143186738532805c392f2cc09446caf3236c34e3f980f000" target="_blank" rel="external">面向对象高级编程 - 廖雪峰的官方网站</a></em></p>
+<p>在面向对象高级编程这个单元中，我们学习了以下几个方面。</p>
+<ul>
+<li><p><code>__slots__</code>:限制class中的属性，让我们不能随便在运行中添加属性。</p>
+</li>
+<li><p><code>@property</code> 这个装饰器可以帮助我们包装属性，让我们只能查看访问属性和有限制的修改类中的属性，还可以帮助我们把类中的属性变为只读。</p>
+</li>
+<li><p>多重继承 我们可以在主线继承之外的父继承名后加上<code>Mixln</code>，这样一来，我们不需要复杂而庞大的继承链，只要选择组合不同的类的功能，就可以快速构造出所需的子类。</p>
+</li>
+<li><p>还介绍了五种定制类。</p>
+<ul>
+<li><code>__str__</code>和<code>__repr__</code>分别是返回用户可以看到的字符串（适用于<code>print()</code>输出），和开发者看到的字符串（适用于直接敲变量返回的字符串）。</li>
+<li><code>__iter__</code>可以把类变成一个可迭代对象，从而适用于for…in..循环。</li>
+<li><code>__getitem__</code>、<code>__setitem__</code>、<code>__delitem__</code>:在Python中，如果我们想实现创建类似于序列和映射(索引)的类，可以通过重写魔法方法<code>__getitem__</code>、<code>__setitem__</code>、<code>__delitem__</code>方法去模拟。</li>
+<li><code>__getattr__</code> 动态返回属性或函数，返回的默认值是<code>None</code>。</li>
+<li><code>__call__</code>，定义一个<code>__call__</code>()方法，就可以直接对实例进行调用<ul>
+<li><code>Callable(x)</code>函数可以返回一个x可不可以被调用的布尔值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>还介绍了枚举类和元类。</p>
+<ul>
+<li>枚举类用<code>Enum</code>实现。</li>
+<li>元类用<code>mataclass</code>实现，metaclass允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_面向对象高级编程/" data-id="cj3326evn001mwgu1irqet60n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/24/python/获取对象信息/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/24/python/学习笔记_面向对象编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （下）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/vuex/Vuex的五个核心属性/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （上）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/python中的元类Metaclass/python中的元类Metaclass/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/获取对象信息/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

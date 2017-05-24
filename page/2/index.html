@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-python/学习笔记_调试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_调试/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.210Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-调试"><a href="#学习笔记-调试" class="headerlink" title="学习笔记_调试"></a>学习笔记_调试</h1><p><em>学习日期：2016年9月28日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431915578556ad30ab3933ae4e82a03ee2e9a4f70871000" target="_blank" rel="external">调试 - 廖雪峰的官方网站</a></em></p>
+<p>调试程序的方法有：</p>
+<ul>
+<li>用<code>print()</code>把可能有问题的变量打印出来</li>
+<li>断言</li>
+<li>logging</li>
+<li>pdb</li>
+</ul>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><ul>
+<li><code>assert</code>的意思是，其后跟的表达式应该是<code>True</code>，否则，根据程序运行的逻辑，后面的代码肯定会出错。</li>
+<li>如果断言失败，<code>assert</code>语句本身就会抛出<code>AssertionError</code>。</li>
+<li>启动Python解释器时可以用-O参数来关闭assert，关闭后，你可以把所有的assert语句当成pass来看。</li>
+</ul>
+<p>##logging</p>
+<ul>
+<li><p>使用方法如下示例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import logging</div><div class="line">logging.basicConfig(level=logging.INFO)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>logging</code>允许你指定记录信息的级别，有<code>debug</code>，<code>info</code>，<code>warning</code>，<code>error</code>等几个级别，当我们指定<code>level=INFO</code>时，<code>logging.debug</code>就不起作用了。同理，指定<code>level=WARNING</code>后，<code>debug和info</code>就不起作用了。这样一来，你可以放心地输出不同级别的信息，也不用删除，最后统一控制输出哪个级别的信息。</p>
+</li>
+<li>logging的另一个好处是通过简单的配置，一条语句可以同时输出到不同的地方，比如console和文件。</li>
+</ul>
+<h2 id="pdb"><a href="#pdb" class="headerlink" title="pdb"></a>pdb</h2><ul>
+<li>在命令行中输入指令<code>python -m pdb ***.py</code>，即可以对<code>***.py</code>模块以单步方式运行。</li>
+<li>pdb调试器运行中的一些指令：<ul>
+<li><code>n</code> 单步执行下一跳代码</li>
+<li><code>p 变量名</code> 查看变量</li>
+<li><code>q</code> 退出程序</li>
+</ul>
+</li>
+</ul>
+<p>##pdb.set_trace()</p>
+<ul>
+<li><p>我们只需要<code>import pdb</code>，然后，在可能出错的地方放一个<code>pdb.set_trace()</code>，就可以设置一个断点。</p>
+</li>
+<li><p>运行代码，程序会自动在<code>pdb.set_trace()</code>暂停并进入pdb调试环境，可以用命令<code>p</code>查看变量，或者用命令<code>c</code>继续运行。</p>
+</li>
+</ul>
+<p>##IDE</p>
+<p>其实，用一个好一点的，支持调试功能的IDE会比较好一点。比如Pycharm。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_调试/" data-id="cj3326evb001hwgu153eio1g1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_正则表达式/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.190Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-正则表达式"><a href="#学习笔记-正则表达式" class="headerlink" title="学习笔记_正则表达式"></a>学习笔记_正则表达式</h1><p><em>学习日期：2016年10月2日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143193331387014ccd1040c814dee8b2164bb4f064cff000" target="_blank" rel="external">正则表达式 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>正则表达式是一种用来匹配字符串的强有力的武器。它的设计思想是用一种描述性的语言来给字符串定义一个规则，凡是符合规则的字符串，我们就认为它“匹配”了，否则，该字符串就是不合法的。</p>
+</li>
+<li><p>在正则表达式中，如果直接给出字符，就是精确匹配。用<code>\d</code>可以匹配一个数字，<code>\w</code>可以匹配一个字母或数字，所以：</p>
+<ul>
+<li><p><code>&#39;00\d&#39;</code>可以匹配<code>&#39;007&#39;</code>，但无法匹配<code>&#39;00A&#39;</code>；</p>
+</li>
+<li><p><code>&#39;\d\d\d&#39;可以匹配&#39;010&#39;</code>；</p>
+</li>
+<li><p><code>&#39;\w\w\d&#39;</code>可以匹配<code>&#39;py3&#39;</code>；</p>
+</li>
+<li><p>.可以匹配任意字符，所以：</p>
+</li>
+</ul>
+</li>
+<li><p><code>&#39;py.&#39;</code>可以匹配<code>&#39;pyc&#39;</code>、<code>&#39;pyo&#39;</code>、<code>&#39;py!&#39;</code>等等。</p>
+</li>
+<li>要匹配变长的字符，在正则表达式中，用<code>*</code>表示任意个字符（包括0个），用<code>+</code>表示至少一个字符，用<code>?</code>表示0个或1个字符，用<code>{n}</code>表示n个字符，用<code>{n,m}</code>表示n-m个字符。</li>
+</ul>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><ul>
+<li><p>要做更精确地匹配，可以用[]表示范围。</p>
+<ul>
+<li><p><code>[0-9a-zA-Z\_]</code>可以匹配一个数字、字母或者下划线；</p>
+</li>
+<li><p><code>[0-9a-zA-Z\_]+</code>可以匹配至少由一个数字、字母或者下划线组成的字符串，比如<code>&#39;a100&#39;</code>，<code>&#39;0_Z&#39;</code>，<code>&#39;Py3000&#39;</code>等等；</p>
+</li>
+<li><p><code>[a-zA-Z\_][0-9a-zA-Z\_]*</code>可以匹配由字母或下划线开头，后接任意个由一个数字、字母或者下划线组成的字符串，也就是Python合法的变量；</p>
+</li>
+<li><p><code>[a-zA-Z\_][0-9a-zA-Z\_]{0, 19}</code>更精确地限制了变量的长度是1-20个字符（前面1个字符+后面最多19个字符）。</p>
+</li>
+</ul>
+</li>
+<li><p><code>A|B</code>可以匹配A或B，所以<code>(P|p)ython</code>可以匹配<code>&#39;Python&#39;</code>或者<code>&#39;python&#39;</code>。</p>
+</li>
+<li><p><code>^</code>表示行的开头，<code>^\d</code>表示必须以数字开头。</p>
+</li>
+<li><p><code>$</code>表示行的结束，<code>\d$</code>表示必须以数字结束。</p>
+</li>
+</ul>
+<p>##re模块</p>
+<ul>
+<li><p><code>re</code>模块就是python中包含正则表达式所用共功能的模块。</p>
+</li>
+<li><p><code>match()</code>方法判断是否匹配，如果匹配成功，返回一个<code>Match</code>对象，否则返回<code>None</code>。</p>
+</li>
+</ul>
+<h2 id="切分字符串"><a href="#切分字符串" class="headerlink" title="切分字符串"></a>切分字符串</h2><ul>
+<li><code>re.spilt(正则规则，要切分的字符串)</code>表示用正则表达式切分字符串。</li>
+</ul>
+<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><ul>
+<li><p>用<code>()</code>表示的就是要提取的分组（Group）。比如：<code>^(\d{3})-(\d{3,8})$</code>表示分别定义了两个组。</p>
+</li>
+<li><p>如果正则表达式中定义了组，就可以在Match对象上用<code>group()</code>方法提取出子串来。注意到<code>group(0)</code>永远是原始字符串，<code>group(1)</code>、<code>group(2)</code>……表示第1、2、……个子串。</p>
+</li>
+</ul>
+<p>##贪婪匹配</p>
+<ul>
+<li><p>最后需要特别指出的是，正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。</p>
+</li>
+<li><p>加个<code>？</code>就可以让正则匹配采用非贪婪匹配。</p>
+</li>
+</ul>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><ul>
+<li><p>当我们在Python中使用正则表达式时，re模块内部会干两件事情：</p>
+<ul>
+<li><p>编译正则表达式，如果正则表达式的字符串本身不合法，会报错；</p>
+</li>
+<li><p>用编译后的正则表达式去匹配字符串。</p>
+</li>
+</ul>
+</li>
+<li><p>可以使用<code>re.compile(正则表达式）</code>预先编译，接下来重复使用的时候就不用编译这个步骤了，直接匹配就可以了。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_正则表达式/" data-id="cj3326eva001gwgu1zra6vpdu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_文档读写" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_文档读写/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.170Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-文档读写"><a href="#学习笔记-文档读写" class="headerlink" title="学习笔记_文档读写"></a>学习笔记_文档读写</h1><p><em>学习日期：2016年9月29日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431917715991ef1ebc19d15a4afdace1169a464eecc2000" target="_blank" rel="external">文档读写 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li>在磁盘上读写文件的功能都是由操作系统提供的，现代操作系统不允许普通的程序直接操作磁盘，所以，读写文件就是请求操作系统打开一个文件对象（通常称为文件描述符），然后，通过操作系统提供的接口从这个文件对象中读取数据（读文件），或者把数据写入这个文件对象（写文件）。</li>
+</ul>
+<p>##读文件</p>
+<ul>
+<li><p>要以读文件的模式打开一个文件对象，使用Python内置的open()函数，传入文件名和标示符（标识符<code>r</code>表示读取文本文件）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/test.txt&apos;, &apos;r&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果文件不存在，<code>open()</code>函数就会抛出一个IOError的错误，并且给出错误码和详细的信息告诉你文件不存在。</p>
+</li>
+<li><p>如果文件打开成功，接下来，调用<code>read()</code>方法可以一次读取文件的全部内容，Python把内容读到内存，用一个<code>str</code>对象表示。</p>
+</li>
+<li><p>最后一步是调用<code>close()</code>方法关闭文件。文件使用完毕后必须关闭，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的。</p>
+</li>
+<li><p>由于文件读写时都有可能产生<code>IOError</code>，一旦出错，后面的<code>文件名.close()</code>就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用<code>try ... finally</code>来实现。</p>
+</li>
+<li><p><code>with</code>语句和<code>try ... finally</code>是一样的，但是代码更佳简洁，并且不必调用<code>f.close()</code>方法。</p>
+</li>
+<li><p><code>read(size)</code>方法，可以让python程序每次最多读取size个字节的内容；<code>文件名.readline()</code>可以每次读取一行内容；调用<code>文件名.readlines()</code>一次读取所有内容并按行返回list。</p>
+</li>
+</ul>
+<p>##file-like Object</p>
+<ul>
+<li>像<code>open()</code>函数返回的这种有个<code>read()</code>方法的对象，在Python中统称为<code>file-like Object</code>。除了file外，还可以是内存的字节流，网络流，自定义流等等。<code>file-like Object</code>不要求从特定类继承，只要写个<code>read()</code>方法就行。</li>
+</ul>
+<p>##二进制文件</p>
+<ul>
+<li>要读取二进制文件，比如图片、视频等等，用<code>&#39;rb&#39;</code>模式打开文件即可。</li>
+</ul>
+<p>##字符编码</p>
+<ul>
+<li>要读取非UTF-8编码的文本文件，需要给<code>open()</code>函数传入<code>encoding</code>参数，例如，读取GBK编码的文件：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;)</div><div class="line">&gt;&gt;&gt; f.read()</div><div class="line">&apos;测试&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li>遇到有些编码不规范的文件，你可能会遇到<code>UnicodeDecodeError</code>，因为在文本文件中可能夹杂了一些非法编码的字符。遇到这种情况，<code>open()</code>函数还接收一个<code>errors</code>参数，表示如果遇到编码错误后如何处理。最简单的方式是直接忽略：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;, errors=&apos;ignore&apos;)</div></pre></td></tr></table></figure>
+<p>##写文件</p>
+<ul>
+<li>写文件和读文件是一样的，唯一区别是调用open()函数时，传入标识符’w’或者’wb’表示写文本文件或写二进制文件。</li>
+<li>你可以反复调用<code>write()</code>来写入文件，但是务必要调用<code>f.close()</code>来关闭文件。当我们写文件时，操作系统往往不会立刻把数据写入磁盘，而是放到内存缓存起来，空闲的时候再慢慢写入。只有调用<code>close()</code>方法时，操作系统才保证把没有写入的数据全部写入磁盘。忘记调用<code>close()</code>的后果是数据可能只写了一部分到磁盘，剩下的丢失了。所以，还是用<code>with</code>语句来得保险。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">with open(&apos;/Users/michael/test.txt&apos;, &apos;w&apos;) as f:</div><div class="line">    f.write(&apos;Hello, world!&apos;)</div></pre></td></tr></table></figure>
+<ul>
+<li>要写入特定编码的文本文件，请给open()函数传入encoding参数，将字符串自动转换成指定编码。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_文档读写/" data-id="cj3326ev8001fwgu1qq5ir2e9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_文档测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_文档测试/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.160Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="文档测试-单元测试"><a href="#文档测试-单元测试" class="headerlink" title="文档测试_单元测试"></a>文档测试_单元测试</h1><p><em>学习日期：2016年9月28日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319170285543a4d04751f8846908770660de849f285000" target="_blank" rel="external">文档测试 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>文档测试，可以把测试模块写在函数或类的注释中（<code>&#39;&#39;&#39;...&#39;&#39;&#39;</code>)，这样很方便，也不会对正常使用有影响。</p>
+</li>
+<li><p>Python内置的“文档测试”（doctest）模块可以直接提取<strong>注释</strong>中的代码并执行测试。<code>doctest</code>严格按照Python交互式命令行的输入和输出来判断测试结果是否正确。只有测试异常的时候，可以用·…·表示中间一大段烦人的输出。</p>
+</li>
+<li><p>在编写文档测试时，要注意，在最后添加如下所示的三行代码。下列代码的意思是当模块正常导入时，doctest不会被执行。只有在命令行直接运行时，才执行doctest。所以，不必担心doctest会在非测试环境下执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if __name__==&apos;__main__&apos;:</div><div class="line">  import doctest</div><div class="line">  doctest.testmod()</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_文档测试/" data-id="cj3326ev6001ewgu12pz2xyy8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_操作文件和目录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_操作文件和目录/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.150Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-操作文件和目录"><a href="#学习笔记-操作文件和目录" class="headerlink" title="学习笔记_操作文件和目录"></a>学习笔记_操作文件和目录</h1><p><em>学习日期：2016年9月29日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431925324119bac1bc7979664b4fa9843c0e5fcdcf1e000" target="_blank" rel="external">操作文件和目录 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li>Python内置的<code>os</code>模块也可以直接调用操作系统提供的接口函数。可以让我们操作文件、目录。</li>
+</ul>
+<p>##环境变量</p>
+<ul>
+<li><p>在操作系统中定义的环境变量，全部保存在<code>os.environ</code>这个变量中，可以直接查看。</p>
+</li>
+<li><p>要获取某个环境变量的值，可以调用<code>os.environ.get(&#39;key&#39;)</code>。</p>
+</li>
+</ul>
+<p>##操作文件和目录</p>
+<ul>
+<li><p>操作文件和目录的函数一部分放在<code>os</code>模块中，一部分放在<code>os.path</code>模块中，这一点要注意一下。</p>
+</li>
+<li><p>创建一个目录的分两步，首先通过<code>os.path.join(目录，新文件夹名)函数</code>,把目录和新文件夹合到一起。然后通过<code>os.mkdir(合成后的目录）</code>创建新目录。</p>
+</li>
+<li><p>删除一个目录，直接通过<code>os.rmdir(目录）</code>操作。</p>
+</li>
+<li><p>要拆分路径时，也不要直接去拆字符串，而要通过<code>os.path.split()</code>函数，这样可以把一个路径拆分为两部分，后一部分总是最后级别的目录或文件名。</p>
+</li>
+<li><p><code>os.path.splitext()</code>可以直接让你得到文件扩展名，很多时候非常方便。</p>
+</li>
+<li><p>我们要列出当前目录下的所有目录，只需要一行代码。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [x for x in os.listdir(&apos;.&apos;) if os.path.isdir(x)]</div><div class="line">[&apos;.lein&apos;, &apos;.local&apos;, &apos;.m2&apos;, &apos;.npm&apos;, &apos;.ssh&apos;, &apos;.Trash&apos;, &apos;.vim&apos;, &apos;Applications&apos;, &apos;Desktop&apos;, ...]</div></pre></td></tr></table></figure>
+<ul>
+<li>要列出所有的<code>.py</code>文件，也只需一行代码。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [x for x in os.listdir(&apos;.&apos;) if os.path.isfile(x) and os.path.splitext(x)[1]==&apos;.py&apos;]</div><div class="line">[&apos;apis.py&apos;, &apos;config.py&apos;, &apos;models.py&apos;, &apos;pymonitor.py&apos;, &apos;test_db.py&apos;, &apos;urls.py&apos;, &apos;wsgiapp.py&apos;]</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_操作文件和目录/" data-id="cj3326ev0001dwgu1cp0h2i4y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_序列化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_序列化/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.130Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-序列化"><a href="#学习笔记-序列化" class="headerlink" title="学习笔记_序列化"></a>学习笔记_序列化</h1><p><em>学习日期：2016年9月29日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143192607210600a668b5112e4a979dd20e4661cc9c97000" target="_blank" rel="external">序列化 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>我们把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思。</p>
+</li>
+<li><p>序列化之后，就可以把序列化后的内容写入磁盘，或者通过网络传输到别的机器上。</p>
+</li>
+<li><p>反过来，把变量内容从序列化的对象重新读到内存里称之为反序列化，即unpickling。</p>
+</li>
+<li><p>Python提供了<code>pickle</code>模块来实现序列化。</p>
+</li>
+<li><p><code>pickle.dumps()</code>方法把任意对象序列化成一个<code>bytes</code>，然后，就可以把这个<code>bytes</code>写入文件。或者用另一个方法<code>pickle.dump()</code>直接把对象序列化后写入一个<code>file-like Object</code>对象。</p>
+</li>
+<li><p>反序列化：当我们要把对象从磁盘读到内存时，可以先把内容读成<code>bytes</code>对象，然后用<code>pickle.loads()</code>方法反序列化出对象，也可以直接用<code>pickle.load()</code>方法从一个<code>file-like Object</code>对象中直接反序列化出对象。</p>
+</li>
+</ul>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><ul>
+<li><p>如果我们要在不同的编程语言之间传递对象，就必须把对象序列化为标准格式，比如XML，但更好的方法是序列化为JSON，因为JSON表示出来就是一个字符串，可以被所有语言读取，也可以方便地存储到磁盘或者通过网络传输。JSON不仅是标准格式，并且比XML更快，而且可以直接在Web页面中读取，非常方便。JSON表示的对象就是标准的JavaScript语言的对象，</p>
+</li>
+<li><p>Python内置的<code>json</code>模块提供了非常完善的Python对象到JSON格式的转换。</p>
+</li>
+<li><p><code>json.dumps()</code>方法返回一个<code>str</code>，内容就是标准的JSON。类似的，<code>json.dump()</code>方法可以直接把JSON写入一个<code>file-like Object</code>。</p>
+</li>
+<li><p>由于JSON标准规定JSON编码是<code>UTF-8</code>，所以我们总是能正确地在Python的<code>str</code>与JSON的字符串之间转换。</p>
+</li>
+</ul>
+<p>##JSON进阶</p>
+<ul>
+<li><p>我们自己定义的类必须用可选参数<code>default</code>才能进行序列化。</p>
+</li>
+<li><p>可选参数<code>default</code>就是把任意一个对象变成一个可序列为JSON的对象，我们只需要为类专门写一个转换函数，再把函数传进去即可。</p>
+</li>
+<li><p>例子：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def student2dict(std):</div><div class="line">    return &#123;</div><div class="line">        &apos;name&apos;: std.name,</div><div class="line">        &apos;age&apos;: std.age,</div><div class="line">        &apos;score&apos;: std.score</div><div class="line">    &#125;</div><div class="line">#这样，Student实例首先被student2dict()函数转换成dict，然后再被顺利序列化为JSON：</div><div class="line"></div><div class="line">&gt;&gt;&gt; print(json.dumps(s, default=student2dict)) #default = 转化函数的名</div><div class="line">&#123;&quot;age&quot;: 20, &quot;name&quot;: &quot;Bob&quot;, &quot;score&quot;: 88&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>我们也可以偷个懒，把任意<code>class</code>的实例变为<code>dict</code>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(json.dumps(s, default=lambda obj: obj.__dict__))</div></pre></td></tr></table></figure>
+<ul>
+<li><p>同样的道理，如果我们要把JSON反序列化为一个对象实例，<code>json.loads()</code>方法首先转换出一个<code>dict</code>对象，然后，我们传入的<code>object_hook=转化函数的名</code>可选参数负责把<code>dict</code>转换为对象实例。</p>
+</li>
+<li><p>例子：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; json_str = &apos;&#123;&quot;age&quot;: 20, &quot;score&quot;: 88, &quot;name&quot;: &quot;Bob&quot;&#125;&apos;</div><div class="line">&gt;&gt;&gt; print(json.loads(json_str, object_hook=dict2student))</div><div class="line">&lt;__main__.Student object at 0x10cd3c190&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_序列化/" data-id="cj3326euz001cwgu1g07ui9ga" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_常用第三方模块-PIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_常用第三方模块-PIL/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.110Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-常用第三方模块-PIL"><a href="#学习笔记-常用第三方模块-PIL" class="headerlink" title="学习笔记_常用第三方模块-PIL"></a>学习笔记_常用第三方模块-PIL</h1><p><em>学习日期：2016年10月11日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014320027235877860c87af5544f25a8deeb55141d60c5000" target="_blank" rel="external">常用第三方模块PIL - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li>PIL：Python Imaging Library，已经是Python平台事实上的图像处理标准库了。PIL功能非常强大，但API却非常简单易用。</li>
+</ul>
+<h2 id="安装PIL"><a href="#安装PIL" class="headerlink" title="安装PIL"></a>安装PIL</h2><ul>
+<li>在命令行下直接通过pip安装：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install pillow</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##操作图像</p>
+<ul>
+<li><p>通过 <code>Image</code> 类中的 <code>open()</code> 方法即可载入一个图像文件。如果载入文件失败，则会引起一个 <code>IOError</code> ；若无返回错误，则 <code>open()</code> 函数返回一个 <code>Image</code> 对象,Image 对象里有三个属性。</p>
+<ul>
+<li><code>format</code> : 识别图像的源格式，如果该文件不是从文件中读取的，则被置为 None 值。</li>
+<li><code>size</code> : 返回的一个元组，有两个元素，其值为象素意义上的宽和高。</li>
+<li><code>mode</code> : RGB（true color image），此外还有，L（luminance），CMTK（pre-press image）。</li>
+</ul>
+</li>
+<li><p><code>show()</code>方法显示最新载入的图像。</p>
+</li>
+<li><p><code>crop()</code>方法 : 从图像中提取出某个矩形大小的图像。它接收一个四元素的元组作为参数，各元素为<code>（left, upper, right, lower）</code>，坐标系统的原点（0, 0）是左上角。</p>
+</li>
+<li><p>PIL模块可以实现图像缩放，切片，旋转，滤镜，输入文字，调色板等许多功能,具体功能怎么实现可以百度哈哈哈。</p>
+</li>
+<li><p>PIL的<code>ImageDraw</code>提供了一系列绘图方法，让我们可以直接绘图。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_常用第三方模块-PIL/" data-id="cj3326eut001awgu1vaxlwz0y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_常用内建模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_常用内建模块/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.100Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-常用内建模块"><a href="#学习笔记-常用内建模块" class="headerlink" title="学习笔记_常用内建模块"></a>学习笔记_常用内建模块</h1><p><em>学习日期：2016年10月17日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319347182373b696e637cc04430b8ee2d548ca1b36d000" target="_blank" rel="external">常用内建模块 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>Python之所以自称“batteries included”(自备全套工具），就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。</p>
+</li>
+<li><p>本章介绍了一些常用的内建模块，下面总结一下他们。</p>
+</li>
+</ul>
+<h2 id="datatime"><a href="#datatime" class="headerlink" title="datatime"></a>datatime</h2><ul>
+<li><p><code>datetime</code>是Python处理日期和时间的标准库。</p>
+</li>
+<li><p><code>datetime</code>表示的时间需要时区信息才能确定一个特定的时间，否则只能视为本地时间。</p>
+</li>
+<li><p>如果要存储<code>datetime</code>，最佳方法是将其转换为<code>timestamp</code>再存储，因为<code>timestamp</code>的值与时区完全无关。</p>
+</li>
+</ul>
+<h2 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h2><ul>
+<li><p>collections是Python内建的一个<strong>集合</strong>模块，提供了许多有用的<strong>集合</strong>类。</p>
+<ul>
+<li><p><strong><code>namedtuple</code></strong>→<code>namedtuple</code>是一个函数，它用来创建一个自定义的<code>tuple</code>对象，并且规定了<code>tupl</code>e元素的个数，并可以用属性而不是索引来引用<code>tuple</code>的某个元素。</p>
+</li>
+<li><p><strong><code>deque</code></strong>→<code>deque</code>是为了高效实现插入和删除操作的双向列表，适合用于队列和栈。</p>
+</li>
+<li><p><strong><code>defaultdict</code></strong>→使用<code>dict</code>时，如果引用的Key不存在，就会抛出<code>KeyError</code>。如果希望key不存在时，返回一个默认值，就可以用<code>defaultdict</code>，除了在Key不存在时返回默认值，<code>defaultdict</code>的其他行为跟dict是完全一样的。</p>
+</li>
+<li><p><strong><code>OrederedDict</code></strong>→使用<code>dict</code>时，Key是无序的。如果要保持Key的顺序，可以用<code>OrderedDict</code>,<code>OrderedDict</code>的Key会按照插入的顺序排列，不是Key本身排序。</p>
+</li>
+<li><p><strong><code>Counter</code></strong>→Counter是一个简单的计数器，例如，统计字符出现的个数，<code>Counter</code>实际上也是<code>dict</code>的一个子类。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h2><ul>
+<li><p><code>Base64</code>是一种用64个字符来表示任意二进制数据的方法。</p>
+</li>
+<li><p><code>Base64</code>是一种任意二进制到文本字符串的编码方法，常用于在URL、Cookie、网页中传输少量二进制数据。</p>
+</li>
+</ul>
+<h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><ul>
+<li><code>struct</code>模块是用来来解决<code>bytes</code><em>(以字节为单位，用带b前缀的单引号或双引号表示)</em>和其他二进制数据类型的转换。</li>
+</ul>
+<h2 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h2><ul>
+<li><p>Python的<code>hashlib</code>提供了常见的摘要算法，如MD5，SHA1等等。</p>
+</li>
+<li><p>摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。</p>
+</li>
+<li><p>摘要算法在很多地方都有广泛的应用<strong><em>(储存密码)</em></strong>。要注意摘要算法不是加密算法，不能用于加密（因为无法通过摘要反推明文），只能用于防篡改，但是它的单向计算特性决定了可以在不存储明文口令的情况下验证用户口令。</p>
+</li>
+</ul>
+<h2 id="itertools"><a href="#itertools" class="headerlink" title="itertools"></a>itertools</h2><ul>
+<li><p>Python的内建模块<code>itertools</code>提供了非常有用的用于操作迭代对象的函数。</p>
+</li>
+<li><p><code>itertools</code>模块提供的全部是处理迭代功能的函数，它们的返回值不是<code>list</code>，而是<code>Iterator</code>，只有用<code>for</code>循环迭代的时候才真正计算。</p>
+<ul>
+<li><p><strong><em><code>count()</code></em></strong>会创建一个无限的迭代器。</p>
+</li>
+<li><p><strong><em><code>cycle()</code></em></strong>会把传入的一个序列无限重复下去。</p>
+</li>
+<li><p><strong><em><code>repeat()</code></em></strong>负责把一个元素无限重复下去，如果提供第二个参数就可以限定重复次数。</p>
+</li>
+<li><p><strong><em><code>chain()</code></em></strong>可以把一组迭代对象串联起来，形成一个更大的迭代器。</p>
+</li>
+<li><p><strong><em><code>groupby()</code></em></strong>把迭代器中相邻的重复元素挑出来放在一起。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><ul>
+<li><p>在Python中使用<code>SAX</code>解析<code>XML</code>非常简洁，通常我们关心的事件是<code>start_element</code>，<code>end_element</code>和<code>char_data</code>，准备好这3个函数，然后就可以解析<code>xml</code>了。</p>
+</li>
+<li><p>解析<code>XML</code>时，注意找出自己感兴趣的节点，响应事件时，把节点数据保存起来。解析完毕后，就可以处理数据。</p>
+</li>
+</ul>
+<p>##HTMLParser</p>
+<ul>
+<li><p><code>HTMLParser</code>是用来解析<code>HTML</code>的模块。</p>
+</li>
+<li><p>利用<code>HTMLParser</code>，可以把网页中的文本、图像等解析出来。</p>
+</li>
+<li><p>有一个更好用的第三方模块<code>BeautifulSoup</code>是对<code>HTMLParser</code>的人性化封装，可以更简洁的解析<code>XML</code>和<code>HTML</code>。</p>
+</li>
+</ul>
+<p>##urllib</p>
+<ul>
+<li><p><code>urllib·</code>提供了一系列用于操作<code>URL</code>的功能。</p>
+</li>
+<li><p><code>urllib</code>提供的功能就是利用程序去执行各种<code>HTTP</code>请求。</p>
+</li>
+<li><p>如果要模拟浏览器完成特定功能，需要把请求伪装成浏览器。伪装的方法是先监控浏览器发出的请求，再根据浏览器的请求头来伪装，<code>User-Agent</code>头就是用来标识浏览器的。</p>
+</li>
+<li><p>有一个更好用的第三方模块<code>requests</code>是对<code>urllib</code>的人性化封装，可以更好的操作<code>url</code>。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_常用内建模块/" data-id="cj3326eux001bwgu12pd3nbnv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_实例属性和类属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_实例属性和类属性/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.070Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-实例属性和类属性"><a href="#学习笔记-实例属性和类属性" class="headerlink" title="学习笔记_实例属性和类属性"></a>学习笔记_实例属性和类属性</h1><p><em>学习日期：2016年9月27日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319117128404c7dd0cf0e3c4d88acc8fe4d2c163625000" target="_blank" rel="external">实例属性和类属性 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>给实例绑定属性的方法。</p>
+<ul>
+<li>给实例绑定属性的方法可以通过实例变量<em>(在<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431864715651c99511036d884cf1b399e65ae0d27f7e000" target="_blank" rel="external">类和实例 -廖雪峰的官方网站</a>中学习过)</em>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">   class Student(object):</div><div class="line">      pass</div><div class="line"> </div><div class="line">  &gt;&gt;&gt; bart.name = &apos;Bart Simpson&apos;</div><div class="line">&gt;&gt;&gt; bart.name</div><div class="line">&apos;Bart Simpson&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>给实例绑定属性的方法也可以通过self变量。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line">    def __init__(self, name):</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">s = Student(&apos;Bob&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>给类需要绑定一个属性，可以直接在class中定义属性，这种属性是类属性，归类所有。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line">    name = &apos;Student&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>当我们定义了一个类属性后，这个属性虽然归类所有，但类的所有实例都可以访问到。</strong></li>
+</ul>
+</li>
+<li><p>编写程序的时候，千万<strong>不要把实例属性和类属性使用相同的名字</strong>，因为相同名称的实例属性将屏蔽掉类属性，但是当你删除实例属性后，再使用相同的名称，访问到的将是类属性。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_实例属性和类属性/" data-id="cj3326euq0019wgu1pkoiklnl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_定制类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_定制类/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.060Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-定制类"><a href="#学习笔记-定制类" class="headerlink" title="学习笔记_定制类"></a>学习笔记_定制类</h1><p><em>学习日期：2016年9月27日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319098638265527beb24f7840aa97de564ccc7f20f6000" target="_blank" rel="external">定制类 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>除我们之前已经学习过的<code>__slots__</code><em>(在“使用__slots__”一节中）</em>和<code>__len__()</code><em>(在“获取对象属性”一节中）</em>之外，Python的class中还有许多这样有特殊用途的函数，可以帮助我们定制类。</p>
+</li>
+<li><p>Python的class允许定义许多定制方法，可以让我们非常方便地生成特定的类。</p>
+</li>
+<li><p>本节我们将学习<code>__str__</code>、<code>__iter__</code>、<code>__getitem__</code>、<code>__getattr__</code>、<code>__call__</code>这几个定制方法。</p>
+</li>
+</ul>
+<p>##__str__</p>
+<ul>
+<li><p><code>__str__()</code>的作用是用来返回对象的字符串表达式。</p>
+</li>
+<li><p><code>__str()__</code>，它生成一个对象的可读性好的字符串表示，结果通常无法用<code>eval()</code>求值，但适合print输出。</p>
+</li>
+</ul>
+<ul>
+<li><p>但是有个问题，用<code>print()</code>语句输出的字符串很好看了，但是直接敲变量的话还是不好看，这时我们要用到<code>__repr__()</code>语句。</p>
+</li>
+<li><p>通常<code>__str__()</code>和<code>__repr__()</code>代码都是一样的，所以，有个偷懒的写法,<code>__repr__ = __str__</code>。</p>
+</li>
+<li><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  class Student(object):</div><div class="line">    def __init__(self, name):</div><div class="line">        self.name = name</div><div class="line">    def __str__(self):</div><div class="line">        return &apos;Student object (name=%s)&apos; % self.name</div><div class="line">    __repr__ = __str__</div><div class="line">  </div><div class="line">    &gt;&gt;&gt; print(Student(&apos;Michael&apos;))</div><div class="line">  Student object (name: Michael)  # __str__作用下输出结果</div><div class="line"></div><div class="line">  &gt;&gt;&gt; s = Student(&apos;Michael&apos;)</div><div class="line">&gt;&gt;&gt; s</div><div class="line">Student object (name: Michael)  #__repr__作用下输出结果</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##__iter__</p>
+<ul>
+<li>该方法返回一个迭代对象，然后，Python的for循环就会不断调用该迭代对象的<code>__next__()</code>方法拿到循环的下一个值，直到遇到<code>StopIteration</code>错误时退出循环。</li>
+<li>用法是定义两个函数，<code>__iter__()</code>和<code>__next__()</code>。</li>
+<li>例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class Fib(object):</div><div class="line">    def __init__(self):</div><div class="line">        self.a, self.b = 0, 1 # 初始化两个计数器a，b</div><div class="line"></div><div class="line">    def __iter__(self):</div><div class="line">        return self # 实例本身就是迭代对象，故返回自己</div><div class="line"></div><div class="line">    def __next__(self):</div><div class="line">        self.a, self.b = self.b, self.a + self.b # 计算下一个值</div><div class="line">        if self.a &gt; 100000: # 退出循环的条件</div><div class="line">            raise StopIteration();</div><div class="line">        return self.a # 返回下一个值</div><div class="line">        </div><div class="line">#下面开始循环这个类</div><div class="line"></div><div class="line">&gt;&gt;&gt; for n in Fib():</div><div class="line">...     print(n)</div><div class="line">...</div><div class="line">1</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">5</div><div class="line">...</div><div class="line">46368</div><div class="line">75025</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##__getitem__</p>
+<ul>
+<li>用<code>__iter__</code>做的实例虽然能用于循环，但是他并不是一个list。</li>
+<li><code>__getitem__</code>、<code>__setitem__</code>、<code>__delitem__</code>可以把我们的类表现得和Python自带的list、tuple、dict没什么区别</li>
+</ul>
+<p>##__getattr__</p>
+<ul>
+<li><code>__getattr__()</code>方法，可以动态返回一个属性或者方法，即使这个属性或方法并没有在类中定义。</li>
+<li>注意，只有在没有找到属性的情况下，才调用<code>__getattr__</code>，已有的属性，不会在<code>__getattr__</code>中查找。</li>
+<li>我们定义的<code>__getattr__</code>默认返回是<code>None</code>。如果调用<code>__getattr__</code>中未提到的属性，就会返回<code>None</code>。</li>
+<li><p>要让class只响应特定的几个属性，我们就要按照约定，抛出AttributeError的错误。（通过if→要相应的属性，else→抛出错误来编写）</p>
+</li>
+<li><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.name = &apos;Michael&apos;</div><div class="line"></div><div class="line">    def __getattr__(self, attr):</div><div class="line">        if attr==&apos;score&apos;:</div><div class="line">            return 99</div><div class="line">            </div><div class="line">#x现在调用score就没问题了</div><div class="line"></div><div class="line">&gt;&gt;&gt; s = Student()</div><div class="line">&gt;&gt;&gt; s.name</div><div class="line">&apos;Michael&apos;</div><div class="line">&gt;&gt;&gt; s.score</div><div class="line">99</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##__call__</p>
+<ul>
+<li>定义一个<code>__call__()</code>方法，就可以直接对实例进行调用。</li>
+<li><code>__call__()</code>还可以定义参数。对实例进行直接调用就好比对一个函数进行调用一样。</li>
+<li>通过<code>callable()</code>函数，我们就可以判断一个对象是否是“可调用”对象。</li>
+<li>例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line">    def __init__(self, name):</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    def __call__(self):</div><div class="line">        print(&apos;My name is %s.&apos; % self.name)</div><div class="line">        </div><div class="line">#调用方法如下：</div><div class="line"></div><div class="line">&gt;&gt;&gt; s = Student(&apos;Michael&apos;)</div><div class="line">&gt;&gt;&gt; s() # self参数不要传入</div><div class="line">My name is Michael.</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_定制类/" data-id="cj3326euo0018wgu11cdgzri9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （下）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/vuex/Vuex的五个核心属性/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （上）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/python中的元类Metaclass/python中的元类Metaclass/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/获取对象信息/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

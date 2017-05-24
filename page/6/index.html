@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-python/Generator and Iterator in Python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/Generator and Iterator in Python/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.520Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Generator-and-Iterator-in-Python"><a href="#Generator-and-Iterator-in-Python" class="headerlink" title="Generator and Iterator in Python"></a>Generator and Iterator in Python</h1><p><em>Generator——生成器</em><br><em>Iterator——迭代器</em></p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
+<li>迭代是python最强大的功能之一，是访问集合元素的一种方式。</li>
+<li><strong>迭代器是一个可以记住遍历位置的对象</strong>。</li>
+<li>迭代器对象从集合的第一个元素开始访问，直到所有元素被访问完结束，迭代器只能往前不能向后。</li>
+<li>迭代器有两个基本的方法 <code>iter()</code>和<code>next()</code>。<ul>
+<li><code>iter()</code>作用是创建一个迭代器对象。</li>
+<li><code>next()</code>作用是输出迭代器的下一个对象。</li>
+</ul>
+</li>
+<li><p>字符串，列表和元组对象都可用于创建迭代器，例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; list=[1,2,3,4]</div><div class="line">&gt;&gt;&gt; it = iter(list)    # 创建迭代器对象</div><div class="line">&gt;&gt;&gt; print (next(it))   # 输出迭代器的下一个元素</div><div class="line">1</div><div class="line">&gt;&gt;&gt; print (next(it))</div><div class="line">2</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>迭代器对象可以使用常规for语句进行遍历，例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python3</div><div class="line"></div><div class="line">list=[1,2,3,4]</div><div class="line">it = iter(list)    # 创建迭代器对象</div><div class="line">for x in it:</div><div class="line">    print (x, end=&quot; &quot;) </div><div class="line">#print默认是打印一行，结尾加换行。end=&apos; &apos;意思是末尾不换行，加空格。</div><div class="line"></div><div class="line"># 执行以上程序，输出结果如下：</div><div class="line">1 2 3 4</div></pre></td></tr></table></figure>
+</li>
+<li><p>也可以用next()函数，例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python3</div><div class="line"></div><div class="line">import sys         # 引入 sys 模块</div><div class="line"></div><div class="line">list=[1,2,3,4]</div><div class="line">it = iter(list)    # 创建迭代器对象</div><div class="line"></div><div class="line">while True:</div><div class="line">    try:</div><div class="line">        print (next(it))</div><div class="line">    except StopIteration:</div><div class="line">        sys.exit()</div><div class="line">#执行以上程序，输出结果如下：</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><ul>
+<li>在Python中，使用了<code>yield</code>的函数被称为生成器（generator)。</li>
+<li>与普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作。更简单点理解，生成器也是一个迭代器。</li>
+<li>在调用生成器运行的过程中，每次遇到<code>yield</code>会函数会暂停并保存当前所有的运行信息，返回<code>yield</code>的值。并在下一次执行<code>next()</code>操作时从当前位置继续运行。</li>
+<li>以下是用生成器返回斐波那契数的实例。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python3</div><div class="line"></div><div class="line">import sys</div><div class="line"></div><div class="line">def fibonacci(n): # 生成器函数 - 斐波那契</div><div class="line">    a, b, counter = 0, 1, 0</div><div class="line">    while True:</div><div class="line">        if (counter &gt; n): </div><div class="line">            return</div><div class="line">        yield a</div><div class="line">        a, b = b, a + b</div><div class="line">        counter += 1</div><div class="line">f = fibonacci(10) # f 是一个迭代器，由生成器返回生成</div><div class="line"></div><div class="line">while True:</div><div class="line">    try:</div><div class="line">        print (next(f), end=&quot; &quot;)</div><div class="line">    except StopIteration:</div><div class="line">        sys.exit()</div><div class="line">#执行以上程序，输出结果如下：</div><div class="line">0 1 1 2 3 5 8 13 21 34 55</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/Generator and Iterator in Python/" data-id="cj3326esn000ewgu12xr35217" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-others/解决动态生成的网页在微信浏览器中每次返回都会重新生成的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/others/解决动态生成的网页在微信浏览器中每次返回都会重新生成的问题/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.500Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="解决动态网页在微信浏览器中每次返回都会重新加载的问题"><a href="#解决动态网页在微信浏览器中每次返回都会重新加载的问题" class="headerlink" title="解决动态网页在微信浏览器中每次返回都会重新加载的问题"></a>解决动态网页在微信浏览器中每次返回都会重新加载的问题</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>假设我们我们有一个搜索结果列表页面，其内容为我们通过 AJAX 从后端动态获取的。搜索页面中的每一个条目是一个超链接，我们可以点击超链接去请求另一个网页查看条目详情。这是一种很常见的情况。可是在微信浏览器，我们会遇到这样一个问题：当我们想从条目详情返回条目列表页面时，微信浏览器会重新刷新条目列表页面，我们会找不到刚才浏览的位置，又要重新滚动，上滑加载，等等等等，过了好久才能找到刚才浏览的位置，继续浏览。</p>
+<p>这个问题的本质原因是微信浏览器的后退功能并不会保存网页快照，而是简单粗暴的重新加载网页。</p>
+<p>这是一个很影响用户体验的问题。有解决办法吗？</p>
+<p>当然有，最好的解决办法就是做一个 SPA 单页应用来实现。但是如果我们的网页已经存在，再重新成单页应用会增加很多工作量怎么办呢？这篇文章将介绍通过缓存来实现记录原有位置的功能。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>既然微信浏览器的后退功能我们无法修改，那我们的思路可以是自己保存网页的信息，当我们重新加载时先进行判断，判断本地是否有缓存的网页信息，如果有，则读取网页信息，将网页复原的原位置。如果没有，则像之前那样向后台发送 AJAX 来获取数据。</p>
+<p>这样我们将大问题分解成了这几个小问题</p>
+<ul>
+<li><p>如果缓存数据</p>
+</li>
+<li><p>什么时候缓存数据</p>
+</li>
+<li><p>缓存哪些数据</p>
+</li>
+<li><p>如何判断复原网页</p>
+</li>
+</ul>
+<p>##　如何缓存数据</p>
+<p>我这里的想法是使用 LocalStorge 来存储数据。 LocalStorge 只能存储字符串数据，如果我们的数据不是字符串，我们可以将其转换为 JSON 格式在存储。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// data 是我们要缓存的数据</div><div class="line">localStorge.setItem(&apos;listData&apos;, JSON.strinify(data))</div></pre></td></tr></table></figure>
+<h2 id="什么时候缓存参数"><a href="#什么时候缓存参数" class="headerlink" title="什么时候缓存参数"></a>什么时候缓存参数</h2><p>我这里的想法是在我们点击查看商品详情之前，先进行缓存，然后进行跳转。这时我们就不能使用 <code>&lt;a href=&quot;xxx&quot;&gt;</code> 了，而要使用 <code>window.location.href</code> 来做跳转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// .list-item 是我们点击跳转的列表条目</div><div class="line">let item = document.getElementByClassName(&apos;.list-item&apos;)</div><div class="line">item.addEventListener(&apos;click&apos;, function () &#123;</div><div class="line">  localStorge.setItem(&apos;listData&apos;, JSON.strinify(data))</div><div class="line">  window.loaction.href = &apos;xxx&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="缓存哪些数据"><a href="#缓存哪些数据" class="headerlink" title="缓存哪些数据"></a>缓存哪些数据</h3><p>我这里的想法是要缓存从后端获取的全部数据，key值（我这里是搜索关键字），滚动位置，如果我们是按页码加载的话还要缓存页码位置以便回到列表页浏览后继续加载。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let item = document.getElementByClassName(&apos;.list-item&apos;)</div><div class="line">item.addEventListener(&apos;click&apos;, function () &#123;</div><div class="line">  var data = &#123;</div><div class="line">    data: response,  // 从后台获取的数据</div><div class="line">    key: key</div><div class="line">    scrollTop: document.body.scrollTop,</div><div class="line">    page: page</div><div class="line">  &#125;</div><div class="line">  localStorge.setItem(&apos;listData&apos;, JSON.strinify(data))</div><div class="line">  window.loaction.href = &apos;xxx&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>###　如何判断复原网页</p>
+<p>关于如何判断数据这个就比较业务化了，大体思路还是按照key进行判断。复原网页就比较简单了，判断通过之后，将data数据渲染到 HTML 上，将滚动距离重新赋值给 <code>document.body.scrollTop</code> 即可。</p>
+<p>如果判断不通过则可以通过如下方式删除缓存，然后重新获取数据即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localStorge.removeItem(&apos;listData&apos;)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/others/解决动态生成的网页在微信浏览器中每次返回都会重新生成的问题/" data-id="cj3326eso000fwgu1gqjhjoyq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js/Storge 在 Safari 的无痕浏览模式中的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/js/Storge 在 Safari 的无痕浏览模式中的坑/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.460Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于-Storge-在-Safari-的无痕浏览模式中的坑"><a href="#关于-Storge-在-Safari-的无痕浏览模式中的坑" class="headerlink" title="关于 Storge 在 Safari 的无痕浏览模式中的坑"></a>关于 Storge 在 Safari 的无痕浏览模式中的坑</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天遇到了一个诡异的bug，一个网页在微信浏览器中是可以正常显示的，而在一些用户的 Safari 中却无法正常渲染。真是日了狗了！检查一下报错，发现这个报错很可疑：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QuotaExceededError</div><div class="line">The quota has been exceeded.</div></pre></td></tr></table></figure>
+<p>Google了半天，终于发现了问题的原因可能是出在 Safari 的无痕浏览当中。</p>
+<blockquote>
+<p>Safari在所谓的private mode下不允许使用LocalStorage功能，只有在用户自身开启non-private mode的情况下才可以正常使用LocalStorage。</p>
+</blockquote>
+<p>果断开无痕浏览试一试，果然网页就打不开了 - -！</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Safari 的无痕浏览模式会这样处理 <code>Storge</code> 对象：</p>
+<ul>
+<li><p><code>Storage</code> 对象仍然存在。</p>
+</li>
+<li><p>但是 <code>setItem()</code> 会报异常：QuotaExceededError。</p>
+</li>
+<li><p><code>getItem()</code> 和 <code>removeItem()</code> 方法会直接忽略。</p>
+</li>
+</ul>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>既然知道了问题的原因，解决起来自然也就简单许多了，由于这个问题的解决方案与业务息息相关，我这里就提供几个简单的思路。</p>
+<ol>
+<li><p>在 Safari 的无痕模式中不执行 <code>Storage.setItem()</code> 的部分，简单粗暴。</p>
+</li>
+<li><p>使用 cookie 替代 <code>Storage</code> 对象。</p>
+</li>
+</ol>
+<p>至于判断是否可用 <code>Stroage</code> 对象，我们可以用 <code>try...catch...</code> 语句来判断。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/js/Storge 在 Safari 的无痕浏览模式中的坑/" data-id="cj3326es40007wgu14whk5nph" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js/ES6 中 Class 学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/js/ES6 中 Class 学习笔记/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.450Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ES6-中-Class-学习笔记"><a href="#ES6-中-Class-学习笔记" class="headerlink" title="ES6 中 Class 学习笔记"></a>ES6 中 Class 学习笔记</h1><p>ES6 中的 <code>class</code> （类）实际上就是基于原型继承的语法糖，可以让我们用更简单更清晰的语法来创建类。</p>
+<p>这篇文章即为我学习 <code>class</code> 的学习笔记，其中内容大部分参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="external">类 - JavaScript | MDN</a> 。</p>
+<h2 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h2><p>定义类有两种方式，类表达式和类声明。这一点跟函数很类似，函数使用 <code>function</code> 关键词来声明函数，而类则使用 <code>class</code> 关键词来声明类。</p>
+<h3 id="类声明"><a href="#类声明" class="headerlink" title="类声明"></a>类声明</h3><p>如下所示即为类声明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  // xxxx</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>建议: 类名首字母最好大写。</p>
+<p>注意：类声明不会声明前置，这点与函数不同，要注意。</p>
+<h3 id="类表达式"><a href="#类表达式" class="headerlink" title="类表达式"></a>类表达式</h3><p>类表达式可以命名也可以是匿名的。如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 匿名</div><div class="line">let People = class &#123;</div><div class="line">  // xxx</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 命名</div><div class="line">let People = class People &#123;</div><div class="line">  // xxx</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意：类表达式同样会收到不声明前置的影响</p>
+<h2 id="类体和类方法"><a href="#类体和类方法" class="headerlink" title="类体和类方法"></a>类体和类方法</h2><p>一个类的类体是又一对中括号 <code>{}</code> 组成的，在其中我们将定义方法或构造函数。这个很像一个对象，但与对象不同的是，类体内不需要逗号分隔不同的方法。</p>
+<p>###　构造函数</p>
+<p>构造函数( <code>constructor</code> )用于：创建或初始化一个<strong>使用这个类创建的实例</strong>。概念似乎很拗口，但是一看例子就知道其含义了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  constructor (name, age) &#123;</div><div class="line">    this.name = name</div><div class="line">    this.age = age</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let me = new People(&apos;ReedSun&apos;, 23)</div><div class="line">console.log(me.name)  // &apos;ReedSun&apos;</div><div class="line">console.log(me.age)  // 23</div></pre></td></tr></table></figure>
+<p>有了例子，我们就能看明白了，构造函数 <code>constructor</code> 接收的参数为我们实例化这个类时传入的参数。</p>
+<p>注意：一个类方法中只能有一个构造函数，如果有多个构造函数则会抛出异常。</p>
+<p>同时，一个构造函数可以使用 <code>super</code> 关键词来调用一个父类构造函数。</p>
+<h3 id="原型方法"><a href="#原型方法" class="headerlink" title="原型方法"></a>原型方法</h3><p>原型方法直接写在类体中就可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  constructor (name) &#123;</div><div class="line">    this.name = name</div><div class="line">  &#125;</div><div class="line">  getName () &#123;</div><div class="line">    console.log(&apos;Name: &apos; + this.name)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let me = new People(&apos;ReedSun&apos;)</div><div class="line">me.getName()  // name: ReedSun</div></pre></td></tr></table></figure>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p>静态方法需要使用 <code>static</code> 来声明，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  constructor (name) &#123;</div><div class="line">    this.name = name</div><div class="line">  &#125;</div><div class="line">  static walk (num) &#123;</div><div class="line">    console.log(&apos;我走了&apos; + num + &apos;步&apos;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">People.walk(100)  // 我走了100步</div></pre></td></tr></table></figure>
+<p><strong>静态方法是类本身的方法，原型方法是类的实例的方法。</strong>你懂了嘛？我反正懂了~</p>
+<h2 id="创建子类"><a href="#创建子类" class="headerlink" title="创建子类"></a>创建子类</h2><p>为一个类创建子类需要使用 <code>extends</code> 关键字，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  constructor (name) &#123;</div><div class="line">    this.name</div><div class="line">  &#125;</div><div class="line">  getHeight () &#123;</div><div class="line">    console.log(this.name + &apos; is people.&apos;)</div><div class="line">  &#125;</div><div class="line">  getWord () &#123;</div><div class="line">    console.log(this.name + &apos; is saying.&apos;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Teen extends People &#123;</div><div class="line">  constructor (name) &#123;</div><div class="line">    super()</div><div class="line">    this.name = name</div><div class="line">  &#125;</div><div class="line">  getHeight () &#123;</div><div class="line">    console.log(this.name + &apos; is teen.&apos;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let me = new Teen(&apos;ReedSun&apos;)</div><div class="line">me.getHeight()  // ReedSun is teen.</div><div class="line">me.getWord()  // ReedSun is saying.</div></pre></td></tr></table></figure>
+<p>注意：如果子类中存在构造函数，则需要在使用 <code>this</code> 之前首先调用 <code>super()</code>。</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="external">类 - JavaScript | MDN</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/js/ES6 中 Class 学习笔记/" data-id="cj3326es20006wgu1zdq42x0k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js/关于Number.toFixed()的总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/js/关于Number.toFixed()的总结/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.400Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于Number-toFixed-函数的总结"><a href="#关于Number-toFixed-函数的总结" class="headerlink" title="关于Number.toFixed()函数的总结"></a>关于Number.toFixed()函数的总结</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天工作中遇到了一个需求，需要将类似于 <code>1.99999</code> 这样的数字格式化为 <code>2.00</code> 这样的两位小数。本来打算自己实现一个类似的功能函数，但是没想到看起来容易，实际实现起来却还是有点复杂的，就例如逢9进位这样的功能就让我想的有点头疼。索性考虑起来大谷歌来实现这样的功能。</p>
+<p>没想到谷歌一下发现，居然 JS 中现成的函数 <code>Number.toFixed()</code> 来实现我这样的需求。赶紧查阅了<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed" target="_blank" rel="external">MDN</a>，然后写下这篇文章来总结一下 <code>Number.toFixed()</code> 的各个方面。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">numObj.toFixed(digits)</div></pre></td></tr></table></figure>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>digits</code></td>
+<td>小数点后数字的个数；介于 0 到 20 （包括）之间，实现环境可能支持更大范围。如果忽略该参数，则默认为 0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>该方法不会改变原数值。</p>
+<p>该方法会返回一个数值的字符串表现形式，保留 <code>digits</code> 位小数。</p>
+<p>如果有必要会进行四舍五入。</p>
+<p>如果原数字位数不足 <code>digits</code> 位则会补零。</p>
+<p>如果数值大于 1e+21，该方法会简单调用 <code>Number.prototype.toString()</code> 并返回一个指数记数法格式的字符串。</p>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><table>
+<thead>
+<tr>
+<th>可能抛出的异常</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RangeError</code></td>
+<td>如果 <code>digits</code> 参数太小或太大则可能抛出此异常。一般来说 0 到 20（包括）之间的值不会引起 RangeError。实现环境（implementations）也可以支持更大或更小的值</td>
+</tr>
+<tr>
+<td><code>TypeErrpr</code></td>
+<td>如果该方法在一个非Number类型的对象上调用将会抛出此异常</td>
+</tr>
+</tbody>
+</table>
+<h2 id="真实需求"><a href="#真实需求" class="headerlink" title="真实需求"></a>真实需求</h2><p>在实际情况中我们可能会面对这样的需求：如果数字小数点后位数大于两位则格式化到两位，如果不大于两位则不格式化。即不需要 <code>Number.toFixed()</code> 函数的补零功能。我们可以这样实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function () &#123;</div><div class="line">  let valueStr = value.toString()</div><div class="line">  if (valueStr.indexOf(&apos;.&apos;) !== -1 &amp;&amp; valueStr.split(&apos;.&apos;)[1].length &gt; 2) &#123;</div><div class="line">    return value.toFixed(2)</div><div class="line">  &#125; else &#123;</div><div class="line">    return value</div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个函数中，我们通过判断 <code>&#39;.&#39;</code> 是否存在，以及 <code>&#39;.&#39;</code> 之后数字的个数来判断我们是否需要格式化，这样就完美解决了我们的需求。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed" target="_blank" rel="external">Number.prototype.toFixed() - JavaScript | MDN</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/js/关于Number.toFixed()的总结/" data-id="cj3326esc0009wgu1trmurv6d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js/关于 Date() 函数在 iOS 中的一个小坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/js/关于 Date() 函数在 iOS 中的一个小坑/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.350Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="关于-Date-函数在-iOS-中的一个小坑"><a href="#关于-Date-函数在-iOS-中的一个小坑" class="headerlink" title="关于 Date() 函数在 iOS 中的一个小坑"></a>关于 Date() 函数在 iOS 中的一个小坑</h1><h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><p>今天遇到了一个诡异的 bug 。一个 <code>Vux</code> 的日期选择组件在 PC 端和安卓端都能正常显示和使用，而在 <code>iOS</code> 端却不能正常出现。经过漫长的调试，终于发现问题出在这一行代码上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var startDate = new Date(&apos;2017-5-3&apos;)</div></pre></td></tr></table></figure>
+<p>这行代码在 PC 端和安卓端都是正常的，而在 <code>iOS</code> 端则会提示 <code>Invalid Date</code> 无效日期。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p><code>new Date(dateString)</code> 实际上是调用了 <code>Date.parse()</code> 这个函数。关于这个函数， <code>ECMAScript</code> 规范规定：</p>
+<blockquote>
+<p>如果一个字符串不符合标准格式，则函数可以使用任何由引擎决定的策略或解析算法。 <code>Date.parse()</code> 对于因包含有无效元素而无法识别的 <code>ISO</code> 格式字符串或者日期应该返回 <code>NaN</code> 。</p>
+</blockquote>
+<p>简单的说这个函数在不同的浏览器引擎中会存在偏差，导致对字符串的解析不一致或部分浏览器无法解析。问题应该就是出在这里！是 <code>Safari</code> 不能识别这串字符串。</p>
+<p>经过测试，将代码改为如下样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var startDate = new Date(&apos;2017-05-03&apos;)</div></pre></td></tr></table></figure>
+<p>这样代码就可以 <code>iOS</code> 端正常运行了。坑爹的 <code>Safari</code> 。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/parse" target="_blank" rel="external">Date.parse - JavaScript | MDN</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/js/关于 Date() 函数在 iOS 中的一个小坑/" data-id="cj3326es60008wgu1094nvdqq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js/根据iOS和安卓的版本进行筛选的小函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/js/根据iOS和安卓的版本进行筛选的小函数/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.290Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简单筛选iOS和安卓的版本的函数"><a href="#简单筛选iOS和安卓的版本的函数" class="headerlink" title="简单筛选iOS和安卓的版本的函数"></a>简单筛选iOS和安卓的版本的函数</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本</p>
+<p>函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function filterVersion (iOS, Android) &#123;</div><div class="line">  if (navigator.userAgent.indexOf(&apos;Mac OS X&apos;) !== -1) &#123;</div><div class="line">    var reg = /OS\s[\d\_]*\slike\sMac\sOS\sX/.exec(navigator.userAgent)</div><div class="line">    if (reg) &#123;</div><div class="line">      var version = parseFloat(reg[0].slice(3, -14).replace(/_/g, &apos;.&apos;))</div><div class="line">      return version &gt;= iOS</div><div class="line">      return false</div><div class="line">    &#125;</div><div class="line">  &#125; else if (navigator.userAgent.indexOf(&apos;Android&apos;) !== -1) &#123;</div><div class="line">    var reg = /Android\s[\d\.]*;/.exec(navigator.userAgent)</div><div class="line">    if (reg) &#123;</div><div class="line">      var version = parseFloat(reg[0].slice(8, -1))</div><div class="line">      return version &gt;= Android</div><div class="line">    &#125; else &#123;</div><div class="line">      return false</div><div class="line">    &#125; </div><div class="line">  &#125; else &#123;</div><div class="line">    return false</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>比如一个功能xxx，你你只想在iOS 10.0以上的版本，及安卓 7.0以上的版本上使用，则可以这样写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function xxx () &#123;</div><div class="line">  if (!filterVersion(10, 7)) &#123;</div><div class="line">    return</div><div class="line">  &#125;</div><div class="line">  // ....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>这个判断方法是根据浏览器提供的UA，即 <code>window.navigator.userAgent</code> 来做出判断的，这个属性就提供了安卓或iOS的系统版本信息。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/js/根据iOS和安卓的版本进行筛选的小函数/" data-id="cj3326esd000awgu1b636vcjz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js/CORS跨域" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/js/CORS跨域/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.230Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="跨域资源共享-CORS-详解"><a href="#跨域资源共享-CORS-详解" class="headerlink" title="跨域资源共享 CORS 详解"></a>跨域资源共享 CORS 详解</h1><p>作者： 阮一峰</p>
+<p>日期： 2016年4月12日</p>
+<p>本文转载自<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="external">跨域资源共享CORS - 阮一峰</a>， 我觉得阮老师写的非常好！深入浅出！就转载过来啦~</p>
+<p>CORS是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing）。<br>它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。</p>
+<p>本文详细介绍CORS的内部机制。</p>
+<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。</p>
+<p>整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。</p>
+<p>因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。</p>
+<h2 id="二、两种请求"><a href="#二、两种请求" class="headerlink" title="二、两种请求"></a>二、两种请求</h2><p>浏览器将CORS请求分成两类：简单请求（simple request）和非简单请求（not-so-simple request）。</p>
+<p>只要同时满足以下两大条件，就属于简单请求。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">（1) 请求方法是以下三种方法之一：</div><div class="line">HEAD</div><div class="line">GET</div><div class="line">POST</div><div class="line">（2）HTTP的头信息不超出以下几种字段：</div><div class="line">Accept</div><div class="line">Accept-Language</div><div class="line">Content-Language</div><div class="line">Last-Event-ID</div><div class="line">Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</div></pre></td></tr></table></figure></p>
+<p>凡是不同时满足上面两个条件，就属于非简单请求。</p>
+<p>浏览器对这两种请求的处理，是不一样的。</p>
+<h2 id="三、简单请求"><a href="#三、简单请求" class="headerlink" title="三、简单请求"></a>三、简单请求</h2><h3 id="3-1-基本流程"><a href="#3-1-基本流程" class="headerlink" title="3.1 基本流程"></a>3.1 基本流程</h3><p>对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个Origin字段。</p>
+<p>下面是一个例子，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个Origin字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">GET /cors HTTP/1.1</div><div class="line">Origin: http://api.bob.com</div><div class="line">Host: api.alice.com</div><div class="line">Accept-Language: en-US</div><div class="line">Connection: keep-alive</div><div class="line">User-Agent: Mozilla/5.0...</div></pre></td></tr></table></figure></p>
+<p>上面的头信息中，Origin字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。</p>
+<p>如果Origin指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应。浏览器发现，这个回应的头信息没有包含Access-Control-Allow-Origin字段（详见下文），就知道出错了，从而抛出一个错误，被XMLHttpRequest的onerror回调函数捕获。注意，这种错误无法通过状态码识别，因为HTTP回应的状态码有可能是200。<br>如果Origin指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Origin: http://api.bob.com</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Access-Control-Expose-Headers: FooBar</div><div class="line">Content-Type: text/html; charset=utf-8</div></pre></td></tr></table></figure></p>
+<p>上面的头信息之中，有三个与CORS请求相关的字段，都以Access-Control-开头。</p>
+<p>（1）Access-Control-Allow-Origin</p>
+<p>该字段是必须的。它的值要么是请求时Origin字段的值，要么是一个*，表示接受任意域名的请求。</p>
+<p>（2）Access-Control-Allow-Credentials</p>
+<p>该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。设为true，即表示服务器明确许可，Cookie可以包含在请求中，一起发给服务器。这个值也只能设为true，如果服务器不要浏览器发送Cookie，删除该字段即可。</p>
+<p>（3）Access-Control-Expose-Headers</p>
+<p>该字段可选。CORS请求时，XMLHttpRequest对象的getResponseHeader()方法只能拿到6个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在Access-Control-Expose-Headers里面指定。上面的例子指定，getResponseHeader(‘FooBar’)可以返回FooBar字段的值。</p>
+<h3 id="3-2-withCredentials-属性"><a href="#3-2-withCredentials-属性" class="headerlink" title="3.2 withCredentials 属性"></a>3.2 withCredentials 属性</h3><p>上面说到，CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，一方面要服务器同意，指定Access-Control-Allow-Credentials字段。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Credentials: true</div></pre></td></tr></table></figure></p>
+<p>另一方面，开发者必须在AJAX请求中打开withCredentials属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var xhr = new XMLHttpRequest();</div><div class="line">xhr.withCredentials = true;</div></pre></td></tr></table></figure></p>
+<p>否则，即使服务器同意发送Cookie，浏览器也不会发送。或者，服务器要求设置Cookie，浏览器也不会处理。</p>
+<p>但是，如果省略withCredentials设置，有的浏览器还是会一起发送Cookie。这时，可以显式关闭withCredentials。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.withCredentials = false;</div></pre></td></tr></table></figure></p>
+<p>需要注意的是，如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。</p>
+<h2 id="四、非简单请求"><a href="#四、非简单请求" class="headerlink" title="四、非简单请求"></a>四、非简单请求</h2><h3 id="4-1-预检请求"><a href="#4-1-预检请求" class="headerlink" title="4.1 预检请求"></a>4.1 预检请求</h3><p>非简单请求是那种对服务器有特殊要求的请求，比如请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。</p>
+<p>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。</p>
+<p>浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的XMLHttpRequest请求，否则就报错。</p>
+<p>下面是一段浏览器的JavaScript脚本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var url = &apos;http://api.alice.com/cors&apos;;</div><div class="line">var xhr = new XMLHttpRequest();</div><div class="line">xhr.open(&apos;PUT&apos;, url, true);</div><div class="line">xhr.setRequestHeader(&apos;X-Custom-Header&apos;, &apos;value&apos;);</div><div class="line">xhr.send();</div></pre></td></tr></table></figure></p>
+<p>上面代码中，HTTP请求的方法是PUT，并且发送一个自定义头信息X-Custom-Header。<br>浏览器发现，这是一个非简单请求，就自动发出一个”预检”请求，要求服务器确认可以这样请求。下面是这个”预检”请求的HTTP头信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">OPTIONS /cors HTTP/1.1</div><div class="line">Origin: http://api.bob.com</div><div class="line">Access-Control-Request-Method: PUT</div><div class="line">Access-Control-Request-Headers: X-Custom-Header</div><div class="line">Host: api.alice.com</div><div class="line">Accept-Language: en-US</div><div class="line">Connection: keep-alive</div><div class="line">User-Agent: Mozilla/5.0...</div></pre></td></tr></table></figure></p>
+<p>“预检”请求用的请求方法是OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是Origin，表示请求来自哪个源。<br>除了Origin字段，”预检”请求的头信息包括两个特殊字段。</p>
+<p>（1）Access-Control-Request-Method</p>
+<p>该字段是必须的，用来列出浏览器的CORS请求会用到哪些HTTP方法，上例是PUT。</p>
+<p>（2）Access-Control-Request-Headers</p>
+<p>该字段是一个逗号分隔的字符串，指定浏览器CORS请求会额外发送的头信息字段，上例是X-Custom-Header。</p>
+<h3 id="4-2-预检请求的回应"><a href="#4-2-预检请求的回应" class="headerlink" title="4.2 预检请求的回应"></a>4.2 预检请求的回应</h3><p>服务器收到”预检”请求以后，检查了Origin、Access-Control-Request-Method和Access-Control-Request-Headers字段以后，确认允许跨源请求，就可以做出回应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Mon, 01 Dec 2008 01:15:39 GMT</div><div class="line">Server: Apache/2.0.61 (Unix)</div><div class="line">Access-Control-Allow-Origin: http://api.bob.com</div><div class="line">Access-Control-Allow-Methods: GET, POST, PUT</div><div class="line">Access-Control-Allow-Headers: X-Custom-Header</div><div class="line">Content-Type: text/html; charset=utf-8</div><div class="line">Content-Encoding: gzip</div><div class="line">Content-Length: 0</div><div class="line">Keep-Alive: timeout=2, max=100</div><div class="line">Connection: Keep-Alive</div><div class="line">Content-Type: text/plain</div></pre></td></tr></table></figure></p>
+<p>上面的HTTP回应中，关键的是Access-Control-Allow-Origin字段，表示<a href="http://api.bob.com可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。" target="_blank" rel="external">http://api.bob.com可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Origin: *</div></pre></td></tr></table></figure></p>
+<p>如果浏览器否定了”预检”请求，会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段。这时，浏览器就会认定，服务器不同意预检请求，因此触发一个错误，被XMLHt<br>tpRequest对象的onerror回调函数捕获。控制台会打印出如下的报错信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">XMLHttpRequest cannot load http://api.alice.com.</div><div class="line">Origin http://api.bob.com is not allowed by Access-Control-Allow-Origin.</div></pre></td></tr></table></figure></p>
+<p>服务器回应的其他CORS相关字段如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Methods: GET, POST, PUT</div><div class="line">Access-Control-Allow-Headers: X-Custom-Header</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Access-Control-Max-Age: 1728000</div></pre></td></tr></table></figure></p>
+<p>（1）Access-Control-Allow-Methods</p>
+<p>该字段必需，它的值是逗号分隔的一个字符串，表明服务器支持的所有跨域请求的方法。注意，返回的是所有支持的方法，而不单是浏览器请求的那个方法。这是为了避免多次”预检”请求。</p>
+<p>（2）Access-Control-Allow-Headers</p>
+<p>如果浏览器请求包括Access-Control-Request-Headers字段，则Access-Control-Allow-Headers字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段，不限于浏览器在”预检”中请求的字段。</p>
+<p>（3）Access-Control-Allow-Credentials</p>
+<p>该字段与简单请求时的含义相同。</p>
+<p>（4）Access-Control-Max-Age</p>
+<p>该字段可选，用来指定本次预检请求的有效期，单位为秒。上面结果中，有效期是20天（1728000秒），即允许缓存该条回应1728000秒（即20天），在此期间，不用发出另一条预检请求。</p>
+<h3 id="4-3-浏览器的正常请求和回应"><a href="#4-3-浏览器的正常请求和回应" class="headerlink" title="4.3 浏览器的正常请求和回应"></a>4.3 浏览器的正常请求和回应</h3><p>一旦服务器通过了”预检”请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。</p>
+<p>下面是”预检”请求之后，浏览器的正常CORS请求。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">PUT /cors HTTP/1.1</div><div class="line">Origin: http://api.bob.com</div><div class="line">Host: api.alice.com</div><div class="line">X-Custom-Header: value</div><div class="line">Accept-Language: en-US</div><div class="line">Connection: keep-alive</div><div class="line">User-Agent: Mozilla/5.0...</div></pre></td></tr></table></figure></p>
+<p>上面头信息的Origin字段是浏览器自动添加的。</p>
+<p>下面是服务器正常的回应。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Origin: http://api.bob.com</div><div class="line">Content-Type: text/html; charset=utf-8</div></pre></td></tr></table></figure></p>
+<p>上面头信息中，Access-Control-Allow-Origin字段是每次回应都必定包含的。</p>
+<h2 id="五、与JSONP的比较"><a href="#五、与JSONP的比较" class="headerlink" title="五、与JSONP的比较"></a>五、与JSONP的比较</h2><p>CORS与JSONP的使用目的相同，但是比JSONP更强大。</p>
+<p>JSONP只支持GET请求，CORS支持所有类型的HTTP请求。JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。</p>
+<p>（完）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/js/CORS跨域/" data-id="cj3326erz0005wgu1nn17hw4d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js/解决jQuery的$冲突问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/js/解决jQuery的$冲突问题/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.210Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="解决jQuery的-冲突问题"><a href="#解决jQuery的-冲突问题" class="headerlink" title="解决jQuery的$冲突问题"></a>解决jQuery的$冲突问题</h1><p>很多JavaScript的库使用<code>$</code>作为变量名，如果我们同时引用两个使用<code>$</code>作为变量名，或者引入两个不同版本的jQuery时，就可能会出现<code>$</code>冲突问题。</p>
+<p>作为解决办法，我们可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jQuery.noConflict()</div></pre></td></tr></table></figure></p>
+<p>来解决这个问题。</p>
+<h2 id="jQuery-noConflict"><a href="#jQuery-noConflict" class="headerlink" title="jQuery.noConflict()"></a>jQuery.noConflict()</h2><p><code>jQuery.noConflict()</code>的作用是放弃jQuery控制$ 变量。</p>
+<h2 id="具体应用方法"><a href="#具体应用方法" class="headerlink" title="具体应用方法"></a>具体应用方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>一种方法是使用<code>jQuery</code>来代替<code>$</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;other_lib.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    $.noConflict();    // 让jQuery放弃$变量的控制</div><div class="line">    jQuery(&quot;div&quot;)...   // 使用jQuery来代替$</div><div class="line">    $(&quot;div&quot;)...        // 其他库正常使用$</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>第一种方法有一个问题是我们必须全部使用<code>jQuery</code>来代替<code>$</code>，如果我们还想用<code>$</code>，我们可以参考以下两种方法。</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>这种方法是使用<code>jQuery.ready()</code>形成闭包，在闭包中运行jQuery代码</p>
+<p><code>jQuery.ready()</code> =&gt; 当DOM准备就绪时，指定一个函数来执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;other_lib.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    $.noConflict();    // 让jQuery放弃$变量的控制</div><div class="line">    jQuery(document).ready(funciton($)&#123;</div><div class="line">        ...            // jQuery代码在这里 </div><div class="line">        &#125;)   </div><div class="line">    ...                // 其他库代码在这里</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>这种方法是使用立即执行函数，让<code>$</code>作为函数的变量，调用<code>jQuery</code>作为<code>$</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;other_lib.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    $.noConflict();    // 让jQuery放弃$变量的控制</div><div class="line">    (function($)&#123;&#125;</div><div class="line">        ...            // jQuery代码在这里</div><div class="line">    )(jQuery)  </div><div class="line">    ...                // 其他库代码在这里</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/js/解决jQuery的$冲突问题/" data-id="cj3326esh000bwgu1eiqbdodh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git/在GitBash中设置sublime打开文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/git/在GitBash中设置sublime打开文件/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.150Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="两步实现在Git-Bash中用Sublime打开文件"><a href="#两步实现在Git-Bash中用Sublime打开文件" class="headerlink" title="两步实现在Git Bash中用Sublime打开文件"></a>两步实现在Git Bash中用Sublime打开文件</h1><p>每次都要用鼠标点来点去才能用sublime打开文件！太不科学！今天来配置一下在git bash中用sublime打开文件</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ol>
+<li>新建一个文件命名为你想要的命令，比如 <code>subl</code>（注意不能有后缀名），内容：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">&quot;C:\Program Files\Sublime Text 3\sublime_text.exe&quot; $1 &amp;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>第一行是说这是个 shell 脚本</li>
+<li>第二行的字符串是sublime 的安装目录<strong>注意这里要输入你自己的目录</strong></li>
+<li>第二行的$1 是取的命令之后输入的参数</li>
+<li>第二行的&amp;是此命令在后台打开，这样sublime打开之后，就不会阻塞你的git bash</li>
+</ul>
+<ol>
+<li>保存到 <code>C:\Program Files (x86)\Git\mingW32\bin</code> 目录下(你的git目录可能与我的不一样，注意改成你自己的)</li>
+<li>大功告成~<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">subl xxx</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果<code>xxx</code>已存在，则打开已存在的文件，如果不存在则打开新文件命名为<code>xxx</code>。</p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>不光是sublime，感觉用这种方法我们就可以设置更多了，比如用chrome打开<code>.html</code>文件等等。<br>发现更大的世界~yeah!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/git/在GitBash中设置sublime打开文件/" data-id="cj3326ern0001wgu1toltl9g3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （下）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/vuex/Vuex的五个核心属性/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （上）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/python中的元类Metaclass/python中的元类Metaclass/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/获取对象信息/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

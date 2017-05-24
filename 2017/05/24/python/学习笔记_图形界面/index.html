@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学习笔记_图形界面学习日期：2016年10月17日学习课程：图形界面 - 廖雪峰的官方网站  Python支持多种图形界面的第三方库，包括：Tk、wxWidgets、QT、GTK等等。  但是Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。本章简单介绍如何使用Tkinter进行GUI（图形界面）编程。  Python内置的Tkinter可以满足基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/python/学习笔记_图形界面/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习笔记_图形界面学习日期：2016年10月17日学习课程：图形界面 - 廖雪峰的官方网站  Python支持多种图形界面的第三方库，包括：Tk、wxWidgets、QT、GTK等等。  但是Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。本章简单介绍如何使用Tkinter进行GUI（图形界面）编程。  Python内置的Tkinter可以满足基">
+<meta property="og:updated_time" content="2017-02-05T03:24:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="学习笔记_图形界面学习日期：2016年10月17日学习课程：图形界面 - 廖雪峰的官方网站  Python支持多种图形界面的第三方库，包括：Tk、wxWidgets、QT、GTK等等。  但是Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。本章简单介绍如何使用Tkinter进行GUI（图形界面）编程。  Python内置的Tkinter可以满足基">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python/学习笔记_图形界面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_图形界面/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.000Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-图形界面"><a href="#学习笔记-图形界面" class="headerlink" title="学习笔记_图形界面"></a>学习笔记_图形界面</h1><p><em>学习日期：2016年10月17日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143200341926302f99cf6f6414dca9dfaaf6e5a25a5b1000" target="_blank" rel="external">图形界面 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>Python支持多种图形界面的第三方库，包括：<code>Tk</code>、<code>wxWidgets</code>、<code>QT</code>、<code>GTK</code>等等。</p>
+</li>
+<li><p>但是Python自带的库是支持<code>Tk</code>的<code>Tkinter</code>，使用<code>Tkinter</code>，无需安装任何包，就可以直接使用。本章简单介绍如何使用<code>Tkinter</code>进行<code>GUI（图形界面）</code>编程。</p>
+</li>
+<li><p>Python内置的<code>Tkinter</code>可以满足基本的GUI程序的要求，如果是非常复杂的GUI程序，建议用操作系统原生支持的语言和库来编写。</p>
+</li>
+</ul>
+<p>##Tkinter</p>
+<ul>
+<li><p><code>Tk</code>是一个图形库，支持多个操作系统，使用Tcl语言开发。</p>
+</li>
+<li><p><code>Tk</code>会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
+</li>
+<li><p>我们编写的Python代码会调用内置的<code>Tkinter</code>，<code>Tkinter</code>封装了访问`Tk```的接口。</p>
+</li>
+<li><p>所以，我们的代码只需要调用<code>`Tkinter</code>提供的接口就可以了。</p>
+</li>
+</ul>
+<p>##Tkinter创建步骤</p>
+<ol>
+<li>导入Tkinter模块</li>
+<li>从Frame派生一个类，这是所有Widget（的父容器）<ul>
+<li>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</li>
+<li>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</li>
+<li>在createWidgets()方法中，我们可以创建各种组件，比如标签，按钮，或者文本框。目前有15种Tkinter的部件，详见：<a href="http://www.runoob.com/python/python-gui-tkinter.html" target="_blank" rel="external">python GUI编程 - 菜鸟教程</a></li>
+</ul>
+</li>
+<li>实例化刚才派生的类，并启动消息循环</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_图形界面/" data-id="cj3326eug0015wgu1hw507et1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/24/python/学习笔记_多线程/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/24/python/学习笔记_单元测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （下）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/vuex/Vuex的五个核心属性/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （上）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/python中的元类Metaclass/python中的元类Metaclass/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/获取对象信息/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

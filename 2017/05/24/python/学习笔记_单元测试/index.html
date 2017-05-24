@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学习笔记_单元测试学习日期：2016年9月28日学习课程：单元测试 - 廖雪峰的官方网站  单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。  把若干个可以覆盖所有情况的测试用例放到一个测试模块里，就是一个完整的单元测试。  如果单元测试通过，说明我们测试的这个函数能够正常工作。如果单元测试不通过，要么函数有bug，要么测试条件输入不正确，总之，需要修复使单元测试能够通过。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/python/学习笔记_单元测试/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="学习笔记_单元测试学习日期：2016年9月28日学习课程：单元测试 - 廖雪峰的官方网站  单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。  把若干个可以覆盖所有情况的测试用例放到一个测试模块里，就是一个完整的单元测试。  如果单元测试通过，说明我们测试的这个函数能够正常工作。如果单元测试不通过，要么函数有bug，要么测试条件输入不正确，总之，需要修复使单元测试能够通过。">
+<meta property="og:updated_time" content="2017-02-05T03:24:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="学习笔记_单元测试学习日期：2016年9月28日学习课程：单元测试 - 廖雪峰的官方网站  单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。  把若干个可以覆盖所有情况的测试用例放到一个测试模块里，就是一个完整的单元测试。  如果单元测试通过，说明我们测试的这个函数能够正常工作。如果单元测试不通过，要么函数有bug，要么测试条件输入不正确，总之，需要修复使单元测试能够通过。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python/学习笔记_单元测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_单元测试/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.970Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-单元测试"><a href="#学习笔记-单元测试" class="headerlink" title="学习笔记_单元测试"></a>学习笔记_单元测试</h1><p><em>学习日期：2016年9月28日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143191629979802b566644aa84656b50cd484ec4a7838000" target="_blank" rel="external">单元测试 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。</p>
+</li>
+<li><p>把若干个可以覆盖所有情况的测试用例放到一个测试模块里，就是一个完整的单元测试。</p>
+</li>
+<li><p>如果单元测试通过，说明我们测试的这个函数能够正常工作。如果单元测试不通过，要么函数有bug，要么测试条件输入不正确，总之，需要修复使单元测试能够通过。</p>
+</li>
+<li><p>为了编写单元测试，我们需要引入Python自带的<code>unittest</code>模块。以<code>test</code>开头的方法就是测试方法，不以<code>test</code>开头的方法不被认为是测试方法，测试的时候不会被执行。</p>
+</li>
+<li><p>对每一类测试都需要编写一个<code>test_xxx()</code>方法。由于<code>unittest.TestCase</code>提供了很多内置的条件判断，我们只需要调用这些方法就可以断言输出是否是我们所期望的。最常用的断言就是<code>assertEqual()</code>。</p>
+</li>
+<li><p>另一种重要的断言就是期待抛出指定类型的Error，用的是<code>assertRaises(xxxError</code>)。</p>
+</li>
+</ul>
+<p>##运行单元测试</p>
+<ul>
+<li><p>我们有两种方法可以运行单元测试。</p>
+<ul>
+<li>在测试代码的最后的最后加上两行代码。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">  unittest.main()</div></pre></td></tr></table></figure>
+<ul>
+<li>另一种方法是在命令行通过参数<code>-m unittest</code>直接运行单元测试。这是推荐的做法，因为这样可以一次批量运行很多单元测试。</li>
+</ul>
+</li>
+</ul>
+<p>##setUp与tearDown</p>
+<ul>
+<li><p>可以在单元测试中编写两个特殊的<code>setUp()</code>和<code>tearDown()</code>方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。</p>
+</li>
+<li><p><code>setUp()</code>和<code>tearDown()</code>方法的作用是在每个测试方法的之前调用<code>setUp()</code>，在每个测试方法之后调用<code>tearDown</code>。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_单元测试/" data-id="cj3326eue0014wgu1ixr3gts2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/24/python/学习笔记_图形界面/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/24/python/学习笔记_分布式进程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （下）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/vuex/Vuex的五个核心属性/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （上）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/python中的元类Metaclass/python中的元类Metaclass/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/获取对象信息/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

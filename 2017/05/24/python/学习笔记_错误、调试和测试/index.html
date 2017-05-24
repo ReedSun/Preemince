@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="错误、调试和测试_单元测试学习日期：2016年9月28日学习课程：错误、调试和测试 - 廖雪峰的官方网站 ##错误  在程序运行过程中，总会遇到各种各样的错误。有可能是程序编写的错误，有可能是用户输入的错误，还有可能是完全无法在程序运行过程中预测的错误（异常），比如磁盘满了，网络断了。  Python内置的try...except...finally用来处理错误十分方便。出错时，会分析错误信息并定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/python/学习笔记_错误、调试和测试/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="错误、调试和测试_单元测试学习日期：2016年9月28日学习课程：错误、调试和测试 - 廖雪峰的官方网站 ##错误  在程序运行过程中，总会遇到各种各样的错误。有可能是程序编写的错误，有可能是用户输入的错误，还有可能是完全无法在程序运行过程中预测的错误（异常），比如磁盘满了，网络断了。  Python内置的try...except...finally用来处理错误十分方便。出错时，会分析错误信息并定">
+<meta property="og:updated_time" content="2017-02-05T03:24:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="错误、调试和测试_单元测试学习日期：2016年9月28日学习课程：错误、调试和测试 - 廖雪峰的官方网站 ##错误  在程序运行过程中，总会遇到各种各样的错误。有可能是程序编写的错误，有可能是用户输入的错误，还有可能是完全无法在程序运行过程中预测的错误（异常），比如磁盘满了，网络断了。  Python内置的try...except...finally用来处理错误十分方便。出错时，会分析错误信息并定">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python/学习笔记_错误、调试和测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_错误、调试和测试/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.250Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="错误、调试和测试-单元测试"><a href="#错误、调试和测试-单元测试" class="headerlink" title="错误、调试和测试_单元测试"></a>错误、调试和测试_单元测试</h1><p><em>学习日期：2016年9月28日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431913726557e5e43e1ee8d54ee486bddc3f607afb75000" target="_blank" rel="external">错误、调试和测试 - 廖雪峰的官方网站</a></em></p>
+<p>##错误</p>
+<ul>
+<li><p>在程序运行过程中，总会遇到各种各样的错误。有可能是程序编写的错误，有可能是用户输入的错误，还有可能是完全无法在程序运行过程中预测的错误（异常），比如磁盘满了，网络断了。</p>
+</li>
+<li><p>Python内置的<code>try...except...finally</code>用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。程序也可以主动抛出错误（通过<code>raise</code>语句，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
+</li>
+</ul>
+<p>##调试</p>
+<ul>
+<li>跟踪程序的执行，查看变量的值是否正确，这个过程称为调试。</li>
+<li>调试有这么几种方法。<ul>
+<li>用<code>print()</code>。（很麻烦）</li>
+<li>用<code>assert</code>。（启动Python解释器时可以用-O参数来关闭assert）</li>
+<li><code>logging</code>（比较好用）</li>
+<li>用一个好的IDE，超赞。</li>
+</ul>
+</li>
+</ul>
+<p>##测试</p>
+<ul>
+<li>测试分为单元测试和文档测试。</li>
+<li>编写测试也很重要。有了良好的测试，就可以在程序修改后反复运行，确保程序输出符合我们编写的测试。</li>
+</ul>
+<p>###单元测试</p>
+<ul>
+<li>单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。（<code>unittest</code>模块）</li>
+<li>单元测试可以有效地测试某个程序模块的行为，是未来重构代码的信心保证。</li>
+<li>单元测试的测试用例要覆盖常用的输入组合、边界条件和异常。</li>
+<li>单元测试代码要非常简单，如果测试代码太复杂，那么测试代码本身就可能有bug。</li>
+<li>单元测试通过了并不意味着程序就没有bug了，但是不通过程序肯定有bug。</li>
+</ul>
+<p>###文档测试</p>
+<ul>
+<li>Python内置的“文档测试”（<code>doctest</code>）模块可以直接提取注释中的代码并执行测试。</li>
+<li><code>doctest</code>非常有用，不但可以用来测试，还可以直接作为示例代码。通过某些文档生成工具，就可以自动把包含<code>doctest</code>的注释提取出来。用户看文档的时候，同时也看到了<code>doctest</code>。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_错误、调试和测试/" data-id="cj3326eve001jwgu170mrvorb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/24/python/学习笔记_错误处理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/24/python/学习笔记_进程 vs. 线程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （下）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/vuex/Vuex的五个核心属性/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （上）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/python中的元类Metaclass/python中的元类Metaclass/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/获取对象信息/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-python/学习笔记_多重继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_多重继承/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.040Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-多重继承"><a href="#学习笔记-多重继承" class="headerlink" title="学习笔记_多重继承"></a>学习笔记_多重继承</h1><p><em>学习日期：2016年9月27日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014318680104044a55f4a9dbf8452caf71e8dc68b75a18000" target="_blank" rel="external">多重继承 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li>多重继承就是在定义中增加多个父类。</li>
+</ul>
+<p><code>class Subclass(Base class1，Base class2，...)</code></p>
+<p><em>Subclass - 子类名，Base class - 父类名</em></p>
+<ul>
+<li>通过多重继承，一个子类就可以同时获得多个父类的所有功能。</li>
+</ul>
+<h2 id="Mixln"><a href="#Mixln" class="headerlink" title="Mixln"></a>Mixln</h2><ul>
+<li><p>在设计类的继承关系时，通常，主线都是单一继承下来的。但是，如果需要“混入”额外的功能，通过多重继承就可以实现。这种设计通常称之为MixIn。</p>
+</li>
+<li><p><strong>为了更好地看出继承关系，我们把<code>Base class1</code>和<code>Base class2</code>改为<code>Base class1Mixln</code>和<code>Base class2Mixln</code>。</strong></p>
+</li>
+<li><p>MixIn的目的就是给一个类增加多个功能，这样，在设计类的时候，我们优先考虑通过多重继承来组合多个MixIn的功能，而不是设计多层次的复杂的继承关系。</p>
+</li>
+<li><p>这样一来，我们不需要复杂而庞大的继承链，只要选择组合不同的类的功能，就可以快速构造出所需的子类。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_多重继承/" data-id="cj3326eun0017wgu1ei5d7tmk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_多进程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_多进程/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.020Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-多进程"><a href="#学习笔记-多进程" class="headerlink" title="学习笔记_多进程"></a>学习笔记_多进程</h1><p><em>学习日期：2016年10月1日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431927781401bb47ccf187b24c3b955157bb12c5882d000" target="_blank" rel="external">多进程 - 廖雪峰的官方网站</a></em></p>
+<p>##multiprocessing</p>
+<ul>
+<li><p><code>multiprocessing</code>是python中一个跨平台版本的多进程模块。</p>
+</li>
+<li><p><code>multiprocessing</code>提供了一个<code>Process</code>类来代表一个进程对象。</p>
+</li>
+</ul>
+<p>##Pool</p>
+<ul>
+<li>如果要启动大量的子进程，可以用进程池即<code>Pool</code>的方式批量创建子进程。</li>
+</ul>
+<h2 id="子进程"><a href="#子进程" class="headerlink" title="子进程"></a>子进程</h2><ul>
+<li><code>subprocess</code>模块可以让我们非常方便的启动一个子进程，然后控制其输入和输出。</li>
+</ul>
+<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><ul>
+<li><code>Process</code>之间肯定是需要通信的，操作系统提供了很多机制来实现进程间的通信。Python的<code>multiprocessing</code>模块包装了底层的机制，提供了<code>Queue</code>(队列）、<code>Pipes</code>（管道）等多种方式来交换数据。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_多进程/" data-id="cj3326eul0016wgu1q57r78lb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_多线程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_多线程/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.010Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-多线程"><a href="#学习笔记-多线程" class="headerlink" title="学习笔记_多线程"></a>学习笔记_多线程</h1><p><em>学习日期：2016年10月1日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143192823818768cd506abbc94eb5916192364506fa5d000" target="_blank" rel="external">多线程 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>Python的标准库提供了两个模块：<code>_thread</code>和<code>threading</code>来支持多线程，<code>_thread</code>是低级模块，<code>threading</code>是高级模块，对_thread进行了封装。绝大多数情况下，我们只需要使用<code>threading</code>这个高级模块。</p>
+</li>
+<li><p>启动一个线程就是把一个函数传入并创建<code>Thread</code>实例，然后调用<code>start()</code>开始执行。</p>
+</li>
+<li><p>由于任何进程默认就会启动一个线程，我们把该线程称为主线程，主线程又可以启动新的线程，Python的<code>threading</code>模块有个<code>current_thread()</code>函数，它永远返回当前线程的实例。主线程实例的名字叫<code>MainThread</code>，子线程的名字在创建时指定，我们用<code>LoopThread</code>命名子线程。名字仅仅在打印时用来显示，完全没有其他意义，如果不起名字Python就自动给线程命名<code>为Thread-1</code>，<code>Thread-2</code>……</p>
+</li>
+</ul>
+<p>##Lock</p>
+<ul>
+<li><p>多线程中，所有变量都由所有线程共享，所以，任何一个变量都可以被任何一个线程修改，因此，线程之间共享数据最大的危险在于多个线程同时改一个变量，把内容给改乱了。</p>
+</li>
+<li><p>如果我们要确保计算正确，就要给程序上一把锁，当某个线程开始执行到某一个函数时，我们说，该线程因为获得了锁，因此其他线程不能同时执行这个函数，只能等待，直到锁被释放后，获得该锁以后才能改。由于锁只有一个，无论多少线程，同一时刻最多只有一个线程持有该锁，所以，不会造成修改的冲突。创建一个锁就是通过<code>threading.Lock()</code>类来实现。</p>
+</li>
+<li><p>创建锁的实例以后，首先要获取锁，当多个线程同时执行lock.acquire()（获取锁）时，只有一个线程能成功地获取锁，然后继续执行代码，其他线程就继续等待直到获得锁为止。</p>
+</li>
+<li><p>获得锁的线程用完后一定要用<code>lock.release()</code>方法释放锁，否则那些苦苦等待锁的线程将永远等待下去，成为死线程。所以我们用<code>try...finally</code>(在finally语句块里执行<code>lock.release()</code>）来确保锁一定会被释放。</p>
+</li>
+<li><p>锁的好处就是确保了某段关键代码只能由一个线程从头到尾完整地执行，坏处当然也很多，首先是阻止了多线程并发执行，包含锁的某段代码实际上只能以单线程模式执行，效率就大大地下降了。其次，由于可以存在多个锁，不同的线程持有不同的锁，并试图获取对方持有的锁时，可能会造成死锁，导致多个线程全部挂起，既不能执行，也无法结束，只能靠操作系统强制终止。</p>
+</li>
+</ul>
+<p>##多核CPU</p>
+<ul>
+<li><p>因为Python的线程虽然是真正的线程，但解释器执行代码时，有一个GIL锁：Global Interpreter Lock，任何Python线程执行前，必须先获得GIL锁，然后，每执行100条字节码，解释器就自动释放GIL锁，让别的线程有机会执行。这个GIL全局锁实际上把所有线程的执行代码都给上了锁，所以，多线程在Python中只能交替执行，即使100个线程跑在100核CPU上，也只能用到1个核。</p>
+</li>
+<li><p>所以，在Python中，可以使用多线程，但不要指望能有效利用多核。如果一定要通过多线程利用多核，那只能通过C扩展来实现，不过这样就失去了Python简单易用的特点。</p>
+</li>
+<li><p>不过，也不用过于担心，Python虽然不能利用多线程实现多核任务，但可以通过多进程实现多核任务。多个Python进程有各自独立的GIL锁，互不影响。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_多线程/" data-id="cj3326euc0013wgu1g2nqfnaf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_图形界面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_图形界面/" class="article-date">
+  <time datetime="2017-05-24T14:01:51.000Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-图形界面"><a href="#学习笔记-图形界面" class="headerlink" title="学习笔记_图形界面"></a>学习笔记_图形界面</h1><p><em>学习日期：2016年10月17日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143200341926302f99cf6f6414dca9dfaaf6e5a25a5b1000" target="_blank" rel="external">图形界面 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>Python支持多种图形界面的第三方库，包括：<code>Tk</code>、<code>wxWidgets</code>、<code>QT</code>、<code>GTK</code>等等。</p>
+</li>
+<li><p>但是Python自带的库是支持<code>Tk</code>的<code>Tkinter</code>，使用<code>Tkinter</code>，无需安装任何包，就可以直接使用。本章简单介绍如何使用<code>Tkinter</code>进行<code>GUI（图形界面）</code>编程。</p>
+</li>
+<li><p>Python内置的<code>Tkinter</code>可以满足基本的GUI程序的要求，如果是非常复杂的GUI程序，建议用操作系统原生支持的语言和库来编写。</p>
+</li>
+</ul>
+<p>##Tkinter</p>
+<ul>
+<li><p><code>Tk</code>是一个图形库，支持多个操作系统，使用Tcl语言开发。</p>
+</li>
+<li><p><code>Tk</code>会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
+</li>
+<li><p>我们编写的Python代码会调用内置的<code>Tkinter</code>，<code>Tkinter</code>封装了访问`Tk```的接口。</p>
+</li>
+<li><p>所以，我们的代码只需要调用<code>`Tkinter</code>提供的接口就可以了。</p>
+</li>
+</ul>
+<p>##Tkinter创建步骤</p>
+<ol>
+<li>导入Tkinter模块</li>
+<li>从Frame派生一个类，这是所有Widget（的父容器）<ul>
+<li>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</li>
+<li>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</li>
+<li>在createWidgets()方法中，我们可以创建各种组件，比如标签，按钮，或者文本框。目前有15种Tkinter的部件，详见：<a href="http://www.runoob.com/python/python-gui-tkinter.html" target="_blank" rel="external">python GUI编程 - 菜鸟教程</a></li>
+</ul>
+</li>
+<li>实例化刚才派生的类，并启动消息循环</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_图形界面/" data-id="cj3326eug0015wgu1hw507et1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_单元测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_单元测试/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.970Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-单元测试"><a href="#学习笔记-单元测试" class="headerlink" title="学习笔记_单元测试"></a>学习笔记_单元测试</h1><p><em>学习日期：2016年9月28日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143191629979802b566644aa84656b50cd484ec4a7838000" target="_blank" rel="external">单元测试 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。</p>
+</li>
+<li><p>把若干个可以覆盖所有情况的测试用例放到一个测试模块里，就是一个完整的单元测试。</p>
+</li>
+<li><p>如果单元测试通过，说明我们测试的这个函数能够正常工作。如果单元测试不通过，要么函数有bug，要么测试条件输入不正确，总之，需要修复使单元测试能够通过。</p>
+</li>
+<li><p>为了编写单元测试，我们需要引入Python自带的<code>unittest</code>模块。以<code>test</code>开头的方法就是测试方法，不以<code>test</code>开头的方法不被认为是测试方法，测试的时候不会被执行。</p>
+</li>
+<li><p>对每一类测试都需要编写一个<code>test_xxx()</code>方法。由于<code>unittest.TestCase</code>提供了很多内置的条件判断，我们只需要调用这些方法就可以断言输出是否是我们所期望的。最常用的断言就是<code>assertEqual()</code>。</p>
+</li>
+<li><p>另一种重要的断言就是期待抛出指定类型的Error，用的是<code>assertRaises(xxxError</code>)。</p>
+</li>
+</ul>
+<p>##运行单元测试</p>
+<ul>
+<li><p>我们有两种方法可以运行单元测试。</p>
+<ul>
+<li>在测试代码的最后的最后加上两行代码。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">  unittest.main()</div></pre></td></tr></table></figure>
+<ul>
+<li>另一种方法是在命令行通过参数<code>-m unittest</code>直接运行单元测试。这是推荐的做法，因为这样可以一次批量运行很多单元测试。</li>
+</ul>
+</li>
+</ul>
+<p>##setUp与tearDown</p>
+<ul>
+<li><p>可以在单元测试中编写两个特殊的<code>setUp()</code>和<code>tearDown()</code>方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。</p>
+</li>
+<li><p><code>setUp()</code>和<code>tearDown()</code>方法的作用是在每个测试方法的之前调用<code>setUp()</code>，在每个测试方法之后调用<code>tearDown</code>。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_单元测试/" data-id="cj3326eue0014wgu1ixr3gts2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_分布式进程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_分布式进程/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.950Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-分布式进程"><a href="#学习笔记-分布式进程" class="headerlink" title="学习笔记_分布式进程"></a>学习笔记_分布式进程</h1><p><em>学习日期：2016年10月1日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431929340191970154d52b9d484b88a7b343708fcc60000" target="_blank" rel="external">分布式进程 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p>在Thread（多线程）和Process（多进程）中，应当优选Process，因为Process更稳定，而且，Process可以分布到多台机器上，而Thread最多只能分布到同一台机器的多个CPU上。</p>
+</li>
+<li><p>Python的<code>multiprocessing</code>模块不但支持多进程，其<code>中managers</code>子模块还支持把多进程分布到多台机器上。一个服务进程可以作为调度者，将任务分布到其他多个进程中，依靠网络通信。由于<code>managers</code>模块封装很好，不必了解网络通信的细节，就可以很容易地编写分布式多进程程序。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_分布式进程/" data-id="cj3326eua0012wgu1ykoeyumc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_使用枚举类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_使用枚举类/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.940Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-使用枚举类"><a href="#学习笔记-使用枚举类" class="headerlink" title="学习笔记_使用枚举类"></a>学习笔记_使用枚举类</h1><p><em>学习日期：2016年9月28日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143191235886950998592cd3e426e91687cdae696e64b000" target="_blank" rel="external">使用枚举类 - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><p><code>Enum</code>可以帮助我们定义常量，它的工作原理是，为枚举类型定义一个class类型，每个常量都是class的唯一一个实例。</p>
+</li>
+<li><p>我用一个例子来说明<code>Enum</code>的用法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">from enum import Enum</div><div class="line">Enum(&quot;Month&quot;,(&quot;&apos;Jan&apos;, &apos;Feb&apos;, &apos;Mar&apos;, &apos;Apr&apos;, &apos;May&apos;, &apos;Jun&apos;, &apos;Jul&apos;, &apos;Aug&apos;, &apos;Sep&apos;, &apos;Oct&apos;, &apos;Nov&apos;, &apos;Dec&apos;))</div><div class="line">#这样我们就获得了Month类型的枚举类</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过<code>Enum</code>定义的枚举类中有一个属性<code>value</code>，<code>value</code>属性则是自动赋给成员的<code>int</code>常量，默认从1开始计数。</p>
+</li>
+<li><p>如果说我们想自定义枚举类中的<code>value</code>值，我们可以从<code>Enum</code>中派生出自定义类，下面是例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">  from enum import Enum, unique</div><div class="line"></div><div class="line">@unique</div><div class="line">class Weekday(Enum):</div><div class="line">    Sun = 0 # Sun的value被设定为0</div><div class="line">    Mon = 1</div><div class="line">    Tue = 2</div><div class="line">    Wed = 3</div><div class="line">    Thu = 4</div><div class="line">    Fri = 5</div><div class="line">    Sat = 6</div></pre></td></tr></table></figure>
+</li>
+<li><p>上面的例子中的<code>@unique</code>装饰器可以帮助我们检查保证没有重复值。</p>
+</li>
+<li><p>访问这些枚举类型，既可以通过成员名称引用枚举常量，也可以根据value的值获得枚举常量。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_使用枚举类/" data-id="cj3326eu90011wgu1bk2vm4q0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_使用元类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_使用元类/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.930Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-使用元类"><a href="#学习笔记-使用元类" class="headerlink" title="学习笔记_使用元类"></a>学习笔记_使用元类</h1><p><em>学习日期：2016年9月28日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319106919344c4ef8b1e04c48778bb45796e0335839000" target="_blank" rel="external">使用元类 - 廖雪峰的官方网站</a></em></p>
+<h2 id="type"><a href="#type" class="headerlink" title="type()"></a>type()</h2><ul>
+<li><p>我们之前学习过<code>type()</code>函数，当时我们理解它的作用是查看一个类或者变量的类型。</p>
+</li>
+<li><p>其实<code>type()</code>函数既可以返回一个对象的类型，又可以创建出新的类。</p>
+</li>
+<li><p>要创建一个class对象，type()函数依次传入3个参数：</p>
+<ul>
+<li>class的名称；</li>
+<li>继承的父类集合，注意Python支持多重继承，如果只有一个父类，别忘了tuple的单元素写法→<em>（x，）</em>；</li>
+<li>class的方法名称与函数绑定，这里我们把函数fn绑定到方法名hello上。</li>
+</ul>
+</li>
+<li><p>通过<code>type()</code>创建的类和用class创建的类是一模一样的，因为python解释器遇到class定义时，仅仅是扫描一下class定义的语法，然后也是调用<code>type()</code>函数创建class类。</p>
+</li>
+</ul>
+<p>##metaclass</p>
+<ul>
+<li><p><code>metaclass</code>（元类）允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。</p>
+</li>
+<li><p><code>metaclass</code>是Python面向对象里最难理解，也是最难使用的魔术代码。正常情况下，你不会碰到需要使用<code>metaclass</code>的情况。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_使用元类/" data-id="cj3326eu70010wgu1sem7mvh2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_使用__slots__" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_使用__slots__/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.920Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-使用-slots"><a href="#学习笔记-使用-slots" class="headerlink" title="学习笔记_使用__slots__"></a>学习笔记_使用__slots__</h1><p><em>学习日期：2016年9月27日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143186739713011a09b63dcbd42cc87f907a778b3ac73000" target="_blank" rel="external">使用__slots__ - 廖雪峰的官方网站</a></em></p>
+<p>python属于动态语言，所以可以随意给实例和类绑定任何属性和方法，但是如果我们想要限制实例的属性的话，就可以定义一个特殊的__slots__变量，来限制该class实例能添加的属性。</p>
+<p>##绑定属性和方法</p>
+<ul>
+<li><p>给实例和类绑定属性详见 <a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319117128404c7dd0cf0e3c4d88acc8fe4d2c163625000" target="_blank" rel="external">实例属性和类属性 - 廖雪峰的官方网站</a></p>
+</li>
+<li><p>给实例绑定方法。（使用<code>Type</code>模块中的<code>MethodType</code>函数）</p>
+<ul>
+<li><code>MethodType</code>不适合用于给类绑定方法，只适用于给实例绑定方法（python的帮助文档对<code>MethodType</code>作的解释）。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line">    pass</div><div class="line">&gt;&gt;&gt; def set_age(self, age): # 定义一个函数作为实例方法</div><div class="line">...     self.age = age</div><div class="line">...</div><div class="line">&gt;&gt;&gt; from types import MethodType</div><div class="line">&gt;&gt;&gt; s.set_age = MethodType(set_age, s) # 给实例绑定一个方法</div><div class="line">&gt;&gt;&gt; s.set_age(25) # 调用实例方法</div><div class="line">&gt;&gt;&gt; s.age # 测试结果</div><div class="line">25</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>给类绑定方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def set_score(self, score):</div><div class="line">...     self.score = score</div><div class="line">...</div><div class="line">&gt;&gt;&gt; Student.set_score = set_score</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>给class绑定方法后，所有实例均可调用。</li>
+<li>通常情况下，给类绑定方法可以直接定义在class中，但动态绑定允许我们在程序运行的过程中动态给class加上功能。</li>
+</ul>
+<p>##使用<code>__slots__</code></p>
+<ul>
+<li><code>__slots__</code>的作用是限制class实例能添加的属性。即实例只能绑定<code>__slots__</code>中允许的属性名称，绑定其他名称将得到<code>AttributeError</code>的错误。</li>
+<li><p>举例说明用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line">    __slots__ = (&apos;name&apos;, &apos;age&apos;) # 用tuple定义允许绑定的属性名称</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>__slots__</code>定义的属性仅对当前类实例起作用，<strong>对继承的子类是不起作用的</strong>。</p>
+</li>
+<li>除非在子类中也定义<code>__slots__</code>，这样，子类实例允许定义的属性就是自身的<code>__slots__</code>加上父类的<code>__slots__</code>。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_使用__slots__/" data-id="cj3326eu5000ywgu1n4l7z26h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python/学习笔记_使用@property" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/python/学习笔记_使用@property/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.910Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="学习笔记-使用-property"><a href="#学习笔记-使用-property" class="headerlink" title="学习笔记_使用@property"></a>学习笔记_使用@property</h1><p><em>学习日期：2016年9月27日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143186781871161bc8d6497004764b398401a401d4cce000" target="_blank" rel="external">使用@property - 廖雪峰的官方网站</a></em></p>
+<ul>
+<li><code>@property</code>是一个装饰器。</li>
+<li><code>@property</code>就是负责把一个方法变成属性调用的。它既能检查参数，又可以用类似属性这样简单的方式来访问类的变量。</li>
+<li><code>@property</code>的使用：<ul>
+<li>在定义属性的语句（<code>def……</code>）之前加上<code>@property</code>此时，<code>@propert</code>y本身又创建了另一个装饰器<code>@xxx.setter</code>(xxx是属性名)，负责把一个setter方法变成属性赋值。</li>
+<li>在定义属性的范围语句之前加上<code>@xxx.setter</code>(xxx是属性名)。于是，我们就拥有一个可控的属性操作。</li>
+</ul>
+</li>
+<li>例子。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line"></div><div class="line">    @property</div><div class="line">    def score(self):</div><div class="line">        return self._score</div><div class="line"></div><div class="line">    @score.setter</div><div class="line">    def score(self, value):</div><div class="line">        if not isinstance(value, int):</div><div class="line">            raise ValueError(&apos;score must be an integer!&apos;)</div><div class="line">        if value &lt; 0 or value &gt; 100:</div><div class="line">            raise ValueError(&apos;score must between 0 ~ 100!&apos;)</div><div class="line">        self._score = value</div><div class="line"></div><div class="line">&gt;&gt;&gt; s = Student()</div><div class="line">&gt;&gt;&gt; s.score = 60 # OK，实际转化为s.set_score(60)</div><div class="line">&gt;&gt;&gt; s.score # OK，实际转化为s.get_score()</div><div class="line">60</div><div class="line">&gt;&gt;&gt; s.score = 9999</div><div class="line">Traceback (most recent call last):</div><div class="line">  ...</div><div class="line">ValueError: score must between 0 ~ 100!</div></pre></td></tr></table></figure>
+<ul>
+<li><code>@property</code>还可以定义只读属性，只定义<code>@property</code>，不定义<code>@xxx.setter</code>就是一个只读属性。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/python/学习笔记_使用@property/" data-id="cj3326eu6000zwgu1gbi0evch" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （下）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/vuex/Vuex的五个核心属性/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （上）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/python中的元类Metaclass/python中的元类Metaclass/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/获取对象信息/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

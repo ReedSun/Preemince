@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单筛选iOS和安卓的版本的函数需求现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本 函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 true ，否则返回 false 。 函数1234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/05/24/js/根据iOS和安卓的版本进行筛选的小函数/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简单筛选iOS和安卓的版本的函数需求现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本 函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 true ，否则返回 false 。 函数1234567891">
+<meta property="og:updated_time" content="2017-05-02T12:41:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="简单筛选iOS和安卓的版本的函数需求现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本 函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 true ，否则返回 false 。 函数1234567891">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js/根据iOS和安卓的版本进行筛选的小函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/24/js/根据iOS和安卓的版本进行筛选的小函数/" class="article-date">
+  <time datetime="2017-05-24T14:01:50.290Z" itemprop="datePublished">2017-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简单筛选iOS和安卓的版本的函数"><a href="#简单筛选iOS和安卓的版本的函数" class="headerlink" title="简单筛选iOS和安卓的版本的函数"></a>简单筛选iOS和安卓的版本的函数</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本</p>
+<p>函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function filterVersion (iOS, Android) &#123;</div><div class="line">  if (navigator.userAgent.indexOf(&apos;Mac OS X&apos;) !== -1) &#123;</div><div class="line">    var reg = /OS\s[\d\_]*\slike\sMac\sOS\sX/.exec(navigator.userAgent)</div><div class="line">    if (reg) &#123;</div><div class="line">      var version = parseFloat(reg[0].slice(3, -14).replace(/_/g, &apos;.&apos;))</div><div class="line">      return version &gt;= iOS</div><div class="line">      return false</div><div class="line">    &#125;</div><div class="line">  &#125; else if (navigator.userAgent.indexOf(&apos;Android&apos;) !== -1) &#123;</div><div class="line">    var reg = /Android\s[\d\.]*;/.exec(navigator.userAgent)</div><div class="line">    if (reg) &#123;</div><div class="line">      var version = parseFloat(reg[0].slice(8, -1))</div><div class="line">      return version &gt;= Android</div><div class="line">    &#125; else &#123;</div><div class="line">      return false</div><div class="line">    &#125; </div><div class="line">  &#125; else &#123;</div><div class="line">    return false</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>比如一个功能xxx，你你只想在iOS 10.0以上的版本，及安卓 7.0以上的版本上使用，则可以这样写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function xxx () &#123;</div><div class="line">  if (!filterVersion(10, 7)) &#123;</div><div class="line">    return</div><div class="line">  &#125;</div><div class="line">  // ....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>这个判断方法是根据浏览器提供的UA，即 <code>window.navigator.userAgent</code> 来做出判断的，这个属性就提供了安卓或iOS的系统版本信息。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/24/js/根据iOS和安卓的版本进行筛选的小函数/" data-id="cj3326esd000awgu1b636vcjz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/24/js/关于 Date() 函数在 iOS 中的一个小坑/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/24/js/CORS跨域/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （下）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/vuex/Vuex的五个核心属性/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/webpack/webpack学习笔记 （上）/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/python中的元类Metaclass/python中的元类Metaclass/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/24/python/获取对象信息/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
