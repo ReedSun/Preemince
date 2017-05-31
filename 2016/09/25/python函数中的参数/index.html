@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -90,15 +90,17 @@
 
 
 
-<meta name="description" content="ReedSun">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Preeminent">
-<meta property="og:url" content="http://reedsun.top/page/2/index.html">
+<meta name="description" content="参数类型python函数中的参数类型一共有五种，他们分别是   POSITIONAL_OR_KEYWORD 位置和关键字参数 VAR_POSITIONAL 可变参数 KEYWORD_ONLY 关键词参数 VAR_KEYWORD 可变的关键词参数 POSITIONAL_ONLY  POSITIONAL_OR_KEYWORD 位置和关键字参数第一种参数是POSITIONAL_OR_KEYWORD位置和">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python函数中的参数">
+<meta property="og:url" content="http://reedsun.top/2016/09/25/python函数中的参数/index.html">
 <meta property="og:site_name" content="Preeminent">
-<meta property="og:description" content="ReedSun">
+<meta property="og:description" content="参数类型python函数中的参数类型一共有五种，他们分别是   POSITIONAL_OR_KEYWORD 位置和关键字参数 VAR_POSITIONAL 可变参数 KEYWORD_ONLY 关键词参数 VAR_KEYWORD 可变的关键词参数 POSITIONAL_ONLY  POSITIONAL_OR_KEYWORD 位置和关键字参数第一种参数是POSITIONAL_OR_KEYWORD位置和">
+<meta property="og:updated_time" content="2017-05-31T14:47:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Preeminent">
-<meta name="twitter:description" content="ReedSun">
+<meta name="twitter:title" content="python函数中的参数">
+<meta name="twitter:description" content="参数类型python函数中的参数类型一共有五种，他们分别是   POSITIONAL_OR_KEYWORD 位置和关键字参数 VAR_POSITIONAL 可变参数 KEYWORD_ONLY 关键词参数 VAR_KEYWORD 可变的关键词参数 POSITIONAL_ONLY  POSITIONAL_OR_KEYWORD 位置和关键字参数第一种参数是POSITIONAL_OR_KEYWORD位置和">
 
 
 
@@ -126,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://reedsun.top/page/2/"/>
+  <link rel="canonical" href="http://reedsun.top/2016/09/25/python函数中的参数/"/>
 
 
 
 
 
-  <title>Preeminent</title>
+  <title>python函数中的参数 | Preeminent</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -158,9 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -233,449 +233,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/25/Generator and Iterator in Python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/25/Generator and Iterator in Python/" itemprop="url">Generator and Iterator in Python</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-25T20:23:08+08:00">
-                2016-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Generator-and-Iterator-in-Python"><a href="#Generator-and-Iterator-in-Python" class="headerlink" title="Generator and Iterator in Python"></a>Generator and Iterator in Python</h1><p><em>Generator——生成器</em><br><em>Iterator——迭代器</em></p>
-<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><ul>
-<li>迭代是python最强大的功能之一，是访问集合元素的一种方式。</li>
-<li><strong>迭代器是一个可以记住遍历位置的对象</strong>。</li>
-<li>迭代器对象从集合的第一个元素开始访问，直到所有元素被访问完结束，迭代器只能往前不能向后。</li>
-<li>迭代器有两个基本的方法 <code>iter()</code>和<code>next()</code>。<ul>
-<li><code>iter()</code>作用是创建一个迭代器对象。</li>
-<li><code>next()</code>作用是输出迭代器的下一个对象。</li>
-</ul>
-</li>
-<li><p>字符串，列表和元组对象都可用于创建迭代器，例子如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; list=[1,2,3,4]</div><div class="line">&gt;&gt;&gt; it = iter(list)    # 创建迭代器对象</div><div class="line">&gt;&gt;&gt; print (next(it))   # 输出迭代器的下一个元素</div><div class="line">1</div><div class="line">&gt;&gt;&gt; print (next(it))</div><div class="line">2</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>迭代器对象可以使用常规for语句进行遍历，例子如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python3</div><div class="line"></div><div class="line">list=[1,2,3,4]</div><div class="line">it = iter(list)    # 创建迭代器对象</div><div class="line">for x in it:</div><div class="line">    print (x, end=&quot; &quot;) </div><div class="line">#print默认是打印一行，结尾加换行。end=&apos; &apos;意思是末尾不换行，加空格。</div><div class="line"></div><div class="line"># 执行以上程序，输出结果如下：</div><div class="line">1 2 3 4</div></pre></td></tr></table></figure>
-</li>
-<li><p>也可以用next()函数，例子如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python3</div><div class="line"></div><div class="line">import sys         # 引入 sys 模块</div><div class="line"></div><div class="line">list=[1,2,3,4]</div><div class="line">it = iter(list)    # 创建迭代器对象</div><div class="line"></div><div class="line">while True:</div><div class="line">    try:</div><div class="line">        print (next(it))</div><div class="line">    except StopIteration:</div><div class="line">        sys.exit()</div><div class="line">#执行以上程序，输出结果如下：</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h2><ul>
-<li>在Python中，使用了<code>yield</code>的函数被称为生成器（generator)。</li>
-<li>与普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作。更简单点理解，生成器也是一个迭代器。</li>
-<li>在调用生成器运行的过程中，每次遇到<code>yield</code>会函数会暂停并保存当前所有的运行信息，返回<code>yield</code>的值。并在下一次执行<code>next()</code>操作时从当前位置继续运行。</li>
-<li>以下是用生成器返回斐波那契数的实例。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python3</div><div class="line"></div><div class="line">import sys</div><div class="line"></div><div class="line">def fibonacci(n): # 生成器函数 - 斐波那契</div><div class="line">    a, b, counter = 0, 1, 0</div><div class="line">    while True:</div><div class="line">        if (counter &gt; n): </div><div class="line">            return</div><div class="line">        yield a</div><div class="line">        a, b = b, a + b</div><div class="line">        counter += 1</div><div class="line">f = fibonacci(10) # f 是一个迭代器，由生成器返回生成</div><div class="line"></div><div class="line">while True:</div><div class="line">    try:</div><div class="line">        print (next(f), end=&quot; &quot;)</div><div class="line">    except StopIteration:</div><div class="line">        sys.exit()</div><div class="line">#执行以上程序，输出结果如下：</div><div class="line">0 1 1 2 3 5 8 13 21 34 55</div></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/25/python中的enumerate语句/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/25/python中的enumerate语句/" itemprop="url">python中的enumerate语句</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-25T12:34:09+08:00">
-                2016-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="enumerate-用法说明"><a href="#enumerate-用法说明" class="headerlink" title="enumerate()用法说明"></a>enumerate()用法说明</h2><ul>
-<li>enumerate()用于遍历序列中的元素以及他们的下标。</li>
-<li>enumerate()是python的内置函数。</li>
-<li>enumerate的意思是枚举，列举的意思。</li>
-<li>对于一个可迭代的或者可遍历的对象，enumerate将其组成一个索引序列，利用它同时获得索引和值</li>
-<li>enumerate多由于for语句中得到计数。<br>##enumerate()的语法和用法</li>
-<li>语法<br><code>enumerate（Iterable，start)</code><ul>
-<li>语句中的第一个元素<code>Iterable</code>代表我们要进行遍历的序列（列表，字典，元组，……）。</li>
-<li>语句中的第二个元素<code>start</code>代表索引的起始值，默认是0。<h2 id="enumerate-例子"><a href="#enumerate-例子" class="headerlink" title="enumerate()例子"></a>enumerate()例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; L=[1,2,3,4,5]</div><div class="line">&gt;&gt;&gt; list(enumerate(L))</div><div class="line">[(0, 1), (1, 2), (2, 3), (3, 4), (4, 5)]</div><div class="line">&gt;&gt;&gt; list(enumerate(L,4))</div><div class="line">[(4, 1), (5, 2), (6, 3), (7, 4), (8, 5)]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="http://blog.csdn.net/churximi/article/details/51648388" target="_blank" rel="external">python enumerate用法总结-竹聿Simon的专栏</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/25/python中的格式化字符/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/25/python中的格式化字符/" itemprop="url">python中的格式化字符</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-25T12:34:09+08:00">
-                2016-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在python中我们会遇到一个问题，问题是如何输出格式化的字符串。我们经常会输出类似<code>&#39;亲爱的xxx你好！你xx月的话费是xx，余额是xx&#39;</code>之类的字符串，而xxx的内容都是根据变量变化的，所以，需要一种简便的格式化字符串的方式。<br>在python中，我们用<code>%</code>实现格式化字符串。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>我们举个例子来说明格式化字符串的语法<br>‘’’<br>>&gt;&gt; ‘Hello, %s’ % ‘world’<br>‘Hello, world’<br>>&gt;&gt; ‘Hi, %s, you have $%d.’ % (‘Michael’, 1000000)<br>‘Hi, Michael, you have $1000000.’<br>‘’’<br>在字符串内部，<code>%s</code>表示用字符串替换，<code>%d</code>表示用整数替换，有几个<code>%</code>占位符，后面就跟几个变量或者值，顺序要对应好。如果只有一个<code>%</code>，括号可以省略。</p>
-<h2 id="字符串格式化符号"><a href="#字符串格式化符号" class="headerlink" title="字符串格式化符号"></a>字符串格式化符号</h2><pre><code>%c     格式化字符及其ASCII码
-%s     格式化字符串
-%d     格式化整数
-%u     格式化无符号整型
-%o     格式化无符号八进制数
-%x     格式化无符号十六进制数
-%X     格式化无符号十六进制数（大写）
-%f     格式化浮点数字，可指定小数点后的精度
-%e     用科学计数法格式化浮点数
-%E     作用同%e，用科学计数法格式化浮点数
-%g     %f和%e的简写
-%G     %f 和 %E 的简写
-%p     用十六进制数格式化变量的地址
-</code></pre><h2 id="格式化操作符辅助指令"><a href="#格式化操作符辅助指令" class="headerlink" title="格式化操作符辅助指令"></a>格式化操作符辅助指令</h2><pre><code>符号    功能
-*      定义宽度或者小数点精度
--      用做左对齐
-+      在正数前面显示加号( + )
-&lt;sp&gt;  在正数前面显示空格
-\#      在八进制数前面显示零(&apos;0&apos;)，在十六进制前面显示&apos;0x&apos;或者&apos;0X&apos;(取决于用的是&apos;x&apos;还是&apos;X&apos;)
-0      显示的数字前面填充`0`而不是默认的空格
-%      &apos;%%&apos;输出一个单一的&apos;%&apos;
-(var) 映射变量(字典参数)
-m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
-</code></pre><h4 id="指定是否补0和整数与小数的位数的几种情况"><a href="#指定是否补0和整数与小数的位数的几种情况" class="headerlink" title="指定是否补0和整数与小数的位数的几种情况"></a><strong>指定是否补0和整数与小数的位数的几种情况</strong></h4><ul>
-<li><code>%0xd</code>表示将整数用<code>0</code>补足到x位<ul>
-<li>整数的位数比x小时，用<code>0</code>补足<br>eg:</li>
-</ul>
-</li>
-</ul>
-<pre><code>&gt;&gt;&gt; &quot;%03d&quot; %33
-&apos;033&apos;
-</code></pre><ul>
-<li>整数的位数比x大时，直接输出<br>eg：</li>
-</ul>
-<pre><code>&gt;&gt;&gt; &quot;%03d&quot; %12345
-&apos;12345&apos;
-</code></pre><ul>
-<li><code>%xd</code>表示将整数用<code>空格</code>补足到x位<ul>
-<li>如果整数的位数比x小时，用<code>空格</code>补足<br>eg:</li>
-</ul>
-</li>
-</ul>
-<pre><code>\&gt;&gt;&gt; &quot;%6d&quot; %123
-&apos;   123&apos;
-</code></pre><ul>
-<li>如果整数的位数比x大时，直接输出<br>eg:</li>
-</ul>
-<pre><code>\&gt;&gt;&gt; &quot;%3d&quot; %12345
-&apos;12345&apos;
-</code></pre><ul>
-<li><code>%.xf</code>表示将小数中小数点后面的位数固定到x位<ul>
-<li>如果小数的位数比x大，则保留x位小数<br>eg:</li>
-</ul>
-</li>
-</ul>
-<pre><code>\&gt;&gt;&gt; &quot;%.3f&quot; % 3.1415926
-&apos;3.142&apos;
-</code></pre><ul>
-<li>如果小数的位数比x小，则用0补足<br>eg:</li>
-</ul>
-<pre><code>\&gt;&gt;&gt; &quot;%.4f&quot; % 3.1
-&apos;3.1000&apos;
-</code></pre><p>*如果我们不太确定用什么，那么用<code>%s</code>是最保险的，它会把任何数据类型转换为字符串。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
 
   
 
@@ -701,9 +261,7 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/25/python函数中的参数/" itemprop="url">python函数中的参数</a></h1>
+          <h1 class="post-title" itemprop="name headline">python函数中的参数</h1>
         
 
         <div class="post-meta">
@@ -750,9 +308,7 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
       
 
       
-        
-          
-            <h2 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h2><p>python函数中的参数类型一共有五种，他们分别是 </p>
+        <h2 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h2><p>python函数中的参数类型一共有五种，他们分别是 </p>
 <ul>
 <li><code>POSITIONAL_OR_KEYWORD</code> 位置和关键字参数</li>
 <li><code>VAR_POSITIONAL</code> 可变参数</li>
@@ -869,46 +425,72 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
 </ul>
 <p>###参考文献<br>1.<a href="http://www.qiangtaoli.com/bootstrap/blog/001474192642421efbf41449b2e4a3b99e8202c54d2d8a2000" target="_blank" rel="external">python的类型（www.qiangtaoli.com）</a><br>1.<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431752945034eb82ac80a3e64b9bb4929b16eeed1eb9000#0" target="_blank" rel="external">函数的参数 - 廖雪峰的官方网站</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
       
 
       
+        
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/25/python中的格式化字符/" rel="prev" title="python中的格式化字符">
+                python中的格式化字符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -916,6 +498,10 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -935,8 +521,17 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -989,6 +584,22 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数类型"><span class="nav-number">1.</span> <span class="nav-text">参数类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#POSITIONAL-OR-KEYWORD-位置和关键字参数"><span class="nav-number">1.1.</span> <span class="nav-text">POSITIONAL_OR_KEYWORD 位置和关键字参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VAR-POSITIONAL-可变参数"><span class="nav-number">1.2.</span> <span class="nav-text">VAR_POSITIONAL 可变参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KEYWORK-ONLY-关键字参数"><span class="nav-number">1.3.</span> <span class="nav-text">KEYWORK_ONLY 关键字参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POSITIONAL-ONLY-位置参数"><span class="nav-number">1.4.</span> <span class="nav-text">POSITIONAL_ONLY 位置参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#几种参数的综合比较"><span class="nav-number">1.5.</span> <span class="nav-text">几种参数的综合比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认参数"><span class="nav-number">2.</span> <span class="nav-text">默认参数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1109,6 +720,10 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 

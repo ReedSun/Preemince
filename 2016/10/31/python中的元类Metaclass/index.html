@@ -1,0 +1,713 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="理解元类之前需要学习的知识 如果说让我们创建一个类，最先想到的肯定是用class创建，当我们使用class创建类的时候，python解释器自动创建这个对象，但是python同样也提供了手动处理的方法来创建类，这就是用python的自建函数type()。  我们所熟知的type()函数的作用是返回一个参数的类型，但是实际上，它也有一种完全不同的能力，即接受一个类的一些描述作为参数，然后返回一个类。">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python中的元类Metaclass">
+<meta property="og:url" content="http://reedsun.top/2016/10/31/python中的元类Metaclass/index.html">
+<meta property="og:site_name" content="Preeminent">
+<meta property="og:description" content="理解元类之前需要学习的知识 如果说让我们创建一个类，最先想到的肯定是用class创建，当我们使用class创建类的时候，python解释器自动创建这个对象，但是python同样也提供了手动处理的方法来创建类，这就是用python的自建函数type()。  我们所熟知的type()函数的作用是返回一个参数的类型，但是实际上，它也有一种完全不同的能力，即接受一个类的一些描述作为参数，然后返回一个类。">
+<meta property="og:updated_time" content="2017-05-31T14:40:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python中的元类Metaclass">
+<meta name="twitter:description" content="理解元类之前需要学习的知识 如果说让我们创建一个类，最先想到的肯定是用class创建，当我们使用class创建类的时候，python解释器自动创建这个对象，但是python同样也提供了手动处理的方法来创建类，这就是用python的自建函数type()。  我们所熟知的type()函数的作用是返回一个参数的类型，但是实际上，它也有一种完全不同的能力，即接受一个类的一些描述作为参数，然后返回一个类。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://reedsun.top/2016/10/31/python中的元类Metaclass/"/>
+
+
+
+
+
+  <title>python中的元类Metaclass | Preeminent</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Preeminent</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I have on idea about subtitle yet</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/31/python中的元类Metaclass/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python中的元类Metaclass</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-31T20:18:42+08:00">
+                2016-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="理解元类之前需要学习的知识"><a href="#理解元类之前需要学习的知识" class="headerlink" title="理解元类之前需要学习的知识"></a>理解元类之前需要学习的知识</h2><p> 如果说让我们创建一个类，最先想到的肯定是用<code>class</code>创建，当我们使用<code>class</code>创建类的时候，python解释器自动创建这个对象，但是python同样也提供了手动处理的方法来创建类，这就是用python的自建函数<code>type()</code>。</p>
+<p> 我们所熟知的<code>type()</code>函数的作用是返回一个参数的类型，但是实际上，它也有一种完全不同的能力，即接受一个类的一些描述作为参数，然后返回一个类。</p>
+<p> <code>type()</code>函数的语法是这样的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">type(类名, 父类的元组（针对继承的情况，可以为空），包含属性的字典（名称和值）)</div></pre></td></tr></table></figure></p>
+<p>举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class ReedSun(ShuaiGe):</div><div class="line">    shuai = True</div><div class="line">    def test(x):</div><div class="line">        return x+2</div><div class="line"># 就等价于</div><div class="line">type(&quot;ReedSun&quot;, (ShuaiGe,), &#123;&quot;shuai&quot;:True, &quot;test&quot;:lambda x: x+2&#125;)</div><div class="line"># （属性和方法本质上都是方法）</div></pre></td></tr></table></figure></p>
+<p>在python中，类也是对象，当我们使用class关键词创建一个类的时候，Python解释器仅仅是扫描一下class定义的语法，然后调用<code>type()</code>函数创建出class。</p>
+<h2 id="元类是什么"><a href="#元类是什么" class="headerlink" title="元类是什么"></a>元类是什么</h2><p>元类是什么？元类实际上就是用来创建类的东西。为了帮助我们理解，我们可以这样想，我们创建类就是为了创建类的实例，同样的，我们创建元类就是为了创建类。元类就是类<em>（实例）</em>的类，就像下面这样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Metaclass() = class</div><div class="line">class() = object  # object==&gt;实例</div></pre></td></tr></table></figure></p>
+<p>理解了什么是元类，我们再来看一看type()函数。</p>
+<p>其实type就是一个元类，type就是我们用来创建所有的类的元类。（如果我们要创建自己定义的元类的话，也要从type中继承）</p>
+<h2 id="元类的工作原理"><a href="#元类的工作原理" class="headerlink" title="元类的工作原理"></a>元类的工作原理</h2><p>我们来看一下下面这个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class ReedSunMetaclass(type):</div><div class="line">    pass</div><div class="line">    </div><div class="line">class Foo(object， metaclass = ReedSunMetaclass): </div><div class="line">    pass</div><div class="line">    </div><div class="line">class Bar(Foo):</div><div class="line">    pass</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>首先，我们创建了一个元类<code>ReedSunMetaclass</code><em>（注意！按照默认习惯，元类的类名总是以<code>Metaclass</code>结尾，以便清楚地表示这是一个元类）</em>。</p>
+</li>
+<li><p>然后，我们又用元类<code>ReedSunMetaclass</code>创建了一个<code>Foo</code>类，<em>（同时，<code>Foo</code>类的属性<code>__metaclass__</code>就变成了<code>ReedSunMetaclass</code>)</em>。</p>
+</li>
+<li><p>最后，我们创建了一个子类<code>Bar</code>继承自<code>Foo</code>。</p>
+</li>
+</ol>
+<p>我们来试着理解一下在python内部是怎么执行这几个步骤的：</p>
+<ul>
+<li><p>对于父类<code>Foo</code>，Python会在类的定义中寻找<code>__metaclass__</code>属性，如果找到了，Python就会用它来创建类<code>Foo</code>，如果没有找到，就会用内建的type来创建这个类。很显然，它找到了。</p>
+</li>
+<li><p>对于子类<code>Bar</code>, python会先在子类中寻找<code>__metaclass__</code>属性，如果找到了，Python就会用它来创建类<code>Bar</code>，如果没有找到，就再从父类中寻找，直到type。显然，它在父类中找到了。</p>
+</li>
+</ul>
+<p><strong>我们可以看到使用元类的一个好处了，即他可以让子类隐式的继承一些东西。</strong></p>
+<h2 id="自定义元类"><a href="#自定义元类" class="headerlink" title="自定义元类"></a>自定义元类</h2><p>元类的主要目的就是为了当创建类时能够自动地改变类。创建类我们需要定义<code>__new__()</code>函数，<code>__new__</code> 是在<code>__init__</code>之前被调用的特殊方法，是用来创建对象并返回之的方法。我们举个例子来说明定义自定义元类的方法。</p>
+<p><code>__new__()</code>方法接收到的参数依次是：</p>
+<ol>
+<li>当前准备创建的类的对象；</li>
+<li>类的名字；</li>
+<li>类继承的父类集合；</li>
+<li>类的方法集合。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">class ReedSunMetaclass(type):</div><div class="line">    def __new__(cls, name, bases, attrs):</div><div class="line">        # 添加一个属性</div><div class="line">        attrs[&apos;哈哈哈&apos;] = True</div><div class="line">        return type.__new__(cls, name, bases, attrs)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="我们用一个实际例子来说明元类的用法"><a href="#我们用一个实际例子来说明元类的用法" class="headerlink" title="我们用一个实际例子来说明元类的用法"></a>我们用一个实际例子来说明元类的用法</h2><p><code>ORM</code>就是一个典型的使用元类的例子。<code>ORM</code>全称“Object Relational Mapping”，即对象-关系映射，就是把关系数据库的一行映射为一个对象，也就是一个类对应一个表，这样，写代码更简单，不用直接操作SQL语句。下面我就用这个<code>ORM</code>的例子来说明一下元类的用法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line">#ORM:object relational mapping 对象-关系映射</div><div class="line">#把关系数据库的一行映射为一个对象，也就是一个类对应一个表</div><div class="line">#ORM框架所有的类只能动态定义</div><div class="line"></div><div class="line"></div><div class="line"># 定义Field(定义域：元类遇到Field的方法或属性时即进行修改）</div><div class="line">class Field(object):</div><div class="line"></div><div class="line">    def __init__(self, name, column_type):  # column==&gt;列类型</div><div class="line">        self.name = name</div><div class="line">        self.column_type = column_type</div><div class="line"></div><div class="line">    # 当用print打印输出的时候，python会调用他的str方法</div><div class="line">    # 在这里是输出&lt;类的名字，实例的name参数(定义实例时输入)&gt;</div><div class="line">    # 在ModelMetaclass中会用到</div><div class="line">    def __str__(self):</div><div class="line">        return &quot;&lt;%s:%s&gt;&quot; % (self.__class__.__name__, self. name)  # __class__获取对象的类，__name__取得类名</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># 进一步定义各种类型的Field</div><div class="line">class StringField(Field):</div><div class="line"></div><div class="line">    def __init__(self, name):</div><div class="line">        # super(type[, object-or-type])  返回type的父类对象</div><div class="line">        # super().__init()的作用是调用父类的init函数</div><div class="line">        # varchar(100)和bigint都是sql中的一些数据类型</div><div class="line">        super(StringField, self).__init__(name, &quot;varchar(100)&quot;)  </div><div class="line"></div><div class="line">class IntegerField(Field):</div><div class="line"></div><div class="line">    def __init__(self, name):</div><div class="line">        super(IntegerField, self).__init__(name, &quot;bigint&quot;)</div><div class="line"></div><div class="line"></div><div class="line"># 编写ModelMetaclass</div><div class="line">class ModelMetaclass(type):</div><div class="line">    </div><div class="line">    # __new__方法接受的参数依次是：</div><div class="line">    # 1.当前准备创建的类的对象（cls）</div><div class="line">    # 2.类的名字（name）</div><div class="line">    # 3.类继承的父类集合(bases)</div><div class="line">    # 4.类的方法集合(attrs)</div><div class="line">    def __new__(cls, name, bases, attrs):</div><div class="line">        # 如果说新创建的类的名字是Model，那直接返回不做修改</div><div class="line">        if name == &quot;Model&quot;:</div><div class="line">            return type.__new__(cls, name, bases, attrs)</div><div class="line">        print(&quot;Found model:%s&quot; % name)</div><div class="line">        mappings = dict()</div><div class="line">        for k, v in attrs.items():</div><div class="line">            if isinstance(v, Field):</div><div class="line">                print(&quot;Found mappings:%s ==&gt; %s&quot; % (k, v))  # 找到映射， 这里用到上面的__str__</div><div class="line">                mappings[k] = v</div><div class="line">            # 结合之前，即把之前在方法集合中的零散的映射删除，</div><div class="line">            # 把它们从方法集合中挑出，组成一个大方法__mappings__</div><div class="line">            # 把__mappings__添加到方法集合attrs中</div><div class="line">        for k in mappings.keys():</div><div class="line">                attrs.pop(k)</div><div class="line">        attrs[&quot;__mappings__&quot;] = mappings</div><div class="line">        attrs[&quot;__table__&quot;] = name # 添加表名，假设表名与类名一致</div><div class="line">        return type.__new__(cls, name, bases, attrs)</div><div class="line"></div><div class="line"></div><div class="line"># 编写Model基类继承自dict中，这样可以使用一些dict的方法</div><div class="line">class Model(dict, metaclass=ModelMetaclass):</div><div class="line"></div><div class="line">    def __init__(self,  **kw):</div><div class="line">        # 调用父类，即dict的初始化方法</div><div class="line">        super(Model, self).__init__(**kw)</div><div class="line"></div><div class="line">    # 让获取key的值不仅仅可以d[k]，也可以d.k</div><div class="line">    def __getattr__(self, key):</div><div class="line">        try:</div><div class="line">            return self[key]</div><div class="line">        except KeyError:</div><div class="line">            raise AttributeError(r&quot;&apos;Model&apos; object has no attribute &apos;%s&apos;&quot; % key)</div><div class="line"></div><div class="line">    # 允许动态设置key的值，不仅仅可以d[k]，也可以d.k</div><div class="line">    def __setattr__(self, key, value):</div><div class="line">        self[key] = value</div><div class="line"></div><div class="line">    def save(self):</div><div class="line">        fields = []</div><div class="line">        params = []</div><div class="line">        args = []</div><div class="line">        # 在所有映射中迭代</div><div class="line">        for k, v in self.__mappings__.items():</div><div class="line">            fields.append(v.name)</div><div class="line">            params.append(&quot;?&quot;)</div><div class="line">            args.append(getattr(self, k, None))</div><div class="line">        sql = &quot;insert into %s (%s) values (%s)&quot; % (self.__table__, &quot;,&quot;.join(fields), &quot;,&quot;.join(params))</div><div class="line">        print(&quot;SQL: %s&quot; % sql)</div><div class="line">        print(&quot;ARGS: %s&quot; % str(args))</div><div class="line"></div><div class="line"></div><div class="line"># 这样一个简单的ORM就写完了</div><div class="line"></div><div class="line"></div><div class="line"># 下面实际操作一下，先定义个User类来对应数据库的表User</div><div class="line">class User(Model):</div><div class="line">    # 定义类的属性到列的映射</div><div class="line">    id = IntegerField(&quot;id&quot;)</div><div class="line">    name = StringField(&quot;username&quot;)</div><div class="line">    email = StringField(&quot;email&quot;)</div><div class="line">    password = StringField(&quot;password&quot;)</div><div class="line"></div><div class="line"></div><div class="line"># 创建一个实例</div><div class="line">u = User(id=12345, name=&quot;ReedSun&quot;, email=&quot;sunhongzhao@foxmail.com&quot;, password=&quot;nicaicai&quot;)</div><div class="line">u.save()</div></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319106919344c4ef8b1e04c48778bb45796e0335839000" target="_blank" rel="external">使用元类-廖雪峰的官方网站</a></li>
+<li><a href="http://blog.jobbole.com/21351/" target="_blank" rel="external">深刻理解python中的元类</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/21/使用python的email、smtplib、poplib模块收发邮件/" rel="next" title="使用python的email、smtplib、poplib模块收发邮件">
+                <i class="fa fa-chevron-left"></i> 使用python的email、smtplib、poplib模块收发邮件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/06/关于python中inspect模块的一些探究/" rel="prev" title="关于python中inspect模块的一些探究">
+                关于python中inspect模块的一些探究 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ReedSun" />
+          <p class="site-author-name" itemprop="name">ReedSun</p>
+           
+              <p class="site-description motion-element" itemprop="description">ReedSun</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解元类之前需要学习的知识"><span class="nav-number">1.</span> <span class="nav-text">理解元类之前需要学习的知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元类是什么"><span class="nav-number">2.</span> <span class="nav-text">元类是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元类的工作原理"><span class="nav-number">3.</span> <span class="nav-text">元类的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义元类"><span class="nav-number">4.</span> <span class="nav-text">自定义元类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我们用一个实际例子来说明元类的用法"><span class="nav-number">5.</span> <span class="nav-text">我们用一个实际例子来说明元类的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ReedSun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

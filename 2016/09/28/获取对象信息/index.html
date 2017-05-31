@@ -1,0 +1,715 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="学习日期：2016年9月27日学习课程：获取对象信息 - 廖雪峰的官方网站在本节中，我学习了可以通过type()或者isinstance()可以获得和判断对象的类型信息，他们两者的不同,在于type()不会认为子类是一种父类类型,isinstance()会认为子类是一种父类类型。还学习了使用dir()可以获得一个对象的所有属性和方法。使用getattr()、setattr()、hasattr()、">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="获取对象信息">
+<meta property="og:url" content="http://reedsun.top/2016/09/28/获取对象信息/index.html">
+<meta property="og:site_name" content="Preeminent">
+<meta property="og:description" content="学习日期：2016年9月27日学习课程：获取对象信息 - 廖雪峰的官方网站在本节中，我学习了可以通过type()或者isinstance()可以获得和判断对象的类型信息，他们两者的不同,在于type()不会认为子类是一种父类类型,isinstance()会认为子类是一种父类类型。还学习了使用dir()可以获得一个对象的所有属性和方法。使用getattr()、setattr()、hasattr()、">
+<meta property="og:updated_time" content="2017-05-31T14:51:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="获取对象信息">
+<meta name="twitter:description" content="学习日期：2016年9月27日学习课程：获取对象信息 - 廖雪峰的官方网站在本节中，我学习了可以通过type()或者isinstance()可以获得和判断对象的类型信息，他们两者的不同,在于type()不会认为子类是一种父类类型,isinstance()会认为子类是一种父类类型。还学习了使用dir()可以获得一个对象的所有属性和方法。使用getattr()、setattr()、hasattr()、">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://reedsun.top/2016/09/28/获取对象信息/"/>
+
+
+
+
+
+  <title>获取对象信息 | Preeminent</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Preeminent</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I have on idea about subtitle yet</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/28/获取对象信息/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">获取对象信息</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-28T12:02:04+08:00">
+                2016-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>学习日期：2016年9月27日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431866385235335917b66049448ab14a499afd5b24db000" target="_blank" rel="external">获取对象信息 - 廖雪峰的官方网站</a></em><br>在本节中，我学习了可以通过<code>type()</code>或者<code>isinstance()</code>可以获得和判断对象的类型信息，他们两者的不同,在于<code>type()</code><strong>不会认为</strong>子类是一种父类类型,<code>isinstance()</code><strong>会认为</strong>子类是一种父类类型。<br>还学习了使用<code>dir()</code>可以获得一个对象的所有属性和方法。使用<code>getattr()</code>、<code>setattr()</code>、<code>hasattr()</code>、<code>delsattr()</code>，我们可以操作一个对象的属性和方法</p>
+<h2 id="使用type"><a href="#使用type" class="headerlink" title="使用type()"></a>使用<code>type()</code></h2><ul>
+<li><code>type(object）</code>函数接收一个object（对象），并且返回这个object对应的class类型。<ul>
+<li>object可以是基本数据类型，比如<code>int</code>、<code>str</code>、……</li>
+<li>object也可以是一个函数或者一个类（class）,比如<code>abs</code>、<code>Animal</code>……</li>
+</ul>
+</li>
+<li>因为type对象返回对应的class类型，如果要判断一个对象的类型是不是某一个特定的类型的话就比较麻烦。<ul>
+<li>对于基本数据类型还好说，可以直接写<code>int</code>、<code>str</code>等来判断，例如<code>type(123)==int</code>。</li>
+<li>但是对于其他数据类型（函数、lambda、generator、……）来说，就不能用上面的方法了。但是也有对应的解决之策，那就是使用<code>type</code>模块中定义的常量。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import types</div><div class="line">&gt;&gt;&gt; def fn():</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; type(fn)==types.FunctionType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; type(abs)==types.BuiltinFunctionType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; type(lambda x: x)==types.LambdaType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; type((x for x in range(10)))==types.GeneratorType</div><div class="line">True</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>##使用<code>isinstance()</code></p>
+<ul>
+<li><p>对于判断一个对象是不是某一个类或者类型，我们有一个类似的函数<code>isinstance()</code>。<code>type()</code>与<code>isinstance()</code>之间不存在孰优孰劣，只有哪个更适合某个特定的需求而已。</p>
+</li>
+<li><p>他与<code>type()</code>有一个明显的区别，即<code>type()</code>不会认为子类是一种父类类型,而<code>isinstance()</code>会认为子类是一种父类类型。</p>
+</li>
+<li><p><code>isinstance()</code>的语法是：<code>isinstance(object,class)</code>。</p>
+<ul>
+<li><code>object</code>是要判断类型的数据对象，<code>class</code>是要判断的类型或者类。</li>
+<li><code>class</code>也可以是一个元组（里面包含若干个<code>class</code>或<code>type</code>），这样表达的意思是判断一个对象是否是某些类型中的一种。</li>
+</ul>
+</li>
+<li><p>如果<code>class</code>是<code>object</code>的父类，也会输出<code>True</code>，但是如果<code>class</code>是<code>object</code>的子类，就会输出<code>False</code>。<strong>换句话说，isinstance()判断的是一个对象是否是该类型本身，或者位于该类型的父继承链上。</strong><br>##使用<code>dir()</code></p>
+</li>
+<li>通过<code>dir()</code>函数我们可以获得一个对象的所有属性和方法，它将返回一个包含对象的全部的属性和方法的字符串的list。</li>
+<li>其返回的list中从形式上包含两种大类，一个是<code>__xxx__</code>，另一个是<code>xxx</code>。<ul>
+<li>类似<code>__xxx__</code>的属性和方法在Python中都是有特殊用途的，比如<code>__len__</code>方法返回长度。</li>
+<li><code>xxx</code>则是普通属性或方法，比如<code>lower()</code>返回小写的字符串。</li>
+</ul>
+</li>
+<li>通过<code>getattr()</code>、<code>setattr()</code>、<code>hasattr()</code>、<code>delasttr()</code>，我们可以直接操作一个对象的的属性和方法。<ul>
+<li><code>getattr()</code>的作用是访问对象的属性或方法，其语法是<code>getattr(obj, name[, default])</code>，将返回属性或方法的值，如果方法或值不存在，就返回<code>default</code>的值。</li>
+<li><code>setattr()</code>的作用是设置一个属性或方法。如果属性不存在，会创建一个新属性，其语法是<code>setattr(obj,name,value)</code>，没有返回值。如果要设置方法，可以使用lambda匿名函数。</li>
+<li><code>hasattr()</code>的作用是检查是否存在一个属性或方法，其语法为<code>hasattr(obj,name)</code>。如果存在这个属性或方法返回<code>True</code>，否则返回<code>False</code>。</li>
+<li><code>delasttr()</code>的作用是删除一个属性，其语法为<code>delattr(obj, name)</code>。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/27/learningnote_Object oriented Programming/" rel="next" title="Python中面向对象编程">
+                <i class="fa fa-chevron-left"></i> Python中面向对象编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/14/初见Python的第三方模块BeautifulSoup/" rel="prev" title="初见Python的第三方模块BeautifulSoup">
+                初见Python的第三方模块BeautifulSoup <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ReedSun" />
+          <p class="site-author-name" itemprop="name">ReedSun</p>
+           
+              <p class="site-description motion-element" itemprop="description">ReedSun</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用type"><span class="nav-number">1.</span> <span class="nav-text">使用type()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ReedSun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
