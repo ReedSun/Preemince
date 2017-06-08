@@ -1159,6 +1159,163 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/17/学习urblib和requests/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/17/学习urblib和requests/" itemprop="url">学习urblib和requests</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-17T21:12:36+08:00">
+                2016-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="学习urblib和requests"><a href="#学习urblib和requests" class="headerlink" title="学习urblib和requests"></a>学习urblib和requests</h1><ul>
+<li><p>urblib是python的一个自建模块，它提供了一系列用于操作URL的功能。</p>
+</li>
+<li><p>而第三方模块requests是对urllib的人性化封装。</p>
+</li>
+</ul>
+<p>##requests</p>
+<ul>
+<li><a href="http://cn.python-requests.org/zh_CN/latest/" target="_blank" rel="external">中文官方文档</a></li>
+<li><a href="http://cn.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="external">快速上手</a></li>
+</ul>
+<p>##urllib</p>
+<ul>
+<li><p>urllib是基于http的高层库，它有以下三个主要功能：</p>
+<ul>
+<li>request处理客户端的请求</li>
+<li>response处理服务端的响应</li>
+<li>parse会解析url</li>
+</ul>
+</li>
+<li><p>下面是使用Python3中urllib来获取资源的一些示例</p>
+<ul>
+<li><p>最简单的抓取url内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> import urllib.request  </div><div class="line">response = urllib.request.urlopen(&apos;http://python.org/&apos;)  </div><div class="line">html = response.read()</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用response处理服务器的相应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> import urllib.request  </div><div class="line">req = urllib.request.Request(&apos;http://python.org/&apos;)  </div><div class="line">response = urllib.request.urlopen(req)  </div><div class="line">the_page = response.read()</div></pre></td></tr></table></figure>
+</li>
+<li><p>发送数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> import urllib.parse  </div><div class="line">import urllib.request  </div><div class="line">url = &apos;&quot;  </div><div class="line">values = &#123;  </div><div class="line">&apos;act&apos; : &apos;login&apos;,  </div><div class="line">&apos;login[email]&apos; : &apos;&apos;,  </div><div class="line">&apos;login[password]&apos; : &apos;&apos;  </div><div class="line">&#125;  </div><div class="line">data = urllib.parse.urlencode(values)  </div><div class="line">req = urllib.request.Request(url, data)  </div><div class="line">req.add_header(&apos;Referer&apos;, &apos;http://www.python.org/&apos;)  </div><div class="line">response = urllib.request.urlopen(req)  </div><div class="line">the_page = response.read()  </div><div class="line">print(the_page.decode(&quot;utf8&quot;))</div></pre></td></tr></table></figure>
+</li>
+<li><p>发送数据和header</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> import urllib.parse  </div><div class="line">import urllib.request  </div><div class="line">url = &apos;&apos;  </div><div class="line">user_agent = &apos;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&apos;  </div><div class="line">values = &#123;  </div><div class="line">&apos;act&apos; : &apos;login&apos;,  </div><div class="line">&apos;login[email]&apos; : &apos;&apos;,  </div><div class="line">&apos;login[password]&apos; : &apos;&apos;  </div><div class="line">&#125;  </div><div class="line">headers = &#123; &apos;User-Agent&apos; : user_agent &#125;  </div><div class="line">data = urllib.parse.urlencode(values)  </div><div class="line">req = urllib.request.Request(url, data, headers)  </div><div class="line">response = urllib.request.urlopen(req)  </div><div class="line">the_page = response.read()  </div><div class="line">print(the_page.decode(&quot;utf8&quot;))</div></pre></td></tr></table></figure>
+</li>
+<li><p>处理http 错误  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import urllib.request  </div><div class="line">req = urllib.request.Request(&apos; &apos;)  </div><div class="line">try:  </div><div class="line">       urllib.request.urlopen(req)  </div><div class="line">except urllib.error.HTTPError as e:  </div><div class="line">       print(e.code)  </div><div class="line">       print(e.read().decode(&quot;utf8&quot;))</div></pre></td></tr></table></figure>
+</li>
+<li><p>异常处理1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> from urllib.request import Request, urlopen  </div><div class="line"> from urllib.error import URLError, HTTPError  </div><div class="line"> req = Request(&quot;http://www..net /&quot;)  </div><div class="line"> try:  </div><div class="line">        response = urlopen(req)  </div><div class="line"> except HTTPError as e:  </div><div class="line">        print(&apos;The server couldn&apos;t fulfill the request.&apos;)  </div><div class="line">        print(&apos;Error code: &apos;, e.code)  </div><div class="line"> except URLError as e:  </div><div class="line">        print(&apos;We failed to reach a server.&apos;)  </div><div class="line">        print(&apos;Reason: &apos;, e.reason)  </div><div class="line">else:  </div><div class="line">        print(&quot;good!&quot;)  </div><div class="line">        print(response.read().decode(&quot;utf8&quot;))</div></pre></td></tr></table></figure>
+</li>
+<li><p>异常处理2  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">from urllib.request import Request, urlopen  </div><div class="line"> from urllib.error import  URLError  </div><div class="line"> req = Request(&quot;http://www.Python.org/&quot;)  </div><div class="line">try:  </div><div class="line">       response = urlopen(req)  </div><div class="line">except URLError as e:  </div><div class="line">       if hasattr(e, &apos;reason&apos;):  </div><div class="line">           print(&apos;We failed to reach a server.&apos;)  </div><div class="line">           print(&apos;Reason: &apos;, e.reason)  </div><div class="line">elif hasattr(e, &apos;code&apos;):  </div><div class="line">       print(&apos;The server couldn&apos;t fulfill the request.&apos;)  </div><div class="line">       print(&apos;Error code: &apos;, e.code)  </div><div class="line">else:  </div><div class="line">       print(&quot;good!&quot;)  </div><div class="line">       print(response.read().decode(&quot;utf8&quot;))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/15/Python的自带模块——HTMLParser的初步学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1504,7 +1661,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/28/获取对象信息/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/13/学习笔记_hashlib/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -1523,7 +1680,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/09/28/获取对象信息/" itemprop="url">获取对象信息</a></h1>
+                <a class="post-title-link" href="/2016/10/13/学习笔记_hashlib/" itemprop="url">学习笔记_hashlib</a></h1>
         
 
         <div class="post-meta">
@@ -1535,8 +1692,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-28T12:02:04+08:00">
-                2016-09-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-13T10:01:16+08:00">
+                2016-10-13
               </time>
             
 
@@ -1572,230 +1729,29 @@
       
         
           
-            <p><em>学习日期：2016年9月27日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431866385235335917b66049448ab14a499afd5b24db000" target="_blank" rel="external">获取对象信息 - 廖雪峰的官方网站</a></em><br>在本节中，我学习了可以通过<code>type()</code>或者<code>isinstance()</code>可以获得和判断对象的类型信息，他们两者的不同,在于<code>type()</code><strong>不会认为</strong>子类是一种父类类型,<code>isinstance()</code><strong>会认为</strong>子类是一种父类类型。<br>还学习了使用<code>dir()</code>可以获得一个对象的所有属性和方法。使用<code>getattr()</code>、<code>setattr()</code>、<code>hasattr()</code>、<code>delsattr()</code>，我们可以操作一个对象的属性和方法</p>
-<h2 id="使用type"><a href="#使用type" class="headerlink" title="使用type()"></a>使用<code>type()</code></h2><ul>
-<li><code>type(object）</code>函数接收一个object（对象），并且返回这个object对应的class类型。<ul>
-<li>object可以是基本数据类型，比如<code>int</code>、<code>str</code>、……</li>
-<li>object也可以是一个函数或者一个类（class）,比如<code>abs</code>、<code>Animal</code>……</li>
-</ul>
+            <h2 id="摘要算法简介"><a href="#摘要算法简介" class="headerlink" title="摘要算法简介"></a>摘要算法简介</h2><ul>
+<li><p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。</p>
 </li>
-<li>因为type对象返回对应的class类型，如果要判断一个对象的类型是不是某一个特定的类型的话就比较麻烦。<ul>
-<li>对于基本数据类型还好说，可以直接写<code>int</code>、<code>str</code>等来判断，例如<code>type(123)==int</code>。</li>
-<li>但是对于其他数据类型（函数、lambda、generator、……）来说，就不能用上面的方法了。但是也有对应的解决之策，那就是使用<code>type</code>模块中定义的常量。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import types</div><div class="line">&gt;&gt;&gt; def fn():</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; type(fn)==types.FunctionType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; type(abs)==types.BuiltinFunctionType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; type(lambda x: x)==types.LambdaType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; type((x for x in range(10)))==types.GeneratorType</div><div class="line">True</div></pre></td></tr></table></figure>
+<li><p>摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。</p>
 </li>
-</ul>
+<li><p>我们以常见的摘要算法MD5为例，计算出一个字符串的MD5值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import hashlib</div><div class="line"></div><div class="line">md5 = hashlib.md5()</div><div class="line">md5.update(&apos;how to use md5 in python hashlib?&apos;.encode(&apos;utf-8&apos;))</div><div class="line">print(md5.hexdigest())</div><div class="line">#计算结果如下：</div><div class="line"></div><div class="line">d26a53750bc40b38b65a520292f69306</div></pre></td></tr></table></figure>
 </li>
+<li><p>如果数据量很大，可以分块多次调用<code>update()</code>，最后计算的结果是一样的。</p>
+</li>
+<li><p>另一种常见的摘要算法是SHA1，调用SHA1和调用MD5完全类似。</p>
+</li>
+<li><p>MD5是最常见的摘要算法，速度很快，生成结果是固定的128 bit字节，通常用一个32位的16进制字符串表示。</p>
+</li>
+<li>SHA1的结果是160 bit字节，通常用一个40位的16进制字符串表示。</li>
 </ul>
-<p>##使用<code>isinstance()</code></p>
+<p>##摘要算法应用</p>
 <ul>
-<li><p>对于判断一个对象是不是某一个类或者类型，我们有一个类似的函数<code>isinstance()</code>。<code>type()</code>与<code>isinstance()</code>之间不存在孰优孰劣，只有哪个更适合某个特定的需求而已。</p>
-</li>
-<li><p>他与<code>type()</code>有一个明显的区别，即<code>type()</code>不会认为子类是一种父类类型,而<code>isinstance()</code>会认为子类是一种父类类型。</p>
-</li>
-<li><p><code>isinstance()</code>的语法是：<code>isinstance(object,class)</code>。</p>
-<ul>
-<li><code>object</code>是要判断类型的数据对象，<code>class</code>是要判断的类型或者类。</li>
-<li><code>class</code>也可以是一个元组（里面包含若干个<code>class</code>或<code>type</code>），这样表达的意思是判断一个对象是否是某些类型中的一种。</li>
-</ul>
-</li>
-<li><p>如果<code>class</code>是<code>object</code>的父类，也会输出<code>True</code>，但是如果<code>class</code>是<code>object</code>的子类，就会输出<code>False</code>。<strong>换句话说，isinstance()判断的是一个对象是否是该类型本身，或者位于该类型的父继承链上。</strong><br>##使用<code>dir()</code></p>
-</li>
-<li>通过<code>dir()</code>函数我们可以获得一个对象的所有属性和方法，它将返回一个包含对象的全部的属性和方法的字符串的list。</li>
-<li>其返回的list中从形式上包含两种大类，一个是<code>__xxx__</code>，另一个是<code>xxx</code>。<ul>
-<li>类似<code>__xxx__</code>的属性和方法在Python中都是有特殊用途的，比如<code>__len__</code>方法返回长度。</li>
-<li><code>xxx</code>则是普通属性或方法，比如<code>lower()</code>返回小写的字符串。</li>
-</ul>
-</li>
-<li>通过<code>getattr()</code>、<code>setattr()</code>、<code>hasattr()</code>、<code>delasttr()</code>，我们可以直接操作一个对象的的属性和方法。<ul>
-<li><code>getattr()</code>的作用是访问对象的属性或方法，其语法是<code>getattr(obj, name[, default])</code>，将返回属性或方法的值，如果方法或值不存在，就返回<code>default</code>的值。</li>
-<li><code>setattr()</code>的作用是设置一个属性或方法。如果属性不存在，会创建一个新属性，其语法是<code>setattr(obj,name,value)</code>，没有返回值。如果要设置方法，可以使用lambda匿名函数。</li>
-<li><code>hasattr()</code>的作用是检查是否存在一个属性或方法，其语法为<code>hasattr(obj,name)</code>。如果存在这个属性或方法返回<code>True</code>，否则返回<code>False</code>。</li>
-<li><code>delasttr()</code>的作用是删除一个属性，其语法为<code>delattr(obj, name)</code>。</li>
+<li>储存用户的登陆密码。<ul>
+<li>当用户登录时，首先计算用户输入的密码的MD5，然后和数据库存储的MD5对比，如果一致，说明口令输入正确，如果不一致，口令肯定错误。</li>
 </ul>
 </li>
 </ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/27/learningnote_Object oriented Programming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/27/learningnote_Object oriented Programming/" itemprop="url">Python中面向对象编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-27T12:18:48+08:00">
-                2016-09-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><em>Object oriented Programming – 面对对象编程（OOP）</em></p>
-<p>Python从设计之初就已经是一门面向对象的语言，正因为如此，在Python中创建一个类和对象是很容易的。</p>
-<p>##面向对象技术简介</p>
-<ul>
-<li><strong>类(Class)</strong>: 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。</li>
-<li><strong>类变量</strong>：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。</li>
-<li><strong>数据成员</strong>：类变量或者实例变量用于处理类及其实例对象的相关的数据。</li>
-<li><strong>方法重写</strong>：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</li>
-<li><strong>实例变量</strong>：定义在方法中的变量，只作用于当前实例的类。</li>
-<li><strong>继承</strong>：即一个<em>派生类（derived class）</em>继承<em>基类（base class）</em>的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。例如，有这样一个设计：一个Dog类型的对象派生自Animal类，这是模拟”是一个（is-a）”关系（例图，Dog是一个Animal）。</li>
-<li><strong>实例化</strong>：创建一个类的实例，类的具体对象。</li>
-<li><strong>方法</strong>：类中定义的函数。</li>
-<li><strong>对象</strong>：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。<h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2>使用class语句来创建一个新类，class之后为类的名称并以冒号结尾，如下实例:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class ClassName:</div><div class="line">   &apos;类的帮助信息&apos;   #类文档字符串</div><div class="line">   class_suite  #类体</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>类的帮助信息可以通过<code>ClassName.__doc__</code>查看。<br><code>class_suite</code> 由类成员，方法，数据属性组成。</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>以下是一个简单的Python类实例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line"></div><div class="line">class Employee:</div><div class="line">   &apos;所有员工的基类&apos;</div><div class="line">   empCount = 0</div><div class="line"></div><div class="line">   def __init__(self, name, salary):</div><div class="line">      self.name = name</div><div class="line">      self.salary = salary</div><div class="line">      Employee.empCount += 1</div><div class="line">   </div><div class="line">   def displayCount(self):</div><div class="line">     print &quot;Total Employee %d&quot; % Employee.empCount</div><div class="line"></div><div class="line">   def displayEmployee(self):</div><div class="line">      print &quot;Name : &quot;, self.name,  &quot;, Salary: &quot;, self.salary</div></pre></td></tr></table></figure></p>
-<ul>
-<li><code>empCount</code>变量是一个类变量，它的值将在这个类的所有实例之间共享。你可以在内部类或外部类使用<code>Employee.empCount</code>访问。</li>
-<li>第一种方法<code>__init__()</code>方法是一种特殊的方法，被称为类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法<h2 id="创建实例对象"><a href="#创建实例对象" class="headerlink" title="创建实例对象"></a>创建实例对象</h2>要创建一个类的实例，你可以使用类的名称，并通过<code>__init__</code>方法接受参数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;创建 Employee 类的第一个对象&quot;</div><div class="line">emp1 = Employee(&quot;Zara&quot;, 2000)</div><div class="line">&quot;创建 Employee 类的第二个对象&quot;</div><div class="line">emp2 = Employee(&quot;Manni&quot;, 5000)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h2><p>您可以使用点(.)来访问对象的属性。使用如下类的名称访问类变量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">emp1.displayEmployee()</div><div class="line">emp2.displayEmployee()</div><div class="line">print &quot;Total Employee %d&quot; % Employee.empCount</div></pre></td></tr></table></figure></p>
-<p>完整实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line"></div><div class="line">class Employee:</div><div class="line">   &apos;所有员工的基类&apos;</div><div class="line">   empCount = 0</div><div class="line"></div><div class="line">   def __init__(self, name, salary):</div><div class="line">      self.name = name</div><div class="line">      self.salary = salary</div><div class="line">      Employee.empCount += 1</div><div class="line">   </div><div class="line">   def displayCount(self):</div><div class="line">     print &quot;Total Employee %d&quot; % Employee.empCount</div><div class="line"></div><div class="line">   def displayEmployee(self):</div><div class="line">      print &quot;Name : &quot;, self.name,  &quot;, Salary: &quot;, self.salary</div><div class="line"></div><div class="line">&quot;创建 Employee 类的第一个对象&quot;</div><div class="line">emp1 = Employee(&quot;Zara&quot;, 2000)</div><div class="line">&quot;创建 Employee 类的第二个对象&quot;</div><div class="line">emp2 = Employee(&quot;Manni&quot;, 5000)</div><div class="line">emp1.displayEmployee()</div><div class="line">emp2.displayEmployee()</div><div class="line">print &quot;Total Employee %d&quot; % Employee.empCount</div></pre></td></tr></table></figure></p>
-<p>执行以上代码输出结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Name :  Zara ,Salary:  2000</div><div class="line">Name :  Manni ,Salary:  5000</div><div class="line">Total Employee 2</div></pre></td></tr></table></figure></p>
-<p>你可以添加，删除，修改类的属性，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">emp1.age = 7  # 添加一个 &apos;age&apos; 属性</div><div class="line">emp1.age = 8  # 修改 &apos;age&apos; 属性</div><div class="line">del emp1.age  # 删除 &apos;age&apos; 属性</div></pre></td></tr></table></figure></p>
-<p>你也可以使用以下函数的方式来访问属性：</p>
-<ul>
-<li><code>getattr(obj, name[, default])</code> : 访问对象的属性。</li>
-<li><code>hasattr(obj,name)</code> : 检查是否存在一个属性。</li>
-<li><code>setattr(obj,name,value)</code>:设置一个属性。如果属性不存在，会创建一个新属性。</li>
-<li><code>delattr(obj, name)</code> : 删除属性。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hasattr(emp1, &apos;age&apos;)    # 如果存在 &apos;age&apos; 属性返回 True。</div><div class="line">getattr(emp1, &apos;age&apos;)    # 返回 &apos;age&apos; 属性的值</div><div class="line">setattr(emp1, &apos;age&apos;, 8) # 添加属性 &apos;age&apos; 值为 8</div><div class="line">delattr(empl, &apos;age&apos;)    # 删除属性 &apos;age&apos;</div></pre></td></tr></table></figure>
-<h2 id="Python内置类属性"><a href="#Python内置类属性" class="headerlink" title="Python内置类属性"></a>Python内置类属性</h2><ul>
-<li><code>__dict__</code> : 类的属性（包含一个字典，由类的数据属性组成）</li>
-<li><code>__doc__</code> :类的文档字符串</li>
-<li><code>__name__</code>: 类名</li>
-<li><code>__module__</code>: 类定义所在的模块（类的全名是’<code>__main__.className</code>‘，如果类位于一个导入模块mymod中，那么<code>className.__module__</code> 等于 mymod）</li>
-<li><code>__bases__</code> : 类的所有父类构成元素（包含了一个由所有父类组成的元组）<br>Python内置类属性调用实例如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line"></div><div class="line">class Employee:</div><div class="line">   &apos;所有员工的基类&apos;</div><div class="line">   empCount = 0</div><div class="line"></div><div class="line">   def __init__(self, name, salary):</div><div class="line">      self.name = name</div><div class="line">      self.salary = salary</div><div class="line">      Employee.empCount += 1</div><div class="line">   </div><div class="line">   def displayCount(self):</div><div class="line">     print &quot;Total Employee %d&quot; % Employee.empCount</div><div class="line"></div><div class="line">   def displayEmployee(self):</div><div class="line">      print &quot;Name : &quot;, self.name,  &quot;, Salary: &quot;, self.salary</div><div class="line"></div><div class="line">print &quot;Employee.__doc__:&quot;, Employee.__doc__</div><div class="line">print &quot;Employee.__name__:&quot;, Employee.__name__</div><div class="line">print &quot;Employee.__module__:&quot;, Employee.__module__</div><div class="line">print &quot;Employee.__bases__:&quot;, Employee.__bases__</div><div class="line">print &quot;Employee.__dict__:&quot;, Employee.__dict__</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>执行以上代码输出结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Employee.__doc__: 所有员工的基类</div><div class="line">Employee.__name__: Employee</div><div class="line">Employee.__module__: __main__</div><div class="line">Employee.__bases__: ()</div><div class="line">Employee.__dict__: &#123;&apos;__module__&apos;: &apos;__main__&apos;, &apos;displayCount&apos;: &lt;function displayCount at 0x10a939c80&gt;, &apos;empCount&apos;: 0, &apos;displayEmployee&apos;: &lt;function displayEmployee at 0x10a93caa0&gt;, &apos;__doc__&apos;: &apos;\xe6\x89\x80\xe6\x9c\x89\xe5\x91\x98\xe5\xb7\xa5\xe7\x9a\x84\xe5\x9f\xba\xe7\xb1\xbb&apos;, &apos;__init__&apos;: &lt;function __init__ at 0x10a939578&gt;&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>面向对象的编程带来的主要好处之一是代码的重用，实现这种重用的方法之一是通过继承机制。继承完全可以理解成类之间的类型和子类型关系。<br>需要注意的地方：<strong>继承语法</strong> class 派生类名（<strong>基类名</strong>）：//… 基类名写作括号里，基本类是在类定义的时候，在元组之中指明的。<br>在python中继承中的一些特点：</p>
-<ul>
-<li>1：在继承中基类的构造（<code>__init__</code>()方法）不会被自动调用，它需要在其派生类的构造中亲自专门调用。</li>
-<li>2：在调用基类的方法时，需要加上基类的类名前缀，且需要带上self参数变量。区别于在类中调用普通函数时并不需要带上self参数</li>
-<li>3：Python总是首先查找对应类型的方法，如果它不能在派生类中找到对应的方法，它才开始到基类中逐个查找。（先在本类中查找调用的方法，找不到才去基类中找）。</li>
-</ul>
-<p>如果在继承元组中列了一个以上的类，那么它就被称作”多重继承” 。<br>语法：<br>派生类的声明，与他们的父类类似，继承的基类列表跟在类名之后，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class SubClassName (ParentClass1[, ParentClass2, ...]):</div><div class="line">   &apos;Optional class documentation string&apos;</div><div class="line">   class_suite</div></pre></td></tr></table></figure></p>
-<p>实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line"></div><div class="line">class Parent:        # 定义父类</div><div class="line">   parentAttr = 100</div><div class="line">   def __init__(self):</div><div class="line">      print &quot;调用父类构造函数&quot;</div><div class="line"></div><div class="line">   def parentMethod(self):</div><div class="line">      print &apos;调用父类方法&apos;</div><div class="line"></div><div class="line">   def setAttr(self, attr):</div><div class="line">      Parent.parentAttr = attr</div><div class="line"></div><div class="line">   def getAttr(self):</div><div class="line">      print &quot;父类属性 :&quot;, Parent.parentAttr</div><div class="line"></div><div class="line">class Child(Parent): # 定义子类</div><div class="line">   def __init__(self):</div><div class="line">      print &quot;调用子类构造方法&quot;</div><div class="line"></div><div class="line">   def childMethod(self):</div><div class="line">      print &apos;调用子类方法 child method&apos;</div><div class="line"></div><div class="line">c = Child()          # 实例化子类</div><div class="line">c.childMethod()      # 调用子类的方法</div><div class="line">c.parentMethod()     # 调用父类方法</div><div class="line">c.setAttr(200)       # 再次调用父类的方法</div><div class="line">c.getAttr()          # 再次调用父类的方法</div></pre></td></tr></table></figure></p>
-<p>以上代码执行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">调用子类构造方法</div><div class="line">调用子类方法 child method</div><div class="line">调用父类方法</div><div class="line">父类属性 : 200</div></pre></td></tr></table></figure></p>
-<p>你可以继承多个类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class A:        # 定义类 A</div><div class="line">.....</div><div class="line"></div><div class="line">class B:         # 定义类 B</div><div class="line">.....</div><div class="line"></div><div class="line">class C(A, B):   # 继承类 A 和 B</div><div class="line">.....</div></pre></td></tr></table></figure></p>
-<p>你可以使用issubclass()或者isinstance()方法来检测。</p>
-<ul>
-<li>issubclass() - <strong>布尔函数</strong>判断一个类是另一个类的子类或者子孙类，语法：issubclass(sub,sup)</li>
-<li>isinstance(obj, Class) 布尔函数如果obj是Class类的实例对象或者是一个Class子类的实例对象则返回true。<h2 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h2>如果你的父类方法的功能不能满足你的需求，你可以在子类重写你父类的方法：<br>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line"></div><div class="line">class Parent:        # 定义父类</div><div class="line">   def myMethod(self):</div><div class="line">      print &apos;调用父类方法&apos;</div><div class="line"></div><div class="line">class Child(Parent): # 定义子类</div><div class="line">   def myMethod(self):</div><div class="line">      print &apos;调用子类方法&apos;</div><div class="line"></div><div class="line">c = Child()          # 子类实例</div><div class="line">c.myMethod()         # 子类调用重写方法</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>执行以上代码输出结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">调用子类方法</div></pre></td></tr></table></figure></p>
-<h2 id="基础重载方法"><a href="#基础重载方法" class="headerlink" title="基础重载方法"></a>基础重载方法</h2><p>下表列出了一些通用的功能，你可以在自己的类重写：<br>|序号|方法|描述|简单的调用|<br>| :–: | :–: | :–: | :–: |<br>|1|<code>__init__ ( self [,args...] )</code>|构造函数|<code>obj = className(args)</code>|<br>|2|<code>__del__( self )</code>|析构方法, 删除一个对象|<code>dell obj</code>|<br>|3|<code>__repr__( self )</code>|转化为供解释器读取的形式|<code>repr(obj)</code>|<br>|4|<code>__str__( self )</code>|用于将值转化为适于人阅读的形式|<code>str(obj)</code>|<br>|5|<code>__cmp__ ( self, x )</code>|对象比较|<code>cmp(obj, x)</code>|</p>
-<p>##运算符重载<br>Python同样支持运算符重载，实例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"></div><div class="line">class Vector:</div><div class="line">   def __init__(self, a, b):</div><div class="line">      self.a = a</div><div class="line">      self.b = b</div><div class="line"></div><div class="line">   def __str__(self):</div><div class="line">      return &apos;Vector (%d, %d)&apos; % (self.a, self.b)</div><div class="line">   </div><div class="line">   def __add__(self,other):</div><div class="line">      return Vector(self.a + other.a, self.b + other.b)</div><div class="line"></div><div class="line">v1 = Vector(2,10)</div><div class="line">v2 = Vector(5,-2)</div><div class="line">print v1 + v2</div></pre></td></tr></table></figure></p>
-<p>以上代码执行结果如下所示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Vector(7,8)</div></pre></td></tr></table></figure></p>
-<p>##类属性与方法</p>
-<h3 id="类的私有属性"><a href="#类的私有属性" class="headerlink" title="类的私有属性"></a>类的私有属性</h3><p><code>__private_attrs</code>：两个下划线开头，声明该属性为私有，不能在类地外部被使用或直接访问。在类内部的方法中使用时 <code>self.__private_attrs</code>。</p>
-<h3 id="类的方法"><a href="#类的方法" class="headerlink" title="类的方法"></a>类的方法</h3><p>在类地内部，使用def关键字可以为类定义一个方法，与一般函数定义不同，类方法必须包含参数self,且为第一个参数</p>
-<h3 id="类的私有方法"><a href="#类的私有方法" class="headerlink" title="类的私有方法"></a>类的私有方法</h3><p><code>__private_method</code>：两个下划线开头，声明该方法为私有方法，不能在类地外部调用。在类的内部调用 <code>self.__private_methods</code></p>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"># -*- coding: UTF-8 -*-</div><div class="line"></div><div class="line">class JustCounter:</div><div class="line">	__secretCount = 0  # 私有变量</div><div class="line">	publicCount = 0    # 公开变量</div><div class="line"></div><div class="line">	def count(self):</div><div class="line">		self.__secretCount += 1</div><div class="line">		self.publicCount += 1</div><div class="line">		print self.__secretCount</div><div class="line"></div><div class="line">counter = JustCounter()</div><div class="line">counter.count()</div><div class="line">counter.count()</div><div class="line">print counter.publicCount</div><div class="line">print counter.__secretCount  # 报错，实例不能访问私有变量</div></pre></td></tr></table></figure>
-<p>Python 通过改变名称来包含类名:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">2</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;test.py&quot;, line 17, in &lt;module&gt;</div><div class="line">    print counter.__secretCount  # 报错，实例不能访问私有变量</div><div class="line">AttributeError: JustCounter instance has no attribute &apos;__secretCount&apos;</div></pre></td></tr></table></figure></p>
-<p>Python不允许实例化的类访问私有数据，但你可以使用 <code>object._className__attrName</code> 访问属性，将如下代码替换以上代码的最后一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.........................</div><div class="line">print counter._JustCounter__secretCount</div></pre></td></tr></table></figure></p>
-<p>执行以上代码，执行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">2</div><div class="line">2</div></pre></td></tr></table></figure></p>
 
           
         
@@ -1879,7 +1835,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
