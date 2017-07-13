@@ -1,0 +1,679 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="简单筛选iOS和安卓的版本的函数需求现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本 函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 true ，否则返回 false 。 函数1234567891">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单筛选iOS和安卓的版本的函数">
+<meta property="og:url" content="http://reedsun.top/2017/05/02/根据iOS和安卓的版本进行筛选的小函数/index.html">
+<meta property="og:site_name" content="Preeminent">
+<meta property="og:description" content="简单筛选iOS和安卓的版本的函数需求现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本 函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 true ，否则返回 false 。 函数1234567891">
+<meta property="og:updated_time" content="2017-07-13T12:50:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单筛选iOS和安卓的版本的函数">
+<meta name="twitter:description" content="简单筛选iOS和安卓的版本的函数需求现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本 函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 true ，否则返回 false 。 函数1234567891">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://reedsun.top/2017/05/02/根据iOS和安卓的版本进行筛选的小函数/"/>
+
+
+
+
+
+  <title>简单筛选iOS和安卓的版本的函数 | Preeminent</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Preeminent</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I have on idea about subtitle yet</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2017/05/02/根据iOS和安卓的版本进行筛选的小函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">简单筛选iOS和安卓的版本的函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T20:42:31+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简单筛选iOS和安卓的版本的函数"><a href="#简单筛选iOS和安卓的版本的函数" class="headerlink" title="简单筛选iOS和安卓的版本的函数"></a>简单筛选iOS和安卓的版本的函数</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本</p>
+<p>函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function filterVersion (iOS, Android) &#123;</div><div class="line">  if (navigator.userAgent.indexOf(&apos;Mac OS X&apos;) !== -1) &#123;</div><div class="line">    var reg = /OS\s[\d\_]*\slike\sMac\sOS\sX/.exec(navigator.userAgent)</div><div class="line">    if (reg) &#123;</div><div class="line">      var version = parseFloat(reg[0].slice(3, -14).replace(/_/g, &apos;.&apos;))</div><div class="line">      return version &gt;= iOS</div><div class="line">      return false</div><div class="line">    &#125;</div><div class="line">  &#125; else if (navigator.userAgent.indexOf(&apos;Android&apos;) !== -1) &#123;</div><div class="line">    var reg = /Android\s[\d\.]*;/.exec(navigator.userAgent)</div><div class="line">    if (reg) &#123;</div><div class="line">      var version = parseFloat(reg[0].slice(8, -1))</div><div class="line">      return version &gt;= Android</div><div class="line">    &#125; else &#123;</div><div class="line">      return false</div><div class="line">    &#125; </div><div class="line">  &#125; else &#123;</div><div class="line">    return false</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>比如一个功能xxx，你你只想在iOS 10.0以上的版本，及安卓 7.0以上的版本上使用，则可以这样写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function xxx () &#123;</div><div class="line">  if (!filterVersion(10, 7)) &#123;</div><div class="line">    return</div><div class="line">  &#125;</div><div class="line">  // ....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>这个判断方法是根据浏览器提供的UA，即 <code>window.navigator.userAgent</code> 来做出判断的，这个属性就提供了安卓或iOS的系统版本信息。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/17/webpack学习笔记 （下）/" rel="next" title="webpack学习笔记 （下）">
+                <i class="fa fa-chevron-left"></i> webpack学习笔记 （下）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/04/关于 Date() 函数在 iOS 中的一个小坑/" rel="prev" title="关于 Date() 函数在 iOS 中的一个小坑">
+                关于 Date() 函数在 iOS 中的一个小坑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ReedSun" />
+          <p class="site-author-name" itemprop="name">ReedSun</p>
+           
+              <p class="site-description motion-element" itemprop="description">ReedSun</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单筛选iOS和安卓的版本的函数"><span class="nav-number">1.</span> <span class="nav-text">简单筛选iOS和安卓的版本的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.3.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.4.</span> <span class="nav-text">原理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ReedSun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

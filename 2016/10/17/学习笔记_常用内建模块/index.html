@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Python之所以自称“batteries included”(自备全套工具），就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。  本章介绍了一些常用的内建模块，下面总结一下他们。   datatime datetime是Python处理日期和时间的标准库。  datetime表示的时间需要时区信息才能确定一个特定的时间，否则只能视为本地时间。  如果要存储datetime，">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记_常用内建模块">
+<meta property="og:url" content="http://reedsun.top/2016/10/17/学习笔记_常用内建模块/index.html">
+<meta property="og:site_name" content="Preeminent">
+<meta property="og:description" content="Python之所以自称“batteries included”(自备全套工具），就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。  本章介绍了一些常用的内建模块，下面总结一下他们。   datatime datetime是Python处理日期和时间的标准库。  datetime表示的时间需要时区信息才能确定一个特定的时间，否则只能视为本地时间。  如果要存储datetime，">
+<meta property="og:updated_time" content="2017-07-13T12:49:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习笔记_常用内建模块">
+<meta name="twitter:description" content="Python之所以自称“batteries included”(自备全套工具），就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。  本章介绍了一些常用的内建模块，下面总结一下他们。   datatime datetime是Python处理日期和时间的标准库。  datetime表示的时间需要时区信息才能确定一个特定的时间，否则只能视为本地时间。  如果要存储datetime，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://reedsun.top/2016/10/17/学习笔记_常用内建模块/"/>
+
+
+
+
+
+  <title>学习笔记_常用内建模块 | Preeminent</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Preeminent</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I have on idea about subtitle yet</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/17/学习笔记_常用内建模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">学习笔记_常用内建模块</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-17T21:12:36+08:00">
+                2016-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p>Python之所以自称“batteries included”(自备全套工具），就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。</p>
+</li>
+<li><p>本章介绍了一些常用的内建模块，下面总结一下他们。</p>
+</li>
+</ul>
+<h2 id="datatime"><a href="#datatime" class="headerlink" title="datatime"></a>datatime</h2><ul>
+<li><p><code>datetime</code>是Python处理日期和时间的标准库。</p>
+</li>
+<li><p><code>datetime</code>表示的时间需要时区信息才能确定一个特定的时间，否则只能视为本地时间。</p>
+</li>
+<li><p>如果要存储<code>datetime</code>，最佳方法是将其转换为<code>timestamp</code>再存储，因为<code>timestamp</code>的值与时区完全无关。</p>
+</li>
+</ul>
+<h2 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h2><ul>
+<li><p>collections是Python内建的一个<strong>集合</strong>模块，提供了许多有用的<strong>集合</strong>类。</p>
+<ul>
+<li><p><strong><code>namedtuple</code></strong>→<code>namedtuple</code>是一个函数，它用来创建一个自定义的<code>tuple</code>对象，并且规定了<code>tupl</code>e元素的个数，并可以用属性而不是索引来引用<code>tuple</code>的某个元素。</p>
+</li>
+<li><p><strong><code>deque</code></strong>→<code>deque</code>是为了高效实现插入和删除操作的双向列表，适合用于队列和栈。</p>
+</li>
+<li><p><strong><code>defaultdict</code></strong>→使用<code>dict</code>时，如果引用的Key不存在，就会抛出<code>KeyError</code>。如果希望key不存在时，返回一个默认值，就可以用<code>defaultdict</code>，除了在Key不存在时返回默认值，<code>defaultdict</code>的其他行为跟dict是完全一样的。</p>
+</li>
+<li><p><strong><code>OrederedDict</code></strong>→使用<code>dict</code>时，Key是无序的。如果要保持Key的顺序，可以用<code>OrderedDict</code>,<code>OrderedDict</code>的Key会按照插入的顺序排列，不是Key本身排序。</p>
+</li>
+<li><p><strong><code>Counter</code></strong>→Counter是一个简单的计数器，例如，统计字符出现的个数，<code>Counter</code>实际上也是<code>dict</code>的一个子类。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h2><ul>
+<li><p><code>Base64</code>是一种用64个字符来表示任意二进制数据的方法。</p>
+</li>
+<li><p><code>Base64</code>是一种任意二进制到文本字符串的编码方法，常用于在URL、Cookie、网页中传输少量二进制数据。</p>
+</li>
+</ul>
+<h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><ul>
+<li><code>struct</code>模块是用来来解决<code>bytes</code><em>(以字节为单位，用带b前缀的单引号或双引号表示)</em>和其他二进制数据类型的转换。</li>
+</ul>
+<h2 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h2><ul>
+<li><p>Python的<code>hashlib</code>提供了常见的摘要算法，如MD5，SHA1等等。</p>
+</li>
+<li><p>摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。</p>
+</li>
+<li><p>摘要算法在很多地方都有广泛的应用<strong><em>(储存密码)</em></strong>。要注意摘要算法不是加密算法，不能用于加密（因为无法通过摘要反推明文），只能用于防篡改，但是它的单向计算特性决定了可以在不存储明文口令的情况下验证用户口令。</p>
+</li>
+</ul>
+<h2 id="itertools"><a href="#itertools" class="headerlink" title="itertools"></a>itertools</h2><ul>
+<li><p>Python的内建模块<code>itertools</code>提供了非常有用的用于操作迭代对象的函数。</p>
+</li>
+<li><p><code>itertools</code>模块提供的全部是处理迭代功能的函数，它们的返回值不是<code>list</code>，而是<code>Iterator</code>，只有用<code>for</code>循环迭代的时候才真正计算。</p>
+<ul>
+<li><p><strong><em><code>count()</code></em></strong>会创建一个无限的迭代器。</p>
+</li>
+<li><p><strong><em><code>cycle()</code></em></strong>会把传入的一个序列无限重复下去。</p>
+</li>
+<li><p><strong><em><code>repeat()</code></em></strong>负责把一个元素无限重复下去，如果提供第二个参数就可以限定重复次数。</p>
+</li>
+<li><p><strong><em><code>chain()</code></em></strong>可以把一组迭代对象串联起来，形成一个更大的迭代器。</p>
+</li>
+<li><p><strong><em><code>groupby()</code></em></strong>把迭代器中相邻的重复元素挑出来放在一起。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><ul>
+<li><p>在Python中使用<code>SAX</code>解析<code>XML</code>非常简洁，通常我们关心的事件是<code>start_element</code>，<code>end_element</code>和<code>char_data</code>，准备好这3个函数，然后就可以解析<code>xml</code>了。</p>
+</li>
+<li><p>解析<code>XML</code>时，注意找出自己感兴趣的节点，响应事件时，把节点数据保存起来。解析完毕后，就可以处理数据。</p>
+</li>
+</ul>
+<p>##HTMLParser</p>
+<ul>
+<li><p><code>HTMLParser</code>是用来解析<code>HTML</code>的模块。</p>
+</li>
+<li><p>利用<code>HTMLParser</code>，可以把网页中的文本、图像等解析出来。</p>
+</li>
+<li><p>有一个更好用的第三方模块<code>BeautifulSoup</code>是对<code>HTMLParser</code>的人性化封装，可以更简洁的解析<code>XML</code>和<code>HTML</code>。</p>
+</li>
+</ul>
+<p>##urllib</p>
+<ul>
+<li><p><code>urllib·</code>提供了一系列用于操作<code>URL</code>的功能。</p>
+</li>
+<li><p><code>urllib</code>提供的功能就是利用程序去执行各种<code>HTTP</code>请求。</p>
+</li>
+<li><p>如果要模拟浏览器完成特定功能，需要把请求伪装成浏览器。伪装的方法是先监控浏览器发出的请求，再根据浏览器的请求头来伪装，<code>User-Agent</code>头就是用来标识浏览器的。</p>
+</li>
+<li><p>有一个更好用的第三方模块<code>requests</code>是对<code>urllib</code>的人性化封装，可以更好的操作<code>url</code>。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/17/学习笔记_图形界面/" rel="next" title="学习笔记_图形界面">
+                <i class="fa fa-chevron-left"></i> 学习笔记_图形界面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/17/学习urblib和requests/" rel="prev" title="学习urblib和requests">
+                学习urblib和requests <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ReedSun" />
+          <p class="site-author-name" itemprop="name">ReedSun</p>
+           
+              <p class="site-description motion-element" itemprop="description">ReedSun</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#datatime"><span class="nav-number">1.</span> <span class="nav-text">datatime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#collections"><span class="nav-number">2.</span> <span class="nav-text">collections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base64"><span class="nav-number">3.</span> <span class="nav-text">base64</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#struct"><span class="nav-number">4.</span> <span class="nav-text">struct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashlib"><span class="nav-number">5.</span> <span class="nav-text">hashlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#itertools"><span class="nav-number">6.</span> <span class="nav-text">itertools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML"><span class="nav-number">7.</span> <span class="nav-text">XML</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ReedSun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

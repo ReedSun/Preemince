@@ -1,0 +1,696 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="关于栅格系统相信大家都用过 Bootstrap （神马！你没用过？这么流行你还不快去试试），栅格系统就是 Bootstrap 的核心，现在许多 UI 库中也增加了对栅格系统的支持。 栅格系统是通过对元素增加各种不同的类名从而在不同的屏幕宽度下实现不同的效果，从而实现响应式的功能。 前言今天，我自己模仿实现了一个简单的栅格系统，戳这里看效果，看起来栅格系统很高大上，其实栅格系统的实现很简单，主要用到">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现一个简单的栅格系统">
+<meta property="og:url" content="http://reedsun.top/2017/04/16/实现一个简单的栅格系统/index.html">
+<meta property="og:site_name" content="Preeminent">
+<meta property="og:description" content="关于栅格系统相信大家都用过 Bootstrap （神马！你没用过？这么流行你还不快去试试），栅格系统就是 Bootstrap 的核心，现在许多 UI 库中也增加了对栅格系统的支持。 栅格系统是通过对元素增加各种不同的类名从而在不同的屏幕宽度下实现不同的效果，从而实现响应式的功能。 前言今天，我自己模仿实现了一个简单的栅格系统，戳这里看效果，看起来栅格系统很高大上，其实栅格系统的实现很简单，主要用到">
+<meta property="og:updated_time" content="2017-07-13T12:49:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="实现一个简单的栅格系统">
+<meta name="twitter:description" content="关于栅格系统相信大家都用过 Bootstrap （神马！你没用过？这么流行你还不快去试试），栅格系统就是 Bootstrap 的核心，现在许多 UI 库中也增加了对栅格系统的支持。 栅格系统是通过对元素增加各种不同的类名从而在不同的屏幕宽度下实现不同的效果，从而实现响应式的功能。 前言今天，我自己模仿实现了一个简单的栅格系统，戳这里看效果，看起来栅格系统很高大上，其实栅格系统的实现很简单，主要用到">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://reedsun.top/2017/04/16/实现一个简单的栅格系统/"/>
+
+
+
+
+
+  <title>实现一个简单的栅格系统 | Preeminent</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Preeminent</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I have on idea about subtitle yet</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2017/04/16/实现一个简单的栅格系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">实现一个简单的栅格系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-16T12:26:52+08:00">
+                2017-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="关于栅格系统"><a href="#关于栅格系统" class="headerlink" title="关于栅格系统"></a>关于栅格系统</h2><p>相信大家都用过 <code>Bootstrap</code> （神马！你没用过？这么流行你还不快去试试），栅格系统就是 <code>Bootstrap</code> 的核心，现在许多 UI 库中也增加了对栅格系统的支持。</p>
+<p>栅格系统是通过对元素增加各种不同的类名从而在不同的屏幕宽度下实现不同的效果，从而实现响应式的功能。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天，我自己模仿实现了一个简单的栅格系统，<a href="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/senior8/senior8_question2.html" target="_blank" rel="external">戳这里看效果</a>，看起来栅格系统很高大上，其实栅格系统的实现很简单，主要用到的还是浮动。这篇文章就是打算记录一下我是如果实现一个简单的栅格系统的。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>实现栅格系统，首要要确定两个内容。</p>
+<ul>
+<li><p>我们打算将屏幕分为几类，每一类的类前缀是什么。</p>
+</li>
+<li><p>我们打算支持的列数是多少。</p>
+</li>
+</ul>
+<p>这里我选择与 <code>bootstrap</code> 相同， 即将屏幕分为四类：<strong>超小屏幕</strong> 手机 (&lt;768px) 、<strong>小屏幕</strong> 平板 (≥768px) 、 <strong>中等屏幕</strong> 桌面显示器 (≥992px) 、 <strong>大屏幕</strong> 大屏幕显示器 (≥1200px) ，类前缀分别为：<code>.col-xs-</code> 、 <code>.col-sm-</code> 、 <code>.col-md-</code> 、 <code>.col-lg-</code> 。列数 12。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>确定了我们的屏幕分类和列数之后，我们就可以开始实现了。首先我们给所有栅格系统的 <code>class</code> 增加浮动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.col-sm-1, .col-sm-2, ... , .col-lg-12 &#123;</div><div class="line">    float: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>声明了浮动，接下来我们来声明宽度。我们从最小屏幕开始，最小屏幕不需要使用 <code>@media</code>来声明， 即如果我们只声明了最小宽度时他的类名，其元素将在所有情况下生效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.col-sm-1 &#123;</div><div class="line">    width: 8.333333%  // 十二分之一</div><div class="line">&#125;</div><div class="line">.col-sm-2 &#123;</div><div class="line">    width: 16.66667%  // 十二分之二      </div><div class="line">&#125;</div><div class="line">// ...</div><div class="line">.col-sm-12 &#123;</div><div class="line">    width: 100%  // 十二分之十二</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样最小宽度的情况我们就写好了。接下来我们来写其他情况</p>
+<p>其他情况也需要声明浮动和宽度，但是需要声明最小屏幕宽度，我们以中等屏幕宽度举例，中等屏幕宽度即为屏幕大于992px的情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@media (min-width:992) &#123;</div><div class="line">    .col-md-1 &#123;</div><div class="line">        width: 8.333333%  // 十二分之一</div><div class="line">    &#125;</div><div class="line">    .col-md-2 &#123;</div><div class="line">        width: 16.66667%  // 十二分之二      </div><div class="line">    &#125;</div><div class="line">    // ...</div><div class="line">    .col-md-12 &#123;</div><div class="line">        width: 100%  // 十二分之十二</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其他情况同理，这样我们就能实现一个简单的栅格系统很啦。</p>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><p>很多小伙伴肯定会想，我们只声明了最小宽度，却没有声明最大宽度，这里是不是有问题呀。</p>
+<p>其实不是的。这里的想法是这样的，比如我们这里写了中等屏幕宽度和超小屏幕宽度两种情况的 <code>class</code> ，那在超小屏幕上和小屏幕上都会按超小屏幕声明的宽度来执行。而在中等屏幕宽度和大屏幕上，中等屏幕宽度的声明会覆盖超小屏幕的声明，则会按中等屏幕声明来执行。</p>
+<p>好高明啊哈哈哈~</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>虽然现在的 UI 库大都会封装这些功能，但是自己实现一个了解一下原理对我们也是大有碑益的，至少~不会让我们变成一个“胶水程序员”。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/14/webpack学习笔记 （上）/" rel="next" title="webpack学习笔记 （上）">
+                <i class="fa fa-chevron-left"></i> webpack学习笔记 （上）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/17/webpack学习笔记 （下）/" rel="prev" title="webpack学习笔记 （下）">
+                webpack学习笔记 （下） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ReedSun" />
+          <p class="site-author-name" itemprop="name">ReedSun</p>
+           
+              <p class="site-description motion-element" itemprop="description">ReedSun</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于栅格系统"><span class="nav-number">1.</span> <span class="nav-text">关于栅格系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">3.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#疑问"><span class="nav-number">5.</span> <span class="nav-text">疑问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ReedSun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

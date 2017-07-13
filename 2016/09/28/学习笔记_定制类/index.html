@@ -1,0 +1,703 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="除我们之前已经学习过的__slots__(在“使用__slots__”一节中）和__len__()(在“获取对象属性”一节中）之外，Python的class中还有许多这样有特殊用途的函数，可以帮助我们定制类。  Python的class允许定义许多定制方法，可以让我们非常方便地生成特定的类。  本节我们将学习__str__、__iter__、__getitem__、__getattr__、__c">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记_定制类">
+<meta property="og:url" content="http://reedsun.top/2016/09/28/学习笔记_定制类/index.html">
+<meta property="og:site_name" content="Preeminent">
+<meta property="og:description" content="除我们之前已经学习过的__slots__(在“使用__slots__”一节中）和__len__()(在“获取对象属性”一节中）之外，Python的class中还有许多这样有特殊用途的函数，可以帮助我们定制类。  Python的class允许定义许多定制方法，可以让我们非常方便地生成特定的类。  本节我们将学习__str__、__iter__、__getitem__、__getattr__、__c">
+<meta property="og:updated_time" content="2017-07-13T12:49:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习笔记_定制类">
+<meta name="twitter:description" content="除我们之前已经学习过的__slots__(在“使用__slots__”一节中）和__len__()(在“获取对象属性”一节中）之外，Python的class中还有许多这样有特殊用途的函数，可以帮助我们定制类。  Python的class允许定义许多定制方法，可以让我们非常方便地生成特定的类。  本节我们将学习__str__、__iter__、__getitem__、__getattr__、__c">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://reedsun.top/2016/09/28/学习笔记_定制类/"/>
+
+
+
+
+
+  <title>学习笔记_定制类 | Preeminent</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Preeminent</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I have on idea about subtitle yet</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/28/学习笔记_定制类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">学习笔记_定制类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-28T12:02:04+08:00">
+                2016-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p>除我们之前已经学习过的<code>__slots__</code><em>(在“使用__slots__”一节中）</em>和<code>__len__()</code><em>(在“获取对象属性”一节中）</em>之外，Python的class中还有许多这样有特殊用途的函数，可以帮助我们定制类。</p>
+</li>
+<li><p>Python的class允许定义许多定制方法，可以让我们非常方便地生成特定的类。</p>
+</li>
+<li><p>本节我们将学习<code>__str__</code>、<code>__iter__</code>、<code>__getitem__</code>、<code>__getattr__</code>、<code>__call__</code>这几个定制方法。</p>
+</li>
+</ul>
+<p>##__str__</p>
+<ul>
+<li><p><code>__str__()</code>的作用是用来返回对象的字符串表达式。</p>
+</li>
+<li><p><code>__str()__</code>，它生成一个对象的可读性好的字符串表示，结果通常无法用<code>eval()</code>求值，但适合print输出。</p>
+</li>
+</ul>
+<ul>
+<li><p>但是有个问题，用<code>print()</code>语句输出的字符串很好看了，但是直接敲变量的话还是不好看，这时我们要用到<code>__repr__()</code>语句。</p>
+</li>
+<li><p>通常<code>__str__()</code>和<code>__repr__()</code>代码都是一样的，所以，有个偷懒的写法,<code>__repr__ = __str__</code>。</p>
+</li>
+<li><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  class Student(object):</div><div class="line">    def __init__(self, name):</div><div class="line">        self.name = name</div><div class="line">    def __str__(self):</div><div class="line">        return &apos;Student object (name=%s)&apos; % self.name</div><div class="line">    __repr__ = __str__</div><div class="line">  </div><div class="line">    &gt;&gt;&gt; print(Student(&apos;Michael&apos;))</div><div class="line">  Student object (name: Michael)  # __str__作用下输出结果</div><div class="line"></div><div class="line">  &gt;&gt;&gt; s = Student(&apos;Michael&apos;)</div><div class="line">&gt;&gt;&gt; s</div><div class="line">Student object (name: Michael)  #__repr__作用下输出结果</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##__iter__</p>
+<ul>
+<li>该方法返回一个迭代对象，然后，Python的for循环就会不断调用该迭代对象的<code>__next__()</code>方法拿到循环的下一个值，直到遇到<code>StopIteration</code>错误时退出循环。</li>
+<li>用法是定义两个函数，<code>__iter__()</code>和<code>__next__()</code>。</li>
+<li>例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class Fib(object):</div><div class="line">    def __init__(self):</div><div class="line">        self.a, self.b = 0, 1 # 初始化两个计数器a，b</div><div class="line"></div><div class="line">    def __iter__(self):</div><div class="line">        return self # 实例本身就是迭代对象，故返回自己</div><div class="line"></div><div class="line">    def __next__(self):</div><div class="line">        self.a, self.b = self.b, self.a + self.b # 计算下一个值</div><div class="line">        if self.a &gt; 100000: # 退出循环的条件</div><div class="line">            raise StopIteration();</div><div class="line">        return self.a # 返回下一个值</div><div class="line">        </div><div class="line">#下面开始循环这个类</div><div class="line"></div><div class="line">&gt;&gt;&gt; for n in Fib():</div><div class="line">...     print(n)</div><div class="line">...</div><div class="line">1</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">5</div><div class="line">...</div><div class="line">46368</div><div class="line">75025</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##__getitem__</p>
+<ul>
+<li>用<code>__iter__</code>做的实例虽然能用于循环，但是他并不是一个list。</li>
+<li><code>__getitem__</code>、<code>__setitem__</code>、<code>__delitem__</code>可以把我们的类表现得和Python自带的list、tuple、dict没什么区别</li>
+</ul>
+<p>##__getattr__</p>
+<ul>
+<li><code>__getattr__()</code>方法，可以动态返回一个属性或者方法，即使这个属性或方法并没有在类中定义。</li>
+<li>注意，只有在没有找到属性的情况下，才调用<code>__getattr__</code>，已有的属性，不会在<code>__getattr__</code>中查找。</li>
+<li>我们定义的<code>__getattr__</code>默认返回是<code>None</code>。如果调用<code>__getattr__</code>中未提到的属性，就会返回<code>None</code>。</li>
+<li><p>要让class只响应特定的几个属性，我们就要按照约定，抛出AttributeError的错误。（通过if→要相应的属性，else→抛出错误来编写）</p>
+</li>
+<li><p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line"></div><div class="line">    def __init__(self):</div><div class="line">        self.name = &apos;Michael&apos;</div><div class="line"></div><div class="line">    def __getattr__(self, attr):</div><div class="line">        if attr==&apos;score&apos;:</div><div class="line">            return 99</div><div class="line">            </div><div class="line">#x现在调用score就没问题了</div><div class="line"></div><div class="line">&gt;&gt;&gt; s = Student()</div><div class="line">&gt;&gt;&gt; s.name</div><div class="line">&apos;Michael&apos;</div><div class="line">&gt;&gt;&gt; s.score</div><div class="line">99</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##__call__</p>
+<ul>
+<li>定义一个<code>__call__()</code>方法，就可以直接对实例进行调用。</li>
+<li><code>__call__()</code>还可以定义参数。对实例进行直接调用就好比对一个函数进行调用一样。</li>
+<li>通过<code>callable()</code>函数，我们就可以判断一个对象是否是“可调用”对象。</li>
+<li>例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line">    def __init__(self, name):</div><div class="line">        self.name = name</div><div class="line"></div><div class="line">    def __call__(self):</div><div class="line">        print(&apos;My name is %s.&apos; % self.name)</div><div class="line">        </div><div class="line">#调用方法如下：</div><div class="line"></div><div class="line">&gt;&gt;&gt; s = Student(&apos;Michael&apos;)</div><div class="line">&gt;&gt;&gt; s() # self参数不要传入</div><div class="line">My name is Michael.</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/28/学习笔记_面向对象编程/" rel="next" title="学习笔记_面向对象编程">
+                <i class="fa fa-chevron-left"></i> 学习笔记_面向对象编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/28/学习笔记_使用@property/" rel="prev" title="学习笔记_使用@property">
+                学习笔记_使用@property <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="ReedSun" />
+          <p class="site-author-name" itemprop="name">ReedSun</p>
+           
+              <p class="site-description motion-element" itemprop="description">ReedSun</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ReedSun</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
