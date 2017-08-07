@@ -21,6 +21,8 @@
 
 
 
+  <meta name="google-site-verification" content="i23ZM3JwzP7RudPF0vEeoCb9wYU2xOmiRjeOKDrPyWU" />
+
 
 
 
@@ -79,6 +81,8 @@
 
 
 
+
+  <link rel="alternate" href="/atom.xml" title="Preeminent" type="application/atom+xml" />
 
 
 
@@ -142,6 +146,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?688e202055dc896dd0b15268cd5cdc8e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -244,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/25/python函数中的参数/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/25/git中的指令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -263,7 +277,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/09/25/python函数中的参数/" itemprop="url">python函数中的参数</a></h1>
+                <a class="post-title-link" href="/2016/09/25/git中的指令/" itemprop="url">git中的指令</a></h1>
         
 
         <div class="post-meta">
@@ -275,7 +289,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-25T12:34:09+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-25T16:51:40+08:00">
                 2016-09-25
               </time>
             
@@ -312,124 +326,16 @@
       
         
           
-            <h2 id="参数类型"><a href="#参数类型" class="headerlink" title="参数类型"></a>参数类型</h2><p>python函数中的参数类型一共有五种，他们分别是 </p>
-<ul>
-<li><code>POSITIONAL_OR_KEYWORD</code> 位置和关键字参数</li>
-<li><code>VAR_POSITIONAL</code> 可变参数</li>
-<li><code>KEYWORD_ONLY</code> 关键词参数</li>
-<li><code>VAR_KEYWORD</code> 可变的关键词参数</li>
-<li><code>POSITIONAL_ONLY</code></li>
-</ul>
-<h3 id="POSITIONAL-OR-KEYWORD-位置和关键字参数"><a href="#POSITIONAL-OR-KEYWORD-位置和关键字参数" class="headerlink" title="POSITIONAL_OR_KEYWORD 位置和关键字参数"></a>POSITIONAL_OR_KEYWORD 位置和关键字参数</h3><p>第一种参数是<code>POSITIONAL_OR_KEYWORD</code>位置和关键字参数，其特点是没有任何<code>*</code>前缀。</p>
-<p>如名字所见，<code>POSITIONAL_OR_KEYWORD</code>类型的参数可以通过<strong>位置</strong> <code>POSITIONAL</code>传参调用，也可以通过<strong>关键字</strong><code>KEYWORD</code>传参调用。</p>
-<p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">def hahaha(a): </div><div class="line">    pass</div><div class="line"></div><div class="line"># 位置传参调用</div><div class="line">hahaha(1)</div><div class="line"># 关键字传参调用</div><div class="line">hahaha(a=1)</div></pre></td></tr></table></figure></p>
-<h3 id="VAR-POSITIONAL-可变参数"><a href="#VAR-POSITIONAL-可变参数" class="headerlink" title="VAR_POSITIONAL 可变参数"></a>VAR_POSITIONAL 可变参数</h3><p>第二种参数是可变参数<code>VAR_POSTIONAL</code>,其特点是有一个<code>*</code>作为前缀声明，例如<code>*xxx</code>，即说明此参数是可变参数。</p>
-<p>也如名字所见，<code>VAR_POSTIONAL</code>类型参数仅可通过<strong>位置</strong><code>POSTIONAL</code>传参调用，可以接收任意个位置参数甚至是零个，不可以通过<strong>关键字</strong><code>KEYWORD</code>传参调用。</p>
-<ul>
-<li><code>VAR_POSITIONAL</code> 可变参数的一些特点<ul>
-<li>在函数内部，<code>VAR_POSITIONAL</code>可变参数以一个元组显示。</li>
-<li><code>VAR_POSITIONAL</code>可变参数可以不传入任何参数调用也不会报错。</li>
-<li><code>VAR_POSITIONAL</code>可变参数只允许存在一个<br>例子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def hahaha(*a):</div><div class="line">...     return a</div><div class="line">...</div><div class="line">#不传入参数也不会报错，会返回一个空元组</div><div class="line">&gt;&gt;&gt; hahaha()</div><div class="line">()</div><div class="line">#也可以传入任意个位置参数调用</div><div class="line">&gt;&gt;&gt; hahaha(3,2,4,5)</div><div class="line">(3, 2, 4, 5)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="KEYWORK-ONLY-关键字参数"><a href="#KEYWORK-ONLY-关键字参数" class="headerlink" title="KEYWORK_ONLY 关键字参数"></a>KEYWORK_ONLY 关键字参数</h3><p>第三种参数是关键字参数<code>KEYWORK_ONLY</code>，其特点是，只会在<code>VAR_POSITIONAL</code>可变类型参数的后面，且不带<code>**</code>前缀。</p>
-<p>也如名字所见，<code>KEYWORK_ONLY</code>类型参数仅可以通过<strong>关键字</strong><code>KEYWORD</code>传参调用，不可以通过<strong>位置</strong><code>POSTIONAL</code>传参调用。<em>（因为通过位置传的参数已经全部让前面的<code>VAR_POSITONAL</code>参数接收了，所以<code>KEYWORK_ONLY</code>只能通过关键字接受参数调用。）</em></p>
-<p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># VAR_POSITIONAL不需要使用时，可以匿名化</div><div class="line">def hahaha(*, a):</div><div class="line">    pass</div><div class="line"></div><div class="line"># 只能关键字传参调用</div><div class="line">hahaha(a=1)</div></pre></td></tr></table></figure></p>
-<p>###VAR_KEYWORD 可变的关键词参数</p>
-<p>第四种参数是可变的关键词参数，其特点是，其特点是有一个<code>**</code>作为前缀声明，例如<code>**xxx</code>，即说明此参数是可变的关键词参数。</p>
-<p><code>VAR_KEYWORD</code>类型参数仅可通过<strong>关键字</strong><code>KEYWORD</code>传参调用，可以接收任意个位置参数甚至是零个，不通过<strong>位置</strong><code>POSTIONAL</code>传参调用。</p>
-<ul>
-<li><code>VAR_KEYWORD</code>可变的关键词参数的一些特点<ul>
-<li><code>VAR_KEYWORD</code>在函数内部以一个字典<code>dict</code>显示。</li>
-<li><code>VAR_KEYWORD</code>只允许有一个。</li>
-<li><code>VAR_KEYWORD</code>只允许在函数的最后声明。</li>
-</ul>
-</li>
-</ul>
-<p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def hahaha(**a):</div><div class="line">...     return a</div><div class="line">...</div><div class="line">&gt;&gt;&gt; hahaha(a=3,b=111,v=&quot;asasad&quot;)</div><div class="line">&#123;&apos;v&apos;: &apos;asasad&apos;, &apos;a&apos;: 3, &apos;b&apos;: 111&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="POSITIONAL-ONLY-位置参数"><a href="#POSITIONAL-ONLY-位置参数" class="headerlink" title="POSITIONAL_ONLY 位置参数"></a>POSITIONAL_ONLY 位置参数</h3><p>第五种是位置参数，它一点也不重要，属于python的历史产物，我们已经无法在高版本python中创建一个<code>POSITIONAL_ONLY</code>参数了已经。</p>
-<h3 id="几种参数的综合比较"><a href="#几种参数的综合比较" class="headerlink" title="几种参数的综合比较"></a>几种参数的综合比较</h3><table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>英文名</th>
-<th>定义时顺序</th>
-<th>表达方式</th>
-<th>如何调用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>位置和关键词参数</td>
-<td><code>POSITIONAL_OR_KEYWORD</code></td>
-<td>1</td>
-<td>正常表达</td>
-<td>关键词&amp;位置</td>
-</tr>
-<tr>
-<td>可变参数</td>
-<td><code>VAR_POSITIONAL</code></td>
-<td>2</td>
-<td>前缀<code>*</code></td>
-<td>位置</td>
-<td></td>
-</tr>
-<tr>
-<td>关键词参数</td>
-<td><code>KEYWORD_ONLY</code></td>
-<td>3</td>
-<td>只能在可变参数后面，不带<code>**</code></td>
-<td>关键词</td>
-</tr>
-<tr>
-<td>可变的关键词参数</td>
-<td><code>VAR_KEYWORD</code></td>
-<td>4</td>
-<td>前缀<code>**</code></td>
-<td>关键词</td>
-</tr>
-</tbody>
-</table>
-<h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2><ul>
-<li><code>VAR</code>系列的两个参数<em>（可变参数、可变的关键词参数）</em>不允许设置默认参数，而另外两个参数<em>（位置和关键词参数、关键词参数）</em>可以设置默认参数。<ul>
-<li>因为<code>VAR_POSITIONAL</code>的默认参数是<code>tuple()</code>空元祖，而<code>VAR_KEYWORD</code>的默认参数是<code>dict()</code>空字典。</li>
-</ul>
-</li>
-<li>默认参数的位置<ul>
-<li><code>POSITIONAL_OR_KEYWORD</code>类型的默认参数一定要放在后面，否则会报错。</li>
-<li><code>KEYWORD_ONLY</code>虽然没有强制要求，因为都是用关键字传参，谁先谁后都无所谓，但最好还是尽可能地放在后面吧。</li>
-</ul>
-</li>
-<li>默认参数绝对不可以设置为可变类型（比如dict、list、set）。<ul>
-<li>因为如果你把默认参数设置为可变类型，下次再调用它就不是默认值了。</li>
-</ul>
-</li>
-</ul>
-<p>##接受参数的优先级</p>
-<ol>
-<li>先接收<code>POSITIONAL_OR_KEYWORD</code></li>
-<li>再接收<code>KEYWORD_ONLY</code></li>
-<li>再接收<code>VAR_POSITIONAL</code>和<code>VAR_KEYWORD</code>，这两者没有交集</li>
-</ol>
-<p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; hahaha(a=3,b=111,v=&quot;asasad&quot;)</div><div class="line">&#123;&apos;v&apos;: &apos;asasad&apos;, &apos;a&apos;: 3, &apos;b&apos;: 111&#125;</div><div class="line">&gt;&gt;&gt; def hahaha(a,*b,c,**d):</div><div class="line">...     print(a)</div><div class="line">...     print(b)</div><div class="line">...     print(c)</div><div class="line">...     print(d)</div><div class="line">...</div><div class="line">&gt;&gt;&gt; hahaha(1,2,&quot;3&quot;,c=4,one=5,two=6)</div><div class="line">1                          #a的值</div><div class="line">(2, &apos;3&apos;)                   #b的值</div><div class="line">4                          #c的值</div><div class="line">&#123;&apos;one&apos;: 5, &apos;two&apos;: 6&#125;       #d的值</div></pre></td></tr></table></figure></p>
-<p>##参数组合<br>在python中，这几种参数都可以组合使用，但请一定要注意<strong>参数的顺序</strong></p>
-<p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">def f1(a, b, c=0, *args, **kw):</div><div class="line">    print(&apos;a =&apos;, a, &apos;b =&apos;, b, &apos;c =&apos;, c, &apos;args =&apos;, args, &apos;kw =&apos;, kw)</div><div class="line"></div><div class="line">def f2(a, b, c=0, *, d, **kw):</div><div class="line">    print(&apos;a =&apos;, a, &apos;b =&apos;, b, &apos;c =&apos;, c, &apos;d =&apos;, d, &apos;kw =&apos;, kw)</div><div class="line"></div><div class="line">#在函数调用的时候，Python解释器自动按照参数位置和参数名把对应的参数传进去。</div><div class="line"></div><div class="line">&gt;&gt;&gt; f1(1, 2)</div><div class="line">a = 1 b = 2 c = 0 args = () kw = &#123;&#125;</div><div class="line">&gt;&gt;&gt; f1(1, 2, c=3)</div><div class="line">a = 1 b = 2 c = 3 args = () kw = &#123;&#125;</div><div class="line">&gt;&gt;&gt; f1(1, 2, 3, &apos;a&apos;, &apos;b&apos;)</div><div class="line">a = 1 b = 2 c = 3 args = (&apos;a&apos;, &apos;b&apos;) kw = &#123;&#125;</div><div class="line">&gt;&gt;&gt; f1(1, 2, 3, &apos;a&apos;, &apos;b&apos;, x=99)</div><div class="line">a = 1 b = 2 c = 3 args = (&apos;a&apos;, &apos;b&apos;) kw = &#123;&apos;x&apos;: 99&#125;</div><div class="line">&gt;&gt;&gt; f2(1, 2, d=99, ext=None)</div><div class="line">a = 1 b = 2 c = 0 d = 99 kw = &#123;&apos;ext&apos;: None&#125;</div><div class="line"></div><div class="line">#通过一个tuple和dict，你也可以调用上述函数。</div><div class="line"></div><div class="line">&gt;&gt;&gt; args = (1, 2, 3, 4)</div><div class="line">&gt;&gt;&gt; kw = &#123;&apos;d&apos;: 99, &apos;x&apos;: &apos;#&apos;&#125;</div><div class="line">&gt;&gt;&gt; f1(*args, **kw)</div><div class="line">a = 1 b = 2 c = 3 args = (4,) kw = &#123;&apos;d&apos;: 99, &apos;x&apos;: &apos;#&apos;&#125;</div><div class="line">&gt;&gt;&gt; args = (1, 2, 3)</div><div class="line">&gt;&gt;&gt; kw = &#123;&apos;d&apos;: 88, &apos;x&apos;: &apos;#&apos;&#125;</div><div class="line">&gt;&gt;&gt; f2(*args, **kw)</div><div class="line">a = 1 b = 2 c = 3 d = 88 kw = &#123;&apos;x&apos;: &apos;#&apos;&#125;</div></pre></td></tr></table></figure></p>
-<p>所以，对于任意函数，都可以通过类似<code>func(*args, **kw)</code>的形式调用它，无论它的参数是如何定义的。</p>
-<p>###小结及注意事项</p>
-<ul>
-<li>默认参数一定要用不可变对象，如果是可变对象，程序运行时会有逻辑错误！</li>
-<li><code>*args</code>是可变参数，args接收的是一个tuple。</li>
-<li><code>**kw</code>是可变的关键字参数，kw接收的是一个dict。</li>
-<li>可变参数既可以直接传入：<code>func(1, 2, 3)</code>，又可以先组装list或tuple，再通过<code>*args</code>传入：<code>func(*(1, 2, 3))</code></li>
-<li>可变的关键字参数既可以直接传入：<code>func(a=1, b=2)</code>，又可以先组装dict，再通过<code>**kw</code>传入：<code>func(**{&#39;a&#39;: 1, &#39;b&#39;: 2})</code>。</li>
-<li>使用`<em>args和*</em>kw是Python的习惯写法，当然也可以用其他参数名，但最好使用习惯用法。</li>
-<li>关键字参数在没有可变参数的情况下不要忘了写分隔符*，否则定义的将是位置和关键词参数。</li>
-</ul>
-<p>###参考文献<br>1.<a href="http://www.qiangtaoli.com/bootstrap/blog/001474192642421efbf41449b2e4a3b99e8202c54d2d8a2000" target="_blank" rel="external">python的类型（www.qiangtaoli.com）</a><br>1.<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431752945034eb82ac80a3e64b9bb4929b16eeed1eb9000#0" target="_blank" rel="external">函数的参数 - 廖雪峰的官方网站</a></p>
-
-          
+          本文借鉴自颜海镜的博客-我的git笔记如有侵权，定将删除。
+##配置配置账号信息12345678git config -e [--global] #编辑Git配置文件git config --global user.name ReedSungit config --global user.email
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/25/git中的指令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -539,53 +445,19 @@
       
         
           
-            <p>今天尝试了在windows命令提示符中选择python文件并执行，也发现了一些问题，现在把在win命令行中执行python程序的方法记录一下。</p>
-<ul>
-<li>首先，我们需要用<code>cd</code>命令来<strong>将当前目录切换为你的python文件（.py)保存目录</strong>。</li>
-<li><ul>
-<li>如果我们要切换的目录位于同一盘符中<em>（例如c:/work1移动到c:/work2）</em>时，直接进行切换就可以了。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C:\work1&gt;cd c:\work2</div><div class="line">c:\work2&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><ul>
-<li>如果我们要切换的目录不属于同一盘符<em>（例如c:/work移动到e:/python）</em>时，我们会发现cmd中不可以直接进行切换，所以我们需要用以下三种方法进行切换。    </li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li>方法一：在命令提示符的DOS窗口下直接输入<code>e:</code>。回车后就可以直接转跳到E盘符下了，然后我们就可以用<code>cd</code>指令进行操作了。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">C:\work&gt;e:</div><div class="line"></div><div class="line">E:\&gt;cd e:\python</div><div class="line">        </div><div class="line">E:\python&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li>方法二：输入cd /e e:也同样可以转跳到E盘符下,然后通过<code>cd</code>指令进行操作。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">C:\work&gt;cd /e e:</div><div class="line"></div><div class="line">E:\&gt;cd e:\python</div><div class="line">        </div><div class="line">E:\python&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li>方法三：先用<code>cd</code>命令切换到目标文件，发现没有切换到目标盘符下的相应目录，这时我们再输入<code>盘符名:</code>就发现成功切换到相应目录。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">C:\work&gt;cd e:\python</div><div class="line"></div><div class="line">C:\work&gt;e:</div><div class="line">        </div><div class="line">E:\python&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>然后我们可以使用<code>dir</code>命令来<strong>查看当前目录的文件和参数</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"> c:\work&gt;dir</div><div class="line">驱动器 C 中的卷没有标签。</div><div class="line">卷的序列号是 62BD-615D</div><div class="line">    </div><div class="line">c:\work 的目录</div><div class="line">    </div><div class="line">        2016/09/16  21:49    &lt;DIR&gt;          .</div><div class="line">        2016/09/16  21:49    &lt;DIR&gt;          ..</div><div class="line">        2016/08/31  22:27             1,404 aa.py</div><div class="line">        2016/09/16  21:52               133 bb.py</div><div class="line">                   2 个文件          1,537 字节</div><div class="line">                   2 个目录 18,823,954,432 可用字节</div></pre></td></tr></table></figure>
-<p><em>我之前在work文件夹中放入了aa.py和bb.py两个文件，如上所示，<code>dir</code>命令成功展示了work文件夹的创建时间以及这两个python文件的修改时间。</em></p>
-</li>
-<li><p>最后我们就可以直接输入python文件的文件名来<strong>执行python文件</strong>了</p>
-</li>
-</ul>
-<p><strong>请注意！！</strong><br><strong>这里并不需要使用python命令进入命令行交互环境即可调用py文件。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">C:\work&gt;aa.py 我可以猜到您设置的一个0到100的整数，快来试试吧 请输入你想让我猜的整数（0到100之间）55</div><div class="line">您让我猜的数是50吗？ 如果我猜对了，请输入c；如果我猜的比您输入的大，请输入h；如果我猜的比您输入小，请输入l： l</div><div class="line">您让我猜的数是75吗？ 如果我猜对了，请输入c；如果我猜的比您输入的大，请输入h；如果我猜的比您输入的小，请输入l： h</div><div class="line">您让我猜的数是62吗？ 如果我猜对了，请输入c；如果我猜的比您输入的大，请输入h；如果我猜的比您输入的小，请输入l： h</div><div class="line">您让我猜的数是56吗？ 如果我猜对了，请输入c；如果我猜的比您输入的大，请输入h；如果我猜的比您输入的小，请输入l： h</div><div class="line">您让我猜的数是53吗？ 如果我猜对了，请输入c；如果我猜的比您输入的大，请输入h；如果我猜的比您输入的小，请输入l： l</div><div class="line">您让我猜的数是54吗？ 如果我猜对了，请输入c；如果我猜的比您输入的大，请输入h；如果我猜的比您输入的小，请输入l： l</div><div class="line">您让我猜的数是55吗？ 如果我猜对了，请输入c；如果我猜的比您输入的大，请输入h；如果我猜的比您输入的小，请输入l： c</div><div class="line">您让我猜的数果然是55，哈哈，我真厉害。</div></pre></td></tr></table></figure></p>
-<p>  <em>我这里的aa文件是一个利用二分搜索猜数的小程序~</em></p>
+          今天尝试了在windows命令提示符中选择python文件并执行，也发现了一些问题，现在把在win命令行中执行python程序的方法记录一下。
 
-          
+首先，我们需要用cd命令来将当前目录切换为你的python文件（.py)保存目录。
+
+如果我们要切换的目录位于同一盘符中（例如c:/work1移动到c:/
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/25/在win命令行执行python程序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -695,24 +567,20 @@
       
         
           
-            <h2 id="enumerate-用法说明"><a href="#enumerate-用法说明" class="headerlink" title="enumerate()用法说明"></a>enumerate()用法说明</h2><ul>
-<li>enumerate()用于遍历序列中的元素以及他们的下标。</li>
-<li>enumerate()是python的内置函数。</li>
-<li>enumerate的意思是枚举，列举的意思。</li>
-<li>对于一个可迭代的或者可遍历的对象，enumerate将其组成一个索引序列，利用它同时获得索引和值</li>
-<li>enumerate多由于for语句中得到计数。<br>##enumerate()的语法和用法</li>
-<li>语法<br><code>enumerate（Iterable，start)</code><ul>
-<li>语句中的第一个元素<code>Iterable</code>代表我们要进行遍历的序列（列表，字典，元组，……）。</li>
-<li>语句中的第二个元素<code>start</code>代表索引的起始值，默认是0。<h2 id="enumerate-例子"><a href="#enumerate-例子" class="headerlink" title="enumerate()例子"></a>enumerate()例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; L=[1,2,3,4,5]</div><div class="line">&gt;&gt;&gt; list(enumerate(L))</div><div class="line">[(0, 1), (1, 2), (2, 3), (3, 4), (4, 5)]</div><div class="line">&gt;&gt;&gt; list(enumerate(L,4))</div><div class="line">[(4, 1), (5, 2), (6, 3), (7, 4), (8, 5)]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
-<li><a href="http://blog.csdn.net/churximi/article/details/51648388" target="_blank" rel="external">python enumerate用法总结-竹聿Simon的专栏</a></li>
-</ul>
-
-          
+          enumerate()用法说明
+enumerate()用于遍历序列中的元素以及他们的下标。
+enumerate()是python的内置函数。
+enumerate的意思是枚举，列举的意思。
+对于一个可迭代的或者可遍历的对象，enumerate将其组成一个索引序列，利用它同时获得索引和值
+enumera
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/25/python中的enumerate语句/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -822,73 +690,142 @@
       
         
           
-            <p>在python中我们会遇到一个问题，问题是如何输出格式化的字符串。我们经常会输出类似<code>&#39;亲爱的xxx你好！你xx月的话费是xx，余额是xx&#39;</code>之类的字符串，而xxx的内容都是根据变量变化的，所以，需要一种简便的格式化字符串的方式。<br>在python中，我们用<code>%</code>实现格式化字符串。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>我们举个例子来说明格式化字符串的语法<br>‘’’<br>>&gt;&gt; ‘Hello, %s’ % ‘world’<br>‘Hello, world’<br>>&gt;&gt; ‘Hi, %s, you have $%d.’ % (‘Michael’, 1000000)<br>‘Hi, Michael, you have $1000000.’<br>‘’’<br>在字符串内部，<code>%s</code>表示用字符串替换，<code>%d</code>表示用整数替换，有几个<code>%</code>占位符，后面就跟几个变量或者值，顺序要对应好。如果只有一个<code>%</code>，括号可以省略。</p>
-<h2 id="字符串格式化符号"><a href="#字符串格式化符号" class="headerlink" title="字符串格式化符号"></a>字符串格式化符号</h2><pre><code>%c     格式化字符及其ASCII码
-%s     格式化字符串
-%d     格式化整数
-%u     格式化无符号整型
-%o     格式化无符号八进制数
-%x     格式化无符号十六进制数
-%X     格式化无符号十六进制数（大写）
-%f     格式化浮点数字，可指定小数点后的精度
-%e     用科学计数法格式化浮点数
-%E     作用同%e，用科学计数法格式化浮点数
-%g     %f和%e的简写
-%G     %f 和 %E 的简写
-%p     用十六进制数格式化变量的地址
-</code></pre><h2 id="格式化操作符辅助指令"><a href="#格式化操作符辅助指令" class="headerlink" title="格式化操作符辅助指令"></a>格式化操作符辅助指令</h2><pre><code>符号    功能
-*      定义宽度或者小数点精度
--      用做左对齐
-+      在正数前面显示加号( + )
-&lt;sp&gt;  在正数前面显示空格
-\#      在八进制数前面显示零(&apos;0&apos;)，在十六进制前面显示&apos;0x&apos;或者&apos;0X&apos;(取决于用的是&apos;x&apos;还是&apos;X&apos;)
-0      显示的数字前面填充`0`而不是默认的空格
-%      &apos;%%&apos;输出一个单一的&apos;%&apos;
-(var) 映射变量(字典参数)
-m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
-</code></pre><h4 id="指定是否补0和整数与小数的位数的几种情况"><a href="#指定是否补0和整数与小数的位数的几种情况" class="headerlink" title="指定是否补0和整数与小数的位数的几种情况"></a><strong>指定是否补0和整数与小数的位数的几种情况</strong></h4><ul>
-<li><code>%0xd</code>表示将整数用<code>0</code>补足到x位<ul>
-<li>整数的位数比x小时，用<code>0</code>补足<br>eg:</li>
-</ul>
-</li>
-</ul>
-<pre><code>&gt;&gt;&gt; &quot;%03d&quot; %33
-&apos;033&apos;
-</code></pre><ul>
-<li>整数的位数比x大时，直接输出<br>eg：</li>
-</ul>
-<pre><code>&gt;&gt;&gt; &quot;%03d&quot; %12345
-&apos;12345&apos;
-</code></pre><ul>
-<li><code>%xd</code>表示将整数用<code>空格</code>补足到x位<ul>
-<li>如果整数的位数比x小时，用<code>空格</code>补足<br>eg:</li>
-</ul>
-</li>
-</ul>
-<pre><code>\&gt;&gt;&gt; &quot;%6d&quot; %123
-&apos;   123&apos;
-</code></pre><ul>
-<li>如果整数的位数比x大时，直接输出<br>eg:</li>
-</ul>
-<pre><code>\&gt;&gt;&gt; &quot;%3d&quot; %12345
-&apos;12345&apos;
-</code></pre><ul>
-<li><code>%.xf</code>表示将小数中小数点后面的位数固定到x位<ul>
-<li>如果小数的位数比x大，则保留x位小数<br>eg:</li>
-</ul>
-</li>
-</ul>
-<pre><code>\&gt;&gt;&gt; &quot;%.3f&quot; % 3.1415926
-&apos;3.142&apos;
-</code></pre><ul>
-<li>如果小数的位数比x小，则用0补足<br>eg:</li>
-</ul>
-<pre><code>\&gt;&gt;&gt; &quot;%.4f&quot; % 3.1
-&apos;3.1000&apos;
-</code></pre><p>*如果我们不太确定用什么，那么用<code>%s</code>是最保险的，它会把任何数据类型转换为字符串。</p>
+          在python中我们会遇到一个问题，问题是如何输出格式化的字符串。我们经常会输出类似&#39;亲爱的xxx你好！你xx月的话费是xx，余额是xx&#39;之类的字符串，而xxx的内容都是根据变量变化的，所以，需要一种简便的格式化字符串的方式。在python中，我们用%实现格式化字符串。
+语法我们举个
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/25/python中的格式化字符/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/25/python函数中的参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/25/python函数中的参数/" itemprop="url">python函数中的参数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-25T12:34:09+08:00">
+                2016-09-25
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          参数类型python函数中的参数类型一共有五种，他们分别是 
+
+POSITIONAL_OR_KEYWORD 位置和关键字参数
+VAR_POSITIONAL 可变参数
+KEYWORD_ONLY 关键词参数
+VAR_KEYWORD 可变的关键词参数
+POSITIONAL_ONLY
+
+POSITIONAL
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/25/python函数中的参数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -970,7 +907,7 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -983,7 +920,7 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -992,8 +929,35 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ReedSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ReedSun" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-address-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1079,6 +1043,8 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
   
 
 
+  
+
 
 
 
@@ -1106,6 +1072,9 @@ m.n.  m是显示的最小总宽度,n是小数点后的位数(如果可用的话)
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   

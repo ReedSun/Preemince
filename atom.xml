@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Preeminent</title>
+  <subtitle>I have on idea about subtitle yet</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://reedsun.top/"/>
+  <updated>2017-08-07T11:54:42.000Z</updated>
+  <id>http://reedsun.top/</id>
+  
+  <author>
+    <name>ReedSun</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于函数重载的一种实现方法</title>
+    <link href="http://reedsun.top/2017/08/02/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E7%9A%84%E4%B8%80%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/"/>
+    <id>http://reedsun.top/2017/08/02/关于函数重载的一种实现方法/</id>
+    <published>2017-08-02T08:12:01.000Z</published>
+    <updated>2017-08-07T11:54:42.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于函数重载的一种实现方法&quot;&gt;&lt;a href=&quot;#关于函数重载的一种实现方法&quot; class=&quot;headerlink&quot; title=&quot;关于函数重载的一种实现方法&quot;&gt;&lt;/a&gt;关于函数重载的一种实现方法&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; cla
+    
+    </summary>
+    
+    
+      <category term="Javascript" scheme="http://reedsun.top/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于 Storge 在 Safari 的无痕浏览模式中的坑</title>
+    <link href="http://reedsun.top/2017/05/17/Storge%20%E5%9C%A8%20Safari%20%E7%9A%84%E6%97%A0%E7%97%95%E6%B5%8F%E8%A7%88%E6%A8%A1%E5%BC%8F%E4%B8%AD%E7%9A%84%E5%9D%91/"/>
+    <id>http://reedsun.top/2017/05/17/Storge 在 Safari 的无痕浏览模式中的坑/</id>
+    <published>2017-05-17T11:51:37.000Z</published>
+    <updated>2017-07-13T12:50:08.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于-Storge-在-Safari-的无痕浏览模式中的坑&quot;&gt;&lt;a href=&quot;#关于-Storge-在-Safari-的无痕浏览模式中的坑&quot; class=&quot;headerlink&quot; title=&quot;关于 Storge 在 Safari 的无痕浏览模式中的坑&quot;&gt;&lt;/a
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://reedsun.top/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6 中 Class 学习笔记</title>
+    <link href="http://reedsun.top/2017/05/14/ES6%20%E4%B8%AD%20Class%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://reedsun.top/2017/05/14/ES6 中 Class 学习笔记/</id>
+    <published>2017-05-14T13:51:20.000Z</published>
+    <updated>2017-07-13T12:50:08.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;ES6-中-Class-学习笔记&quot;&gt;&lt;a href=&quot;#ES6-中-Class-学习笔记&quot; class=&quot;headerlink&quot; title=&quot;ES6 中 Class 学习笔记&quot;&gt;&lt;/a&gt;ES6 中 Class 学习笔记&lt;/h1&gt;&lt;p&gt;ES6 中的 &lt;code&gt;c
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://reedsun.top/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决动态网页在微信浏览器中每次返回都会重新加载的问题</title>
+    <link href="http://reedsun.top/2017/05/09/%E8%A7%A3%E5%86%B3%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E7%9A%84%E7%BD%91%E9%A1%B5%E5%9C%A8%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E6%AF%8F%E6%AC%A1%E8%BF%94%E5%9B%9E%E9%83%BD%E4%BC%9A%E9%87%8D%E6%96%B0%E7%94%9F%E6%88%90%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://reedsun.top/2017/05/09/解决动态生成的网页在微信浏览器中每次返回都会重新生成的问题/</id>
+    <published>2017-05-09T14:33:59.000Z</published>
+    <updated>2017-07-13T12:49:50.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;解决动态网页在微信浏览器中每次返回都会重新加载的问题&quot;&gt;&lt;a href=&quot;#解决动态网页在微信浏览器中每次返回都会重新加载的问题&quot; class=&quot;headerlink&quot; title=&quot;解决动态网页在微信浏览器中每次返回都会重新加载的问题&quot;&gt;&lt;/a&gt;解决动态网页在微
+    
+    </summary>
+    
+    
+      <category term="Other" scheme="http://reedsun.top/tags/Other/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于Number.toFixed()函数的总结</title>
+    <link href="http://reedsun.top/2017/05/08/%E5%85%B3%E4%BA%8ENumber.toFixed()%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    <id>http://reedsun.top/2017/05/08/关于Number.toFixed()的总结/</id>
+    <published>2017-05-08T13:05:51.000Z</published>
+    <updated>2017-07-13T12:50:06.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于Number-toFixed-函数的总结&quot;&gt;&lt;a href=&quot;#关于Number-toFixed-函数的总结&quot; class=&quot;headerlink&quot; title=&quot;关于Number.toFixed()函数的总结&quot;&gt;&lt;/a&gt;关于Number.toFixed()函
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://reedsun.top/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于 Date() 函数在 iOS 中的一个小坑</title>
+    <link href="http://reedsun.top/2017/05/04/%E5%85%B3%E4%BA%8E%20Date()%20%E5%87%BD%E6%95%B0%E5%9C%A8%20iOS%20%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%9D%91/"/>
+    <id>http://reedsun.top/2017/05/04/关于 Date() 函数在 iOS 中的一个小坑/</id>
+    <published>2017-05-04T12:12:40.000Z</published>
+    <updated>2017-07-13T12:50:08.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于-Date-函数在-iOS-中的一个小坑&quot;&gt;&lt;a href=&quot;#关于-Date-函数在-iOS-中的一个小坑&quot; class=&quot;headerlink&quot; title=&quot;关于 Date() 函数在 iOS 中的一个小坑&quot;&gt;&lt;/a&gt;关于 Date() 函数在 iOS 
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://reedsun.top/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单筛选iOS和安卓的版本的函数</title>
+    <link href="http://reedsun.top/2017/05/02/%E6%A0%B9%E6%8D%AEiOS%E5%92%8C%E5%AE%89%E5%8D%93%E7%9A%84%E7%89%88%E6%9C%AC%E8%BF%9B%E8%A1%8C%E7%AD%9B%E9%80%89%E7%9A%84%E5%B0%8F%E5%87%BD%E6%95%B0/"/>
+    <id>http://reedsun.top/2017/05/02/根据iOS和安卓的版本进行筛选的小函数/</id>
+    <published>2017-05-02T12:42:31.000Z</published>
+    <updated>2017-07-13T12:50:06.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;简单筛选iOS和安卓的版本的函数&quot;&gt;&lt;a href=&quot;#简单筛选iOS和安卓的版本的函数&quot; class=&quot;headerlink&quot; title=&quot;简单筛选iOS和安卓的版本的函数&quot;&gt;&lt;/a&gt;简单筛选iOS和安卓的版本的函数&lt;/h1&gt;&lt;h2 id=&quot;需求&quot;&gt;&lt;a hr
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://reedsun.top/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack学习笔记 （下）</title>
+    <link href="http://reedsun.top/2017/04/17/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%88%E4%B8%8B%EF%BC%89/"/>
+    <id>http://reedsun.top/2017/04/17/webpack学习笔记 （下）/</id>
+    <published>2017-04-17T13:17:32.000Z</published>
+    <updated>2017-05-31T14:32:36.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;代码分割&quot;&gt;&lt;a href=&quot;#代码分割&quot; class=&quot;headerlink&quot; title=&quot;代码分割&quot;&gt;&lt;/a&gt;代码分割&lt;/h3&gt;&lt;p&gt;对于一个大型的 Webapp 来说，把所有 JS 文件都放在同一个文件中是肯定不合理的！这会大大影响它的性能。webpack
+    
+    </summary>
+    
+    
+      <category term="Webpack" scheme="http://reedsun.top/tags/Webpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实现一个简单的栅格系统</title>
+    <link href="http://reedsun.top/2017/04/16/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://reedsun.top/2017/04/16/实现一个简单的栅格系统/</id>
+    <published>2017-04-16T04:26:52.000Z</published>
+    <updated>2017-07-13T12:49:38.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;关于栅格系统&quot;&gt;&lt;a href=&quot;#关于栅格系统&quot; class=&quot;headerlink&quot; title=&quot;关于栅格系统&quot;&gt;&lt;/a&gt;关于栅格系统&lt;/h2&gt;&lt;p&gt;相信大家都用过 &lt;code&gt;Bootstrap&lt;/code&gt; （神马！你没用过？这么流行你还不快去试试），栅
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="http://reedsun.top/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack学习笔记 （上）</title>
+    <link href="http://reedsun.top/2017/04/14/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%88%E4%B8%8A%EF%BC%89/"/>
+    <id>http://reedsun.top/2017/04/14/webpack学习笔记 （上）/</id>
+    <published>2017-04-14T14:38:44.000Z</published>
+    <updated>2017-05-31T14:30:40.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这几天晚上在跟着&lt;a href=&quot;https://github.com/ruanyf/webpack-demos&quot; target=&quot;_bla
+    
+    </summary>
+    
+    
+      <category term="Webpack" scheme="http://reedsun.top/tags/Webpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习笔记-HTML5_CSS3</title>
+    <link href="http://reedsun.top/2017/03/20/HTML5_CSS3/"/>
+    <id>http://reedsun.top/2017/03/20/HTML5_CSS3/</id>
+    <published>2017-03-20T12:42:37.000Z</published>
+    <updated>2017-07-13T12:49:38.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;HTML5是什么？有哪些新特性？有哪些新增标签？如何让低版本的-IE-支持-HTML5新标签&quot;&gt;&lt;a href=&quot;#HTML5是什么？有哪些新特性？有哪些新增标签？如何让低版本的-IE-支持-HTML5新标签&quot; class=&quot;headerlink&quot; title=&quot;
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="http://reedsun.top/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>跨域资源共享 CORS 详解</title>
+    <link href="http://reedsun.top/2017/03/07/CORS%E8%B7%A8%E5%9F%9F/"/>
+    <id>http://reedsun.top/2017/03/07/CORS跨域/</id>
+    <published>2017-03-07T11:59:04.000Z</published>
+    <updated>2017-07-13T12:50:06.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;跨域资源共享-CORS-详解&quot;&gt;&lt;a href=&quot;#跨域资源共享-CORS-详解&quot; class=&quot;headerlink&quot; title=&quot;跨域资源共享 CORS 详解&quot;&gt;&lt;/a&gt;跨域资源共享 CORS 详解&lt;/h1&gt;&lt;p&gt;作者： 阮一峰&lt;/p&gt;
+&lt;p&gt;日期： 201
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://reedsun.top/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决jQuery的$冲突问题</title>
+    <link href="http://reedsun.top/2017/02/27/%E8%A7%A3%E5%86%B3jQuery%E7%9A%84$%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://reedsun.top/2017/02/27/解决jQuery的$冲突问题/</id>
+    <published>2017-02-27T13:26:43.000Z</published>
+    <updated>2017-07-13T12:50:06.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;解决jQuery的-冲突问题&quot;&gt;&lt;a href=&quot;#解决jQuery的-冲突问题&quot; class=&quot;headerlink&quot; title=&quot;解决jQuery的$冲突问题&quot;&gt;&lt;/a&gt;解决jQuery的$冲突问题&lt;/h1&gt;&lt;p&gt;很多JavaScript的库使用&lt;code&gt;
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://reedsun.top/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vuex的五个核心概念</title>
+    <link href="http://reedsun.top/2017/02/26/Vuex%E7%9A%84%E4%BA%94%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%B1%9E%E6%80%A7/"/>
+    <id>http://reedsun.top/2017/02/26/Vuex的五个核心属性/</id>
+    <published>2017-02-26T05:34:10.000Z</published>
+    <updated>2017-05-31T14:34:10.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文参考自&lt;a href=&quot;http://vuex.vuejs.org/zh-cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue文档&lt;/a&gt;，说的非常详细，建议看文档。&lt;/p&gt;
+&lt;h2 id=&quot;Vuex是什么？&quot;&gt;&lt;a href=&quot;#Vuex是什
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="http://reedsun.top/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于Flex，有12个属性很重要</title>
+    <link href="http://reedsun.top/2017/02/09/%E5%85%B3%E4%BA%8Eflex%EF%BC%8C%E5%A5%BD%E5%83%8F%E6%9C%8912%E4%B8%AA%E5%B1%9E%E6%80%A7%E5%BE%88%E9%87%8D%E8%A6%81/"/>
+    <id>http://reedsun.top/2017/02/09/关于flex，好像有12个属性很重要/</id>
+    <published>2017-02-08T16:46:59.000Z</published>
+    <updated>2017-07-13T12:49:38.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几天在学习&lt;code&gt;Flex&lt;/code&gt;布局，发现&lt;code&gt;Flex&lt;/code&gt;真的好厉害！&lt;/p&gt;
+&lt;p&gt;Flex是Flexible Box的缩写，意为“弹性布局”，用来为盒模型提供最大的灵活性。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Flex&lt;/code&gt;是它可以简单、完
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="http://reedsun.top/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>两步实现在Git Bash中用Sublime打开文件</title>
+    <link href="http://reedsun.top/2017/02/05/%E5%9C%A8GitBash%E4%B8%AD%E8%AE%BE%E7%BD%AEsublime%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6/"/>
+    <id>http://reedsun.top/2017/02/05/在GitBash中设置sublime打开文件/</id>
+    <published>2017-02-05T03:40:35.000Z</published>
+    <updated>2017-07-13T12:49:44.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;两步实现在Git-Bash中用Sublime打开文件&quot;&gt;&lt;a href=&quot;#两步实现在Git-Bash中用Sublime打开文件&quot; class=&quot;headerlink&quot; title=&quot;两步实现在Git Bash中用Sublime打开文件&quot;&gt;&lt;/a&gt;两步实现在Git
+    
+    </summary>
+    
+    
+      <category term="Git" scheme="http://reedsun.top/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于python中inspect模块的一些探究</title>
+    <link href="http://reedsun.top/2016/11/06/%E5%85%B3%E4%BA%8Epython%E4%B8%ADinspect%E6%A8%A1%E5%9D%97%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8E%A2%E7%A9%B6/"/>
+    <id>http://reedsun.top/2016/11/06/关于python中inspect模块的一些探究/</id>
+    <published>2016-11-06T04:13:30.000Z</published>
+    <updated>2017-05-31T14:51:08.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我在学习到&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0014316089557264a6b34895
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://reedsun.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python中的元类Metaclass</title>
+    <link href="http://reedsun.top/2016/10/31/python%E4%B8%AD%E7%9A%84%E5%85%83%E7%B1%BBMetaclass/"/>
+    <id>http://reedsun.top/2016/10/31/python中的元类Metaclass/</id>
+    <published>2016-10-31T12:18:42.000Z</published>
+    <updated>2017-05-31T14:40:02.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;理解元类之前需要学习的知识&quot;&gt;&lt;a href=&quot;#理解元类之前需要学习的知识&quot; class=&quot;headerlink&quot; title=&quot;理解元类之前需要学习的知识&quot;&gt;&lt;/a&gt;理解元类之前需要学习的知识&lt;/h2&gt;&lt;p&gt; 如果说让我们创建一个类，最先想到的肯定是用&lt;cod
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://reedsun.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用python的email、smtplib、poplib模块收发邮件</title>
+    <link href="http://reedsun.top/2016/10/21/%E4%BD%BF%E7%94%A8python%E7%9A%84email%E3%80%81smtplib%E3%80%81poplib%E6%A8%A1%E5%9D%97%E6%94%B6%E5%8F%91%E9%82%AE%E4%BB%B6/"/>
+    <id>http://reedsun.top/2016/10/21/使用python的email、smtplib、poplib模块收发邮件/</id>
+    <published>2016-10-21T02:53:32.000Z</published>
+    <updated>2017-05-31T14:53:12.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;一封电子邮件的旅程是：&lt;ul&gt;
+&lt;li&gt;MUA：Mail User Agent——邮件用户代理。(即类似Outlook的电子邮件软件）&lt;/li&gt;
+&lt;li&gt;MTA：Mail Transfer Agent——邮件传输代理，就是那些Email服务提供商，比如网易、新浪
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://reedsun.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习urblib和requests</title>
+    <link href="http://reedsun.top/2016/10/17/%E5%AD%A6%E4%B9%A0urblib%E5%92%8Crequests/"/>
+    <id>http://reedsun.top/2016/10/17/学习urblib和requests/</id>
+    <published>2016-10-17T13:12:36.000Z</published>
+    <updated>2017-06-08T14:42:56.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;学习urblib和requests&quot;&gt;&lt;a href=&quot;#学习urblib和requests&quot; class=&quot;headerlink&quot; title=&quot;学习urblib和requests&quot;&gt;&lt;/a&gt;学习urblib和requests&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;u
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://reedsun.top/tags/Python/"/>
+    
+  </entry>
+  
+</feed>

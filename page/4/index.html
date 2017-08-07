@@ -21,6 +21,8 @@
 
 
 
+  <meta name="google-site-verification" content="i23ZM3JwzP7RudPF0vEeoCb9wYU2xOmiRjeOKDrPyWU" />
+
 
 
 
@@ -79,6 +81,8 @@
 
 
 
+
+  <link rel="alternate" href="/atom.xml" title="Preeminent" type="application/atom+xml" />
 
 
 
@@ -142,6 +146,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?688e202055dc896dd0b15268cd5cdc8e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -244,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_ThreadLocal/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/09/学习笔记_base64/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -263,7 +277,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/10/08/学习笔记_ThreadLocal/" itemprop="url">学习笔记_ThreadLocal</a></h1>
+                <a class="post-title-link" href="/2016/10/09/学习笔记_base64/" itemprop="url">学习笔记_base64</a></h1>
         
 
         <div class="post-meta">
@@ -275,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
-                2016-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-09T10:44:04+08:00">
+                2016-10-09
               </time>
             
 
@@ -312,742 +326,22 @@
       
         
           
-            <ul>
-<li><p>在多线程环境下，每个线程都有自己的数据。一个线程使用自己的局部变量比使用全局变量好，因为局部变量只有线程自己能看见，不会影响其他线程，而全局变量的修改必须加锁。但是局部变量也有问题，就是在函数调用的时候，传递起来很麻烦。</p>
-</li>
-<li><p>一个<code>ThreadLocal</code>变量虽然是全局变量，但每个线程都只能读写自己线程的独立副本，互不干扰。<code>ThreadLocal</code>解决了参数在一个线程中各个函数之间互相传递的问题。</p>
-</li>
-<li><p><code>ThreadLocal</code>最常用的地方就是为每个线程绑定一个数据库连接，HTTP请求，用户身份信息等，这样一个线程的所有调用到的处理函数都可以非常方便地访问这些资源。</p>
-</li>
-</ul>
-
           
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_分布式进程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/08/学习笔记_分布式进程/" itemprop="url">学习笔记_分布式进程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
-                2016-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>在Thread（多线程）和Process（多进程）中，应当优选Process，因为Process更稳定，而且，Process可以分布到多台机器上，而Thread最多只能分布到同一台机器的多个CPU上。</p>
-</li>
-<li><p>Python的<code>multiprocessing</code>模块不但支持多进程，其<code>中managers</code>子模块还支持把多进程分布到多台机器上。一个服务进程可以作为调度者，将任务分布到其他多个进程中，依靠网络通信。由于<code>managers</code>模块封装很好，不必了解网络通信的细节，就可以很容易地编写分布式多进程程序。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_正则表达式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/08/学习笔记_正则表达式/" itemprop="url">学习笔记_正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
-                2016-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>正则表达式是一种用来匹配字符串的强有力的武器。它的设计思想是用一种描述性的语言来给字符串定义一个规则，凡是符合规则的字符串，我们就认为它“匹配”了，否则，该字符串就是不合法的。</p>
-</li>
-<li><p>在正则表达式中，如果直接给出字符，就是精确匹配。用<code>\d</code>可以匹配一个数字，<code>\w</code>可以匹配一个字母或数字，所以：</p>
-<ul>
-<li><p><code>&#39;00\d&#39;</code>可以匹配<code>&#39;007&#39;</code>，但无法匹配<code>&#39;00A&#39;</code>；</p>
-</li>
-<li><p><code>&#39;\d\d\d&#39;可以匹配&#39;010&#39;</code>；</p>
-</li>
-<li><p><code>&#39;\w\w\d&#39;</code>可以匹配<code>&#39;py3&#39;</code>；</p>
-</li>
-<li><p>.可以匹配任意字符，所以：</p>
-</li>
-</ul>
-</li>
-<li><p><code>&#39;py.&#39;</code>可以匹配<code>&#39;pyc&#39;</code>、<code>&#39;pyo&#39;</code>、<code>&#39;py!&#39;</code>等等。</p>
-</li>
-<li>要匹配变长的字符，在正则表达式中，用<code>*</code>表示任意个字符（包括0个），用<code>+</code>表示至少一个字符，用<code>?</code>表示0个或1个字符，用<code>{n}</code>表示n个字符，用<code>{n,m}</code>表示n-m个字符。</li>
-</ul>
-<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><ul>
-<li><p>要做更精确地匹配，可以用[]表示范围。</p>
-<ul>
-<li><p><code>[0-9a-zA-Z\_]</code>可以匹配一个数字、字母或者下划线；</p>
-</li>
-<li><p><code>[0-9a-zA-Z\_]+</code>可以匹配至少由一个数字、字母或者下划线组成的字符串，比如<code>&#39;a100&#39;</code>，<code>&#39;0_Z&#39;</code>，<code>&#39;Py3000&#39;</code>等等；</p>
-</li>
-<li><p><code>[a-zA-Z\_][0-9a-zA-Z\_]*</code>可以匹配由字母或下划线开头，后接任意个由一个数字、字母或者下划线组成的字符串，也就是Python合法的变量；</p>
-</li>
-<li><p><code>[a-zA-Z\_][0-9a-zA-Z\_]{0, 19}</code>更精确地限制了变量的长度是1-20个字符（前面1个字符+后面最多19个字符）。</p>
-</li>
-</ul>
-</li>
-<li><p><code>A|B</code>可以匹配A或B，所以<code>(P|p)ython</code>可以匹配<code>&#39;Python&#39;</code>或者<code>&#39;python&#39;</code>。</p>
-</li>
-<li><p><code>^</code>表示行的开头，<code>^\d</code>表示必须以数字开头。</p>
-</li>
-<li><p><code>$</code>表示行的结束，<code>\d$</code>表示必须以数字结束。</p>
-</li>
-</ul>
-<p>##re模块</p>
-<ul>
-<li><p><code>re</code>模块就是python中包含正则表达式所用共功能的模块。</p>
-</li>
-<li><p><code>match()</code>方法判断是否匹配，如果匹配成功，返回一个<code>Match</code>对象，否则返回<code>None</code>。</p>
-</li>
-</ul>
-<h2 id="切分字符串"><a href="#切分字符串" class="headerlink" title="切分字符串"></a>切分字符串</h2><ul>
-<li><code>re.spilt(正则规则，要切分的字符串)</code>表示用正则表达式切分字符串。</li>
-</ul>
-<h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><ul>
-<li><p>用<code>()</code>表示的就是要提取的分组（Group）。比如：<code>^(\d{3})-(\d{3,8})$</code>表示分别定义了两个组。</p>
-</li>
-<li><p>如果正则表达式中定义了组，就可以在Match对象上用<code>group()</code>方法提取出子串来。注意到<code>group(0)</code>永远是原始字符串，<code>group(1)</code>、<code>group(2)</code>……表示第1、2、……个子串。</p>
-</li>
-</ul>
-<p>##贪婪匹配</p>
-<ul>
-<li><p>最后需要特别指出的是，正则匹配默认是贪婪匹配，也就是匹配尽可能多的字符。</p>
-</li>
-<li><p>加个<code>？</code>就可以让正则匹配采用非贪婪匹配。</p>
-</li>
-</ul>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><ul>
-<li><p>当我们在Python中使用正则表达式时，re模块内部会干两件事情：</p>
-<ul>
-<li><p>编译正则表达式，如果正则表达式的字符串本身不合法，会报错；</p>
-</li>
-<li><p>用编译后的正则表达式去匹配字符串。</p>
-</li>
-</ul>
-</li>
-<li><p>可以使用<code>re.compile(正则表达式）</code>预先编译，接下来重复使用的时候就不用编译这个步骤了，直接匹配就可以了。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_进程 vs. 线程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/08/学习笔记_进程 vs. 线程/" itemprop="url">学习笔记_进程 vs. 线程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
-                2016-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>首先，要实现多任务，通常我们会设计Master-Worker模式，Master负责分配任务，Worker负责执行任务，因此，多任务环境下，通常是一个Master，多个Worker。</p>
-</li>
-<li><p>多进程的优缺点</p>
-<ul>
-<li><p>多进程模式最大的优点就是稳定性高，因为一个子进程崩溃了，不会影响主进程和其他子进程。（当然主进程挂了所有进程就全挂了，但是Master进程只负责分配任务，挂掉的概率低）</p>
-</li>
-<li><p>多进程模式的缺点是创建进程的代价大，在Unix/Linux系统下，用<code>fork</code>调用还行，在Windows下创建进程开销巨大。另外，操作系统能同时运行的进程数也是有限的，在内存和CPU的限制下，如果有几千个进程同时运行，操作系统连调度都会成问题。</p>
-</li>
-</ul>
-</li>
-<li><p>多线程的优缺点</p>
-<ul>
-<li><p>多线程模式通常比多进程快一点，但是也快不到哪去。</p>
-</li>
-<li><p>但是多线程有一个致命缺点，任何一个线程挂掉都又可能导致整个系统崩溃。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="多任务不要太多！"><a href="#多任务不要太多！" class="headerlink" title="多任务不要太多！"></a>多任务不要太多！</h2><ul>
-<li><p>无论是多进程还是多线程，只要数量一多，效率肯定上不去。</p>
-</li>
-<li><p>多任务一旦多到一个限度，就会消耗掉系统所有的资源，结果效率急剧下降，所有任务都做不好。</p>
-</li>
-</ul>
-<h2 id="计算密集型-vs-IO密集型"><a href="#计算密集型-vs-IO密集型" class="headerlink" title="计算密集型 vs. IO密集型"></a>计算密集型 vs. IO密集型</h2><ul>
-<li><p>计算密集型任务的特点是要进行大量的计算。</p>
-<ul>
-<li>比如计算圆周率、对视频进行高清解码等等。</li>
-<li>计算密集型任务由于主要消耗CPU资源，因此，代码运行效率至关重要。Python这样的脚本语言运行效率很低，完全不适合计算密集型任务。对于计算密集型任务，最好用C语言编写。</li>
-</ul>
-</li>
-<li><p>IO密集型的特点是CPU消耗很少，任务的大部分时间都在等待IO操作完成（因为IO的速度远远低于CPU和内存的速度）。</p>
-<ul>
-<li>比如Web应用。</li>
-<li>对于IO密集型任务，最合适的语言就是开发效率最高（代码量最少）的语言，脚本语言是首选，C语言最差。</li>
-</ul>
-<h2 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h2></li>
-<li><p>考虑到CPU和IO之间巨大的速度差异，一个任务在执行的过程中大部分时间都在等待IO操作，单进程单线程模型会导致别的任务无法并行执行，因此，我们才需要多进程模型或者多线程模型来支持多任务并发执行。</p>
-</li>
-<li><p>现代操作系统对IO操作已经做了巨大的改进，最大的特点就是支持异步IO。如果充分利用操作系统提供的异步IO支持，就可以用单进程单线程模型来执行多任务，这种全新的模型称为事件驱动模型，Nginx就是支持异步IO的Web服务器，它在单核CPU上采用单进程模型就可以高效地支持多任务。在多核CPU上，可以运行多个进程（数量与CPU核心数相同），充分利用多核CPU。由于系统总的进程数量十分有限，因此操作系统调度非常高效。用异步IO编程模型来实现多任务是一个主要的趋势。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_多进程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/08/学习笔记_多进程/" itemprop="url">学习笔记_多进程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
-                2016-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>##multiprocessing</p>
-<ul>
-<li><p><code>multiprocessing</code>是python中一个跨平台版本的多进程模块。</p>
-</li>
-<li><p><code>multiprocessing</code>提供了一个<code>Process</code>类来代表一个进程对象。</p>
-</li>
-</ul>
-<p>##Pool</p>
-<ul>
-<li>如果要启动大量的子进程，可以用进程池即<code>Pool</code>的方式批量创建子进程。</li>
-</ul>
-<h2 id="子进程"><a href="#子进程" class="headerlink" title="子进程"></a>子进程</h2><ul>
-<li><code>subprocess</code>模块可以让我们非常方便的启动一个子进程，然后控制其输入和输出。</li>
-</ul>
-<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><ul>
-<li><code>Process</code>之间肯定是需要通信的，操作系统提供了很多机制来实现进程间的通信。Python的<code>multiprocessing</code>模块包装了底层的机制，提供了<code>Queue</code>(队列）、<code>Pipes</code>（管道）等多种方式来交换数据。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_多线程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/08/学习笔记_多线程/" itemprop="url">学习笔记_多线程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
-                2016-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>Python的标准库提供了两个模块：<code>_thread</code>和<code>threading</code>来支持多线程，<code>_thread</code>是低级模块，<code>threading</code>是高级模块，对_thread进行了封装。绝大多数情况下，我们只需要使用<code>threading</code>这个高级模块。</p>
-</li>
-<li><p>启动一个线程就是把一个函数传入并创建<code>Thread</code>实例，然后调用<code>start()</code>开始执行。</p>
-</li>
-<li><p>由于任何进程默认就会启动一个线程，我们把该线程称为主线程，主线程又可以启动新的线程，Python的<code>threading</code>模块有个<code>current_thread()</code>函数，它永远返回当前线程的实例。主线程实例的名字叫<code>MainThread</code>，子线程的名字在创建时指定，我们用<code>LoopThread</code>命名子线程。名字仅仅在打印时用来显示，完全没有其他意义，如果不起名字Python就自动给线程命名<code>为Thread-1</code>，<code>Thread-2</code>……</p>
-</li>
-</ul>
-<p>##Lock</p>
-<ul>
-<li><p>多线程中，所有变量都由所有线程共享，所以，任何一个变量都可以被任何一个线程修改，因此，线程之间共享数据最大的危险在于多个线程同时改一个变量，把内容给改乱了。</p>
-</li>
-<li><p>如果我们要确保计算正确，就要给程序上一把锁，当某个线程开始执行到某一个函数时，我们说，该线程因为获得了锁，因此其他线程不能同时执行这个函数，只能等待，直到锁被释放后，获得该锁以后才能改。由于锁只有一个，无论多少线程，同一时刻最多只有一个线程持有该锁，所以，不会造成修改的冲突。创建一个锁就是通过<code>threading.Lock()</code>类来实现。</p>
-</li>
-<li><p>创建锁的实例以后，首先要获取锁，当多个线程同时执行lock.acquire()（获取锁）时，只有一个线程能成功地获取锁，然后继续执行代码，其他线程就继续等待直到获得锁为止。</p>
-</li>
-<li><p>获得锁的线程用完后一定要用<code>lock.release()</code>方法释放锁，否则那些苦苦等待锁的线程将永远等待下去，成为死线程。所以我们用<code>try...finally</code>(在finally语句块里执行<code>lock.release()</code>）来确保锁一定会被释放。</p>
-</li>
-<li><p>锁的好处就是确保了某段关键代码只能由一个线程从头到尾完整地执行，坏处当然也很多，首先是阻止了多线程并发执行，包含锁的某段代码实际上只能以单线程模式执行，效率就大大地下降了。其次，由于可以存在多个锁，不同的线程持有不同的锁，并试图获取对方持有的锁时，可能会造成死锁，导致多个线程全部挂起，既不能执行，也无法结束，只能靠操作系统强制终止。</p>
-</li>
-</ul>
-<p>##多核CPU</p>
-<ul>
-<li><p>因为Python的线程虽然是真正的线程，但解释器执行代码时，有一个GIL锁：Global Interpreter Lock，任何Python线程执行前，必须先获得GIL锁，然后，每执行100条字节码，解释器就自动释放GIL锁，让别的线程有机会执行。这个GIL全局锁实际上把所有线程的执行代码都给上了锁，所以，多线程在Python中只能交替执行，即使100个线程跑在100核CPU上，也只能用到1个核。</p>
-</li>
-<li><p>所以，在Python中，可以使用多线程，但不要指望能有效利用多核。如果一定要通过多线程利用多核，那只能通过C扩展来实现，不过这样就失去了Python简单易用的特点。</p>
-</li>
-<li><p>不过，也不用过于担心，Python虽然不能利用多线程实现多核任务，但可以通过多进程实现多核任务。多个Python进程有各自独立的GIL锁，互不影响。</p>
-</li>
-</ul>
-
-          
+Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，Base64编码可用于在HTTP环境下传递较长的标识信息。
+
+Python内置的base64可以直接进行base64的编解码。
+
+编码base64.b64encode(\***)
+解码base64.b64decode(\***)
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/09/学习笔记_base64/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1157,85 +451,22 @@
       
         
           
-            <ul>
-<li><code>datetime</code>是python中处理日期和时间的标准库</li>
-</ul>
-<p>##获取当前的时间</p>
-<ul>
-<li><p>注意到<code>datetime</code>是模块，<code>datetime</code>模块还包含一个<code>datetime</code>类，通过<code>from datetime import datetime</code>导入的才是<code>datetime</code>这个类。</p>
-</li>
-<li><p>如果仅导入<code>import datetime</code>，则必须引用全名<code>datetime.datetime</code>。</p>
-</li>
-<li><p><code>datetime.now()</code>返回当前日期和时间，其类型是<code>datetime</code>。</p>
-</li>
-</ul>
-<p>##获取指定的日期和时间</p>
-<ul>
-<li>要指定某个日期和时间，我们直接用参数构造一个<code>datetime</code>类,例子如下:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> &gt;&gt;&gt; from datetime import datetime</div><div class="line">&gt;&gt;&gt; dt = datetime(2015, 4, 19, 12, 20) # 用指定日期时间创建datetime</div><div class="line">&gt;&gt;&gt; print(dt)</div><div class="line">2015-04-19 12:20:00</div></pre></td></tr></table></figure>
-<h2 id="datetime转化为timestamp"><a href="#datetime转化为timestamp" class="headerlink" title="datetime转化为timestamp"></a>datetime转化为timestamp</h2><ul>
-<li><p><code>timestamp</code>的定义：</p>
-<ul>
-<li><p>在计算机中，时间实际上是用数字表示的。我们把1970年1月1日 00:00:00 UTC+00:00时区的时刻称为epoch time，记为<code>0</code>（1970年以前的时间timestamp为负数），当前时间就是相对于epoch time的秒数，称为<code>timestamp</code>。</p>
-</li>
-<li><p>即<code>timestamp = 0 = 1970-1-1 00:00:00 UTC+0:00</code></p>
-</li>
-</ul>
-</li>
-<li><p><code>timestamp</code>与时区的值毫无关系，全球所有计算机中的<code>timestamp</code>的值都应该是相同的。</p>
-</li>
-<li><p>把一个<code>datetime</code>类型转化为<code>timestamp</code>只需要调用<code>timestamp()</code>方法。</p>
-</li>
-<li><p>注意Python的<code>timestamp</code>是一个浮点数(<code>float</code>类型)。如果有小数位，小数位表示毫秒数。</p>
-</li>
-</ul>
-<p>##timestamp转化为datetime</p>
-<ul>
-<li><p>要把<code>timestamp</code>转换为<code>datetime</code>，使用<code>datetime</code>提供的<code>fromtimestamp()</code>方法</p>
-</li>
-<li><p><code>timestamp</code>是一个浮点数，它没有时区的概念，而<code>datetime</code>是有时区的。上述转换是在<code>timestamp</code>和本地时间做转换。本地时间是指当前操作系统设定的时区。</p>
-</li>
-<li><p><code>timestamp</code>也可以直接被转换到UTC标准时区(UTC+0:00)的时间，通过使用<code>datetime</code>提供的<code>utcfromtimestamp()</code>方法。</p>
-</li>
-</ul>
-<h2 id="str转化为datetime"><a href="#str转化为datetime" class="headerlink" title="str转化为datetime"></a>str转化为datetime</h2><ul>
-<li>转换方法是通过<code>datetime.strptime()</code>实现，需要一个日期和时间的格式化字符串。字符串<code>&#39;%Y-%m-%d %H:%M:%S&#39;</code>规定了日期和时间部分的格式。例子如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from datetime import datetime</div><div class="line">&gt;&gt;&gt; cday = datetime.strptime(&apos;2015-6-1 18:19:59&apos;, &apos;%Y-%m-%d %H:%M:%S&apos;)</div><div class="line">&gt;&gt;&gt; print(cday)</div><div class="line">2015-06-01 18:19:59</div></pre></td></tr></table></figure>
-<ul>
-<li>注意转换后的<code>datetime</code>是没有时区信息的。</li>
-</ul>
-<p>##datetime转化为str</p>
-<ul>
-<li>如果已经有了<code>datetime</code>对象，要把它格式化为字符串显示给用户，就需要转换为str，转换方法是通过<code>strftime()</code>实现的，同样需要一个日期和时间的格式化字符串。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from datetime import datetime</div><div class="line">&gt;&gt;&gt; now = datetime.now()</div><div class="line">&gt;&gt;&gt; print(now.strftime(&apos;%a, %b %d %H:%M&apos;))</div><div class="line">Mon, May 05 16:28</div></pre></td></tr></table></figure>
-<p>##datetime加减</p>
-<ul>
-<li>对日期和时间进行加减实际上就是把datetime往后或往前计算，得到新的datetime。加减可以直接用+和-运算符，不过需要导入timedelta这个类，使用timedelta你可以很容易地算出前几天和后几天的时刻。例子如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from datetime import datetime, timedelta</div><div class="line">&gt;&gt;&gt; now = datetime.now()</div><div class="line">&gt;&gt;&gt; now</div><div class="line">datetime.datetime(2015, 5, 18, 16, 57, 3, 540997)</div><div class="line">&gt;&gt;&gt; now + timedelta(hours=10)</div><div class="line">datetime.datetime(2015, 5, 19, 2, 57, 3, 540997)</div><div class="line">&gt;&gt;&gt; now - timedelta(days=1)</div><div class="line">datetime.datetime(2015, 5, 17, 16, 57, 3, 540997)</div><div class="line">&gt;&gt;&gt; now + timedelta(days=2, hours=12)</div><div class="line">datetime.datetime(2015, 5, 21, 4, 57, 3, 540997)</div></pre></td></tr></table></figure>
-<p>##本地时间转化为UTC时间</p>
-<ul>
-<li><p>一个<code>datetime</code>类型有一个时区属性<code>tzinfo</code>，但是默认为<code>None</code>，所以无法区分这个<code>datetime</code>到底是哪个时区，除非强行给<code>datetime</code>设置一个时区。</p>
-</li>
-<li><p>设置时区分两步。</p>
-<ul>
-<li>第一步是用<code>timedelta()</code>创建时区</li>
-<li>第二部是用<code>replace(tzinfo=刚才创建时区)</code>强制设置时区</li>
-</ul>
-</li>
-</ul>
-<p>##时区转换</p>
-<ul>
-<li>我们可以通过<code>utcnow()</code>拿到当前的UTC=0时间(例<code>utc_dt = datetime.utcnow().replace(tzinfo=timezone.utc)</code>)</li>
-</ul>
-<ul>
-<li>利用带时区的<code>datetime</code>，通过<code>astimezone()</code>方法(例<code>bj_dt = utc_dt.astimezone(timezone(timedelta(hours=8)))</code>)，可以转换到任意时区。</li>
-</ul>
-
           
+datetime是python中处理日期和时间的标准库
+
+##获取当前的时间
+
+注意到datetime是模块，datetime模块还包含一个datetime类，通过from datetime import datetime导入的才是datetime这个类。
+
+如果仅导入import datetim
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_datetime/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1277,7 +508,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/29/学习笔记_文档读写/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_分布式进程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -1296,7 +527,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/09/29/学习笔记_文档读写/" itemprop="url">学习笔记_文档读写</a></h1>
+                <a class="post-title-link" href="/2016/10/08/学习笔记_分布式进程/" itemprop="url">学习笔记_分布式进程</a></h1>
         
 
         <div class="post-meta">
@@ -1308,8 +539,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-29T21:46:20+08:00">
-                2016-09-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
+                2016-10-08
               </time>
             
 
@@ -1345,55 +576,18 @@
       
         
           
-            <ul>
-<li>在磁盘上读写文件的功能都是由操作系统提供的，现代操作系统不允许普通的程序直接操作磁盘，所以，读写文件就是请求操作系统打开一个文件对象（通常称为文件描述符），然后，通过操作系统提供的接口从这个文件对象中读取数据（读文件），或者把数据写入这个文件对象（写文件）。</li>
-</ul>
-<p>##读文件</p>
-<ul>
-<li><p>要以读文件的模式打开一个文件对象，使用Python内置的open()函数，传入文件名和标示符（标识符<code>r</code>表示读取文本文件）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/test.txt&apos;, &apos;r&apos;)</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果文件不存在，<code>open()</code>函数就会抛出一个IOError的错误，并且给出错误码和详细的信息告诉你文件不存在。</p>
-</li>
-<li><p>如果文件打开成功，接下来，调用<code>read()</code>方法可以一次读取文件的全部内容，Python把内容读到内存，用一个<code>str</code>对象表示。</p>
-</li>
-<li><p>最后一步是调用<code>close()</code>方法关闭文件。文件使用完毕后必须关闭，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的。</p>
-</li>
-<li><p>由于文件读写时都有可能产生<code>IOError</code>，一旦出错，后面的<code>文件名.close()</code>就不会调用。所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用<code>try ... finally</code>来实现。</p>
-</li>
-<li><p><code>with</code>语句和<code>try ... finally</code>是一样的，但是代码更佳简洁，并且不必调用<code>f.close()</code>方法。</p>
-</li>
-<li><p><code>read(size)</code>方法，可以让python程序每次最多读取size个字节的内容；<code>文件名.readline()</code>可以每次读取一行内容；调用<code>文件名.readlines()</code>一次读取所有内容并按行返回list。</p>
-</li>
-</ul>
-<p>##file-like Object</p>
-<ul>
-<li>像<code>open()</code>函数返回的这种有个<code>read()</code>方法的对象，在Python中统称为<code>file-like Object</code>。除了file外，还可以是内存的字节流，网络流，自定义流等等。<code>file-like Object</code>不要求从特定类继承，只要写个<code>read()</code>方法就行。</li>
-</ul>
-<p>##二进制文件</p>
-<ul>
-<li>要读取二进制文件，比如图片、视频等等，用<code>&#39;rb&#39;</code>模式打开文件即可。</li>
-</ul>
-<p>##字符编码</p>
-<ul>
-<li>要读取非UTF-8编码的文本文件，需要给<code>open()</code>函数传入<code>encoding</code>参数，例如，读取GBK编码的文件：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;)</div><div class="line">&gt;&gt;&gt; f.read()</div><div class="line">&apos;测试&apos;</div></pre></td></tr></table></figure>
-<ul>
-<li>遇到有些编码不规范的文件，你可能会遇到<code>UnicodeDecodeError</code>，因为在文本文件中可能夹杂了一些非法编码的字符。遇到这种情况，<code>open()</code>函数还接收一个<code>errors</code>参数，表示如果遇到编码错误后如何处理。最简单的方式是直接忽略：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; f = open(&apos;/Users/michael/gbk.txt&apos;, &apos;r&apos;, encoding=&apos;gbk&apos;, errors=&apos;ignore&apos;)</div></pre></td></tr></table></figure>
-<p>##写文件</p>
-<ul>
-<li>写文件和读文件是一样的，唯一区别是调用open()函数时，传入标识符’w’或者’wb’表示写文本文件或写二进制文件。</li>
-<li>你可以反复调用<code>write()</code>来写入文件，但是务必要调用<code>f.close()</code>来关闭文件。当我们写文件时，操作系统往往不会立刻把数据写入磁盘，而是放到内存缓存起来，空闲的时候再慢慢写入。只有调用<code>close()</code>方法时，操作系统才保证把没有写入的数据全部写入磁盘。忘记调用<code>close()</code>的后果是数据可能只写了一部分到磁盘，剩下的丢失了。所以，还是用<code>with</code>语句来得保险。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">with open(&apos;/Users/michael/test.txt&apos;, &apos;w&apos;) as f:</div><div class="line">    f.write(&apos;Hello, world!&apos;)</div></pre></td></tr></table></figure>
-<ul>
-<li>要写入特定编码的文本文件，请给open()函数传入encoding参数，将字符串自动转换成指定编码。</li>
-</ul>
-
           
+在Thread（多线程）和Process（多进程）中，应当优选Process，因为Process更稳定，而且，Process可以分布到多台机器上，而Thread最多只能分布到同一台机器的多个CPU上。
+
+Python的multiprocessing模块不但支持多进程，其中managers子模块还支
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_分布式进程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1435,7 +629,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/29/学习笔记_操作文件和目录/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_正则表达式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -1454,7 +648,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/09/29/学习笔记_操作文件和目录/" itemprop="url">学习笔记_操作文件和目录</a></h1>
+                <a class="post-title-link" href="/2016/10/08/学习笔记_正则表达式/" itemprop="url">学习笔记_正则表达式</a></h1>
         
 
         <div class="post-meta">
@@ -1466,8 +660,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-29T21:46:20+08:00">
-                2016-09-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
+                2016-10-08
               </time>
             
 
@@ -1503,38 +697,515 @@
       
         
           
-            <ul>
-<li>Python内置的<code>os</code>模块也可以直接调用操作系统提供的接口函数。可以让我们操作文件、目录。</li>
-</ul>
-<p>##环境变量</p>
-<ul>
-<li><p>在操作系统中定义的环境变量，全部保存在<code>os.environ</code>这个变量中，可以直接查看。</p>
-</li>
-<li><p>要获取某个环境变量的值，可以调用<code>os.environ.get(&#39;key&#39;)</code>。</p>
-</li>
-</ul>
-<p>##操作文件和目录</p>
-<ul>
-<li><p>操作文件和目录的函数一部分放在<code>os</code>模块中，一部分放在<code>os.path</code>模块中，这一点要注意一下。</p>
-</li>
-<li><p>创建一个目录的分两步，首先通过<code>os.path.join(目录，新文件夹名)函数</code>,把目录和新文件夹合到一起。然后通过<code>os.mkdir(合成后的目录）</code>创建新目录。</p>
-</li>
-<li><p>删除一个目录，直接通过<code>os.rmdir(目录）</code>操作。</p>
-</li>
-<li><p>要拆分路径时，也不要直接去拆字符串，而要通过<code>os.path.split()</code>函数，这样可以把一个路径拆分为两部分，后一部分总是最后级别的目录或文件名。</p>
-</li>
-<li><p><code>os.path.splitext()</code>可以直接让你得到文件扩展名，很多时候非常方便。</p>
-</li>
-<li><p>我们要列出当前目录下的所有目录，只需要一行代码。</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [x for x in os.listdir(&apos;.&apos;) if os.path.isdir(x)]</div><div class="line">[&apos;.lein&apos;, &apos;.local&apos;, &apos;.m2&apos;, &apos;.npm&apos;, &apos;.ssh&apos;, &apos;.Trash&apos;, &apos;.vim&apos;, &apos;Applications&apos;, &apos;Desktop&apos;, ...]</div></pre></td></tr></table></figure>
-<ul>
-<li>要列出所有的<code>.py</code>文件，也只需一行代码。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [x for x in os.listdir(&apos;.&apos;) if os.path.isfile(x) and os.path.splitext(x)[1]==&apos;.py&apos;]</div><div class="line">[&apos;apis.py&apos;, &apos;config.py&apos;, &apos;models.py&apos;, &apos;pymonitor.py&apos;, &apos;test_db.py&apos;, &apos;urls.py&apos;, &apos;wsgiapp.py&apos;]</div></pre></td></tr></table></figure>
+          
+正则表达式是一种用来匹配字符串的强有力的武器。它的设计思想是用一种描述性的语言来给字符串定义一个规则，凡是符合规则的字符串，我们就认为它“匹配”了，否则，该字符串就是不合法的。
+
+在正则表达式中，如果直接给出字符，就是精确匹配。用\d可以匹配一个数字，\w可以匹配一个字母或数字，所以：
+
+&#39
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_正则表达式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_ThreadLocal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/08/学习笔记_ThreadLocal/" itemprop="url">学习笔记_ThreadLocal</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
+                2016-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+在多线程环境下，每个线程都有自己的数据。一个线程使用自己的局部变量比使用全局变量好，因为局部变量只有线程自己能看见，不会影响其他线程，而全局变量的修改必须加锁。但是局部变量也有问题，就是在函数调用的时候，传递起来很麻烦。
+
+一个ThreadLocal变量虽然是全局变量，但每个线程都只能读写自己线程
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_ThreadLocal/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/08/学习笔记_多线程/" itemprop="url">学习笔记_多线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
+                2016-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+Python的标准库提供了两个模块：_thread和threading来支持多线程，_thread是低级模块，threading是高级模块，对_thread进行了封装。绝大多数情况下，我们只需要使用threading这个高级模块。
+
+启动一个线程就是把一个函数传入并创建Thread实例，然后调用s
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_多线程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_多进程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/08/学习笔记_多进程/" itemprop="url">学习笔记_多进程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
+                2016-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          ##multiprocessing
+
+multiprocessing是python中一个跨平台版本的多进程模块。
+
+multiprocessing提供了一个Process类来代表一个进程对象。
+
+
+##Pool
+
+如果要启动大量的子进程，可以用进程池即Pool的方式批量创建子进程。
+
+子进程
+sub
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_多进程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_进程 vs. 线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/08/学习笔记_进程 vs. 线程/" itemprop="url">学习笔记_进程 vs. 线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
+                2016-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+首先，要实现多任务，通常我们会设计Master-Worker模式，Master负责分配任务，Worker负责执行任务，因此，多任务环境下，通常是一个Master，多个Worker。
+
+多进程的优缺点
+
+多进程模式最大的优点就是稳定性高，因为一个子进程崩溃了，不会影响主进程和其他子进程。（当然主进程
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_进程 vs. 线程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1644,44 +1315,145 @@
       
         
           
-            <p>##错误</p>
-<ul>
-<li><p>在程序运行过程中，总会遇到各种各样的错误。有可能是程序编写的错误，有可能是用户输入的错误，还有可能是完全无法在程序运行过程中预测的错误（异常），比如磁盘满了，网络断了。</p>
-</li>
-<li><p>Python内置的<code>try...except...finally</code>用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。程序也可以主动抛出错误（通过<code>raise</code>语句，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
-</li>
-</ul>
-<p>##调试</p>
-<ul>
-<li>跟踪程序的执行，查看变量的值是否正确，这个过程称为调试。</li>
-<li>调试有这么几种方法。<ul>
-<li>用<code>print()</code>。（很麻烦）</li>
-<li>用<code>assert</code>。（启动Python解释器时可以用-O参数来关闭assert）</li>
-<li><code>logging</code>（比较好用）</li>
-<li>用一个好的IDE，超赞。</li>
-</ul>
-</li>
-</ul>
-<p>##测试</p>
-<ul>
-<li>测试分为单元测试和文档测试。</li>
-<li>编写测试也很重要。有了良好的测试，就可以在程序修改后反复运行，确保程序输出符合我们编写的测试。</li>
-</ul>
-<p>###单元测试</p>
-<ul>
-<li>单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。（<code>unittest</code>模块）</li>
-<li>单元测试可以有效地测试某个程序模块的行为，是未来重构代码的信心保证。</li>
-<li>单元测试的测试用例要覆盖常用的输入组合、边界条件和异常。</li>
-<li>单元测试代码要非常简单，如果测试代码太复杂，那么测试代码本身就可能有bug。</li>
-<li>单元测试通过了并不意味着程序就没有bug了，但是不通过程序肯定有bug。</li>
-</ul>
-<p>###文档测试</p>
-<ul>
-<li>Python内置的“文档测试”（<code>doctest</code>）模块可以直接提取注释中的代码并执行测试。</li>
-<li><code>doctest</code>非常有用，不但可以用来测试，还可以直接作为示例代码。通过某些文档生成工具，就可以自动把包含<code>doctest</code>的注释提取出来。用户看文档的时候，同时也看到了<code>doctest</code>。</li>
-</ul>
+          ##错误
+
+在程序运行过程中，总会遇到各种各样的错误。有可能是程序编写的错误，有可能是用户输入的错误，还有可能是完全无法在程序运行过程中预测的错误（异常），比如磁盘满了，网络断了。
+
+Python内置的try...except...finally用来处理错误十分方便。出错时，会分析错误信息并定位错误
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/29/学习笔记_错误、调试和测试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/29/学习笔记_StringIO和BytesIO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/29/学习笔记_StringIO和BytesIO/" itemprop="url">学习笔记_StringIO和BytesIO</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-29T21:46:20+08:00">
+                2016-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          ##StringIO
+
+StringIO顾名思义就是在内存中读写str。
+
+要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可。
+
+getvalue()方法用于获得写入后的str。
+
+要读取StringIO，可以用一个str初始化StringIO，然后，像读
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/29/学习笔记_StringIO和BytesIO/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1763,7 +1535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1776,7 +1548,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -1785,8 +1557,35 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ReedSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ReedSun" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-address-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1872,6 +1671,8 @@
   
 
 
+  
+
 
 
 
@@ -1899,6 +1700,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   

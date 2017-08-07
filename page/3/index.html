@@ -21,6 +21,8 @@
 
 
 
+  <meta name="google-site-verification" content="i23ZM3JwzP7RudPF0vEeoCb9wYU2xOmiRjeOKDrPyWU" />
+
 
 
 
@@ -79,6 +81,8 @@
 
 
 
+
+  <link rel="alternate" href="/atom.xml" title="Preeminent" type="application/atom+xml" />
 
 
 
@@ -142,6 +146,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?688e202055dc896dd0b15268cd5cdc8e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -244,6 +258,133 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/17/学习笔记_常用内建模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/17/学习笔记_常用内建模块/" itemprop="url">学习笔记_常用内建模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-17T21:12:36+08:00">
+                2016-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+Python之所以自称“batteries included”(自备全套工具），就是因为内置了许多非常有用的模块，无需额外安装和配置，即可直接使用。
+
+本章介绍了一些常用的内建模块，下面总结一下他们。
+
+
+datatime
+datetime是Python处理日期和时间的标准库。
+
+datetime
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/17/学习笔记_常用内建模块/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/17/学习笔记_图形界面/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -312,39 +453,19 @@
       
         
           
-            <h1 id="学习笔记-图形界面"><a href="#学习笔记-图形界面" class="headerlink" title="学习笔记_图形界面"></a>学习笔记_图形界面</h1><p><em>学习日期：2016年10月17日</em><br><em>学习课程：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143200341926302f99cf6f6414dca9dfaaf6e5a25a5b1000" target="_blank" rel="external">图形界面 - 廖雪峰的官方网站</a></em></p>
-<ul>
-<li><p>Python支持多种图形界面的第三方库，包括：<code>Tk</code>、<code>wxWidgets</code>、<code>QT</code>、<code>GTK</code>等等。</p>
-</li>
-<li><p>但是Python自带的库是支持<code>Tk</code>的<code>Tkinter</code>，使用<code>Tkinter</code>，无需安装任何包，就可以直接使用。本章简单介绍如何使用<code>Tkinter</code>进行<code>GUI（图形界面）</code>编程。</p>
-</li>
-<li><p>Python内置的<code>Tkinter</code>可以满足基本的GUI程序的要求，如果是非常复杂的GUI程序，建议用操作系统原生支持的语言和库来编写。</p>
-</li>
-</ul>
-<p>##Tkinter</p>
-<ul>
-<li><p><code>Tk</code>是一个图形库，支持多个操作系统，使用Tcl语言开发。</p>
-</li>
-<li><p><code>Tk</code>会调用操作系统提供的本地GUI接口，完成最终的GUI。</p>
-</li>
-<li><p>我们编写的Python代码会调用内置的<code>Tkinter</code>，<code>Tkinter</code>封装了访问`Tk```的接口。</p>
-</li>
-<li><p>所以，我们的代码只需要调用<code>`Tkinter</code>提供的接口就可以了。</p>
-</li>
-</ul>
-<p>##Tkinter创建步骤</p>
-<ol>
-<li>导入Tkinter模块</li>
-<li>从Frame派生一个类，这是所有Widget（的父容器）<ul>
-<li>在GUI中，每个Button、Label、输入框等，都是一个Widget。Frame则是可以容纳其他Widget的Widget，所有的Widget组合起来就是一棵树。</li>
-<li>pack()方法把Widget加入到父容器中，并实现布局。pack()是最简单的布局，grid()可以实现更复杂的布局。</li>
-<li>在createWidgets()方法中，我们可以创建各种组件，比如标签，按钮，或者文本框。目前有15种Tkinter的部件，详见：<a href="http://www.runoob.com/python/python-gui-tkinter.html" target="_blank" rel="external">python GUI编程 - 菜鸟教程</a></li>
-</ul>
-</li>
-<li>实例化刚才派生的类，并启动消息循环</li>
-</ol>
+          学习笔记_图形界面学习日期：2016年10月17日学习课程：图形界面 - 廖雪峰的官方网站
 
-          
+Python支持多种图形界面的第三方库，包括：Tk、wxWidgets、QT、GTK等等。
+
+但是Python自带的库是支持Tk的Tkinter，使用Tkinter，无需安装任何包，就可以直接使用。本章简单
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/17/学习笔记_图形界面/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -454,50 +575,21 @@
       
         
           
-            <ul>
-<li>HTMLParser是Python自带的模块，使用简单，能够很容易的实现HTML文件的分析。</li>
-<li><p>本文主要简单讲一下HTMLParser的用法. </p>
-</li>
-<li><p>使用时需要定义一个<strong>从模块<code>html.parser</code>中的类<code>HTMLParser</code>继承的</strong>类，重定义函数：</p>
-<ul>
-<li><code>handle_starttag( tag, attrs)</code></li>
-<li><code>handle_startendtag( tag, attrs)</code></li>
-<li><code>handle_endtag( tag)</code></li>
-<li><code>handle_data(data)</code></li>
-</ul>
-</li>
-</ul>
-<p>##1. 获取标签属性</p>
-<ul>
-<li><code>tag</code>是的html标签，<code>attrs</code>是 (属性，值)元组(<code>tuple</code>)的列表(<code>list</code>). </li>
-</ul>
-<p>如一个标签为：</p>
-<blockquote>
-<p><code>&lt;input type=&quot;hidden&quot; name=&quot;NXX&quot; id=&quot;IDXX&quot; value=&quot;VXX&quot; /&gt;</code></p>
-</blockquote>
-<p>那么它的<code>attrs</code>列表为</p>
-<blockquote>
-<p>`[(‘type’, ‘hidden’), (‘name’, ‘NXX’), (‘id’, ‘IDXX’), (‘value’, ‘VXX’)]</p>
-</blockquote>
-<ul>
-<li><code>HTMLParser</code>自动将<code>tag</code>和<code>attrs</code>都转为小写。</li>
-</ul>
-<p>##2. 获取标签内容</p>
-<ul>
-<li>解析时碰到<code>&lt;***&gt;</code>，自动调用<code>handle_starttag()</code>；碰到<code>&lt;/***&gt;</code>，自动调用<code>handle_endtag()</code></li>
-<li><p>每一个标签，无论<code>&lt;&gt;</code> 还是<code>&lt;/&gt;</code>，均会调用<code>handle_data()</code></p>
-</li>
-<li><p>html中第一行、第二行分别为<code>&lt;html&gt;</code>和<code>&lt;head&gt;</code>，后面无具体数据，只有回车换行，所用调用<code>handle_data()</code>，打印结果为换行；<code>&lt;/html&gt;&lt;/head&gt;</code>同理。</p>
-</li>
-</ul>
-<p>##3. 一个简单的例子</p>
-<ul>
-<li>获取豆瓣上正在上映影片的基本信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"># encoding=utf8</div><div class="line">import requests</div><div class="line">from html.parser import HTMLParser</div><div class="line">from html.entities import name2codepoint</div><div class="line"></div><div class="line"></div><div class="line">class Myparser(HTMLParser):</div><div class="line">    def __init__(self):</div><div class="line">        HTMLParser.__init__(self)</div><div class="line">        self.movies = []</div><div class="line"></div><div class="line">    def handle_starttag(self, tag, attrs):</div><div class="line">        def _attr(attrlist, attrname):</div><div class="line">            for each in attrlist:</div><div class="line">                if attrname == each[0]:</div><div class="line">                    return each[1]</div><div class="line">            return None</div><div class="line"></div><div class="line">        if tag == &apos;li&apos; and _attr(attrs, &apos;data-title&apos;):</div><div class="line">            movie = &#123;&#125;</div><div class="line">            movie[&apos;actors&apos;] = _attr(attrs, &apos;data-actors&apos;)</div><div class="line">            movie[&apos;director&apos;] = _attr(attrs, &apos;data-director&apos;)</div><div class="line">            movie[&apos;duration&apos;] = _attr(attrs, &apos;data-dutation&apos;)</div><div class="line">            movie[&apos;title&apos;] = _attr(attrs, &apos;data-title&apos;)</div><div class="line">            movie[&apos;rate&apos;] = _attr(attrs, &apos;data-rate&apos;)</div><div class="line">            self.movies.append(movie)</div><div class="line"></div><div class="line"></div><div class="line">def movieparser(url):</div><div class="line">    headers = &#123;&#125;</div><div class="line">    req = requests.get(url)</div><div class="line">    s = req.text</div><div class="line">    myparser = Myparser()</div><div class="line">    myparser.feed(s)</div><div class="line">    myparser.close()</div><div class="line">    return myparser.movies</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    url = &apos;https://movie.douban.com/&apos;</div><div class="line">    movies = movieparser(url)</div><div class="line">    for each in movies:</div><div class="line">        print(&apos;%(title)s|%(rate)s|%(actors)s|%(director)s|%(duration)s&apos; % each)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">湄公河行动|8.2|张涵予 / 彭于晏 / 孙淳|林超贤|None</div><div class="line">圆梦巨人 The BFG|6.7|鲁比·巴恩希尔 / 马克·里朗斯 / 比尔·哈德尔|史蒂文·斯皮尔伯格|None</div><div class="line">从你的全世界路过|5.5|邓超 / 白百何 / 杨洋|张一白|None</div><div class="line">暗杀游戏 Мафия: Игра на выживание|4.3|瓦蒂姆·提萨拉提 / 维奥莱塔·吉特孟斯塔雅 / 韦尼亚明·斯梅霍夫|萨里·奥德赛耶|None</div><div class="line">鲁滨逊漂流记 Robinson Crusoe|5.5|马提亚斯·施维赫夫 / 卡亚·叶娜尔 / 伊尔卡·贝桑|文森特·凯斯特鲁特|None</div><div class="line">勇士|4.7|李东学 / 于小伟 / 聂远|宁海强|None</div><div class="line">黑处有什么|6.8|苏晓彤 / 郭笑 / 陆琦蔚|王一淳|None</div><div class="line">王牌逗王牌|3.6|刘德华 / 黄晓明 / 王祖蓝|王晶|None</div><div class="line">爵迹|3.7|范冰冰 / 吴亦凡 / 陈学冬|郭敬明|None</div><div class="line">铠甲勇士捕王|4.1|赖艺 / 王畅唱 / 曲澔濬|郑国伟|None</div><div class="line">逗鸟外传：萌宝满天飞 Storks|7.7|安迪·萨姆伯格 / 凯蒂·克朗 / 凯尔希·格兰莫|尼古拉斯·斯托勒|None</div><div class="line">宾虚 Ben-Hur|5.8|杰克·休斯顿 / 纳赞宁·波妮阿蒂 / 摩根·弗里曼|提莫·贝克曼贝托夫|None</div><div class="line">幽灵医院|2.4|白歆惠 / 李昌熙 / 罗家英|殷国君|None</div><div class="line">T台魔王||朱研 / 班嘉佳 / 侯静文|牛辉|None</div><div class="line">我是哪吒|4.9|陶典 / 韩娇娇 / 刘垚|舒展|None</div><div class="line">神兽金刚之青龙再现|5.5|黄健 / 李仲鑫 / 谢安晟|朱晓兵|None</div><div class="line">疯狂丑小鸭|2.8|苏倩芸 / 王雪沁 / 杨进|蒋叶峰|None</div><div class="line">樱桃小丸子：来自意大利的少年 ちびまる子ちゃん イタリアから来た少年|7.1|鳕子 / 屋良有作 / 一龙斋贞友|高木淳|None</div><div class="line">新东方神娃||王燕华 / 王晓彤 / 李晔|殷晓东|None</div><div class="line">七月与安生|7.6|周冬雨 / 马思纯 / 李程彬|曾国祥|None</div><div class="line">爱上处女座|4.1|萧蔷 / 贺刚 / 高天|刘观伟|None</div><div class="line"></div><div class="line">Process finished with exit code 0</div></pre></td></tr></table></figure></p>
-
           
+HTMLParser是Python自带的模块，使用简单，能够很容易的实现HTML文件的分析。
+本文主要简单讲一下HTMLParser的用法. 
+
+使用时需要定义一个从模块html.parser中的类HTMLParser继承的类，重定义函数：
+
+handle_starttag( tag, attrs
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/15/Python的自带模块——HTMLParser的初步学习/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -607,89 +699,21 @@
       
         
           
-            <ul>
-<li><p><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/" target="_blank" rel="external">中文版官方文档</a></p>
-</li>
-<li><p>安装BeautifulSoup。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install beautifulsoup4</div></pre></td></tr></table></figure>
-</li>
-<li><p><code>Beautiful Soup</code> 是一个可以从<code>HTML</code>或<code>XML</code>文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.<code>Beautiful Soup</code>会帮你节省数小时甚至数天的工作时间.</p>
-</li>
-<li><p>解析器</p>
-<ul>
-<li><p><code>Beautiful Soup</code>支持Python标准库中的HTML解析器,还支持一些第三方的解析器,其中一个是 <code>lxml</code> .根据操作系统不同,可以选择下列方法来安装<code>lxml</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ apt-get install Python-lxml</div><div class="line"></div><div class="line">$ easy_install lxml</div><div class="line"></div><div class="line">$ pip install lxml</div></pre></td></tr></table></figure>
-</li>
-<li><p>另一个可供选择的解析器是纯Python实现的 <code>html5lib</code> , html5lib的解析方式与浏览器相同,可以选择下列方法来安装<code>html5lib</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ apt-get install Python-html5lib</div><div class="line"></div><div class="line">$ easy_install html5lib</div><div class="line"></div><div class="line">$ pip install html5lib</div></pre></td></tr></table></figure>
-</li>
-<li><p>推荐使用lxml作为解析器,因为效率更高.</p>
-</li>
-<li>下表列出了主要的解析器,以及它们的优缺点:<br>|解析器    |使用方法|    优势    |劣势|<br>| — | — | — | — |<br>|Python标准库|    BeautifulSoup(markup, “html.parser”)    |Python的内置标准库,执行速度适中,文档容错能力强|Python 2.7.3 or 3.2.2)前 的版本中文档容错能力差|<br>|lxml HTML 解析器|    BeautifulSoup(markup, “lxml”)       |速度快,文档容错能力强|需要安装C语言库|<br>|lxml XML 解析器|    BeautifulSoup(markup, [“lxml”, “xml”])，BeautifulSoup(markup, “xml”)|速度快唯一支持XML的解析器|需要安装C语言库|<br>|html5lib|    BeautifulSoup(markup, “html5lib”)|    最好的容错性，以浏览器的方式解析文档，生成HTML5格式的文档|速度慢，不依赖外部扩展|</li>
-</ul>
-</li>
-</ul>
-<p>##如何使用</p>
-<ul>
-<li><p>将一段文档传入<code>BeautifulSoup</code> 的构造方法,就能得到一个文档的对象, 可以传入一段字符串或一个文件句柄.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from bs4 import BeautifulSoup</div><div class="line"></div><div class="line">soup = BeautifulSoup(open(&quot;index.html&quot;))</div><div class="line"></div><div class="line">soup = BeautifulSoup(&quot;&lt;html&gt;data&lt;/html&gt;&quot;)</div></pre></td></tr></table></figure>
-</li>
-<li><p>首先,文档被转换成Unicode,并且HTML的实例都被转换成Unicode编码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BeautifulSoup(&quot;Sacr&amp;eacute; bleu!&quot;)</div><div class="line">&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;Sacré bleu!&lt;/body&gt;&lt;/html&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>然后,Beautiful Soup选择最合适的解析器来解析这段文档,如果手动指定解析器那么Beautiful Soup会选择指定的解析器来解析文档.</p>
-<ul>
-<li>建议，传入<code>BeautifulSoup</code>时就定义好解析器，就像如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BeautifulSoup([your markup], &quot;html.parser&quot;)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>##对象的种类</p>
-<ul>
-<li><code>Beautiful Soup</code>将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: <code>Tag</code>, <code>NavigableString</code> , <code>BeautifulSoup</code> , <code>Comment</code> .</li>
-</ul>
-<p>##搜索文档树</p>
-<ul>
-<li>Beautiful Soup定义了很多搜索方法,在这里我先只学习这一个<code>find()</code></li>
-</ul>
-<p>###find()</p>
-<ul>
-<li><p><code>find( name , attrs , recursive , text , **kwargs )</code></p>
-</li>
-<li><p><code>find_all()</code> 方法将返回文档中符合条件的所有tag的列表,尽管有时候我们只想得到一个结果.比如文档中只有一个<code>&lt;body&gt;</code>标签,那么使用 <code>find_all()</code> 方法来查找<code>&lt;body&gt;</code>标签就不太合适, 使用 <code>find_all</code> 方法并设置 <code>limit=1</code> 参数也可以做到，但是远不如直接使用 find() 方法来的方便.下面两行代码是等价的:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">soup.find_all(&apos;title&apos;, limit=1)</div><div class="line"># [&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;]</div><div class="line"></div><div class="line">soup.find(&apos;title&apos;)</div><div class="line"># &lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>唯一的区别是 find_all() 方法的返回结果是值包含一个元素的列表,而 find() 方法直接返回结果.</p>
-</li>
-<li><p>find_all() 方法没有找到目标是返回空列表, find() 方法找不到目标时,返回 None .</p>
-</li>
-</ul>
-<p>##CSS选择器</p>
-<ul>
-<li><p><code>Beautiful Soup</code>支持大部分的CSS选择器 ,在 <code>Tag</code> 或 <code>BeautifulSoup</code> 对象的 <code>.select()</code> 方法中传入字符串参数,即可使用CSS选择器的语法找到tag:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">soup.select(&quot;title&quot;)</div><div class="line"># [&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;]</div></pre></td></tr></table></figure>
-</li>
-<li><p>可以通过传入多个tag标签逐层查找:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">soup.select(&quot;body a&quot;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot;  id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&quot;html head title&quot;)</div><div class="line"># [&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;]</div></pre></td></tr></table></figure>
-</li>
-<li><p>也可以通过使用大于号&lt;的方式找到某个tag标签下的直接子标签：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">soup.select(&quot;head &gt; title&quot;)</div><div class="line"># [&lt;title&gt;The Dormouse&apos;s story&lt;/title&gt;]</div><div class="line"></div><div class="line">soup.select(&quot;p &gt; a&quot;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot;  id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&quot;p &gt; a:nth-of-type(2)&quot;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&quot;p &gt; #link1&quot;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&quot;body &gt; a&quot;)</div><div class="line"># []</div></pre></td></tr></table></figure>
-</li>
-<li><p>通过CSS的类名查找</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">soup.select(&quot;.sister&quot;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&quot;[class~=sister]&quot;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</div></pre></td></tr></table></figure>
-</li>
-<li><p>通过tag的id查找</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">soup.select(&quot;#link1&quot;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&quot;a#link2&quot;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;]</div></pre></td></tr></table></figure>
-</li>
-<li><p>通过是否存在某个属性来查找:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">soup.select(&apos;a[href]&apos;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</div></pre></td></tr></table></figure>
-</li>
-<li><p>通过属性的值来查找:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">soup.select(&apos;a[href=&quot;http://example.com/elsie&quot;]&apos;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&apos;a[href^=&quot;http://example.com/&quot;]&apos;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;Lacie&lt;/a&gt;,</div><div class="line">#  &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&apos;a[href$=&quot;tillie&quot;]&apos;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;Tillie&lt;/a&gt;]</div><div class="line"></div><div class="line">soup.select(&apos;a[href*=&quot;.com/el&quot;]&apos;)</div><div class="line"># [&lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;Elsie&lt;/a&gt;]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>BeautifulSoup实际上就是对HTMLParser的人性化封装，它的功能很强大，我现在只学习了一点皮毛，以后还要多翻看官方文档才是，加油~</strong></p>
-
           
+中文版官方文档
+
+安装BeautifulSoup。
+1$ pip install beautifulsoup4
+
+Beautiful Soup 是一个可以从HTML或XML文件中提取数据的Python库.它能够通过你喜欢的转换器实现惯用的文档导航,查找,修改文档的方式.Beautiful Soup
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/14/初见Python的第三方模块BeautifulSoup/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -799,47 +823,23 @@
       
         
           
-            <ul>
-<li><p>什么是 XML？</p>
-<ul>
-<li>XML 指可扩展标记语言（EXtensible Markup Language）。</li>
-<li>XML 是一种很像HTML的标记语言。</li>
-<li>XML 的设计宗旨是传输数据，而不是显示数据。</li>
-<li>XML 标签没有被预定义。您需要自行定义标签。</li>
-<li>XML 被设计为具有自我描述性。</li>
-<li>XML 是 W3C 的推荐标准。</li>
-</ul>
-</li>
-<li><p>XML 和 HTML 之间的差异</p>
-<ul>
-<li>XML 不是 HTML 的替代。</li>
-<li>XML 和 HTML 为不同的目的而设计：</li>
-<li><ul>
-<li>XML 被设计用来传输和存储数据，其焦点是数据的内容。</li>
-</ul>
-</li>
-<li><ul>
-<li>HTML 被设计用来显示数据，其焦点是数据的外观。</li>
-</ul>
-</li>
-<li>HTML 旨在显示信息，而 XML 旨在传输信息。<h2 id="解析字符串"><a href="#解析字符串" class="headerlink" title="解析字符串"></a>解析字符串</h2></li>
-</ul>
-</li>
-<li><p>操作XML有两种方法：DOM和SAX。DOM会把整个XML读入内存，解析为树，因此占用内存大，解析慢，优点是可以任意遍历树的节点。SAX是流模式，边读边解析，占用内存小，解析快，缺点是我们需要自己处理事件。</p>
-</li>
-<li><p>正常情况下，优先考虑SAX，因为DOM实在太占内存。</p>
-</li>
-<li><p>我们用一个例子来说明解析字符串（用SAX）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">from xml.parsers.expat import ParserCreate</div><div class="line"></div><div class="line">class DefaultSaxHandler(object):</div><div class="line">    def start_element(self, name, attrs):</div><div class="line">        print(&apos;sax:start_element: %s, attrs: %s&apos; % (name, str(attrs)))</div><div class="line"></div><div class="line">    def end_element(self, name):</div><div class="line">        print(&apos;sax:end_element: %s&apos; % name)</div><div class="line"></div><div class="line">    def char_data(self, text):</div><div class="line">        print(&apos;sax:char_data: %s&apos; % text)</div><div class="line"></div><div class="line">xml = r&apos;&apos;&apos;&lt;?xml version=&quot;1.0&quot;?&gt;</div><div class="line">&lt;ol&gt;</div><div class="line">    &lt;li&gt;&lt;a href=&quot;/python&quot;&gt;Python&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;li&gt;&lt;a href=&quot;/ruby&quot;&gt;Ruby&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ol&gt;</div><div class="line">&apos;&apos;&apos;</div><div class="line"></div><div class="line">handler = DefaultSaxHandler()</div><div class="line">parser = ParserCreate()</div><div class="line">parser.StartElementHandler = handler.start_element</div><div class="line">parser.EndElementHandler = handler.end_element</div><div class="line">parser.CharacterDataHandler = handler.char_data</div><div class="line">parser.Parse(xml)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>输出如下结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">sax:start_element: ol, attrs: &#123;&#125;</div><div class="line">sax:char_data: </div><div class="line"></div><div class="line">sax:char_data:     </div><div class="line">sax:start_element: li, attrs: &#123;&#125;</div><div class="line">sax:start_element: a, attrs: &#123;&apos;href&apos;: &apos;/python&apos;&#125;</div><div class="line">sax:char_data: Python</div><div class="line">sax:end_element: a</div><div class="line">sax:end_element: li</div><div class="line">sax:char_data: </div><div class="line"></div><div class="line">sax:char_data:     </div><div class="line">sax:start_element: li, attrs: &#123;&#125;</div><div class="line">sax:start_element: a, attrs: &#123;&apos;href&apos;: &apos;/ruby&apos;&#125;</div><div class="line">sax:char_data: Ruby</div><div class="line">sax:end_element: a</div><div class="line">sax:end_element: li</div><div class="line">sax:char_data: </div><div class="line"></div><div class="line">sax:end_element: ol</div></pre></td></tr></table></figure></p>
-<p>##生成XML</p>
-<ul>
-<li>最简单也是最有效的生成XML的方法是拼接字符串，例子如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">L = []</div><div class="line">L.append(r&apos;&lt;?xml version=&quot;1.0&quot;?&gt;&apos;)</div><div class="line">L.append(r&apos;&lt;root&gt;&apos;)</div><div class="line">L.append(encode(&apos;some &amp; data&apos;))</div><div class="line">L.append(r&apos;&lt;/root&gt;&apos;)</div><div class="line">return &apos;&apos;.join(L)</div></pre></td></tr></table></figure></li>
-</ul>
-
           
+什么是 XML？
+
+XML 指可扩展标记语言（EXtensible Markup Language）。
+XML 是一种很像HTML的标记语言。
+XML 的设计宗旨是传输数据，而不是显示数据。
+XML 标签没有被预定义。您需要自行定义标签。
+XML 被设计为具有自我描述性。
+XML 是 W3C 的推
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/13/学习笔记_XML/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -949,33 +949,24 @@
       
         
           
-            <ul>
-<li>PIL：Python Imaging Library，已经是Python平台事实上的图像处理标准库了。PIL功能非常强大，但API却非常简单易用。</li>
-</ul>
-<h2 id="安装PIL"><a href="#安装PIL" class="headerlink" title="安装PIL"></a>安装PIL</h2><ul>
-<li>在命令行下直接通过pip安装：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install pillow</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>##操作图像</p>
-<ul>
-<li><p>通过 <code>Image</code> 类中的 <code>open()</code> 方法即可载入一个图像文件。如果载入文件失败，则会引起一个 <code>IOError</code> ；若无返回错误，则 <code>open()</code> 函数返回一个 <code>Image</code> 对象,Image 对象里有三个属性。</p>
-<ul>
-<li><code>format</code> : 识别图像的源格式，如果该文件不是从文件中读取的，则被置为 None 值。</li>
-<li><code>size</code> : 返回的一个元组，有两个元素，其值为象素意义上的宽和高。</li>
-<li><code>mode</code> : RGB（true color image），此外还有，L（luminance），CMTK（pre-press image）。</li>
-</ul>
-</li>
-<li><p><code>show()</code>方法显示最新载入的图像。</p>
-</li>
-<li><p><code>crop()</code>方法 : 从图像中提取出某个矩形大小的图像。它接收一个四元素的元组作为参数，各元素为<code>（left, upper, right, lower）</code>，坐标系统的原点（0, 0）是左上角。</p>
-</li>
-<li><p>PIL模块可以实现图像缩放，切片，旋转，滤镜，输入文字，调色板等许多功能,具体功能怎么实现可以百度哈哈哈。</p>
-</li>
-<li><p>PIL的<code>ImageDraw</code>提供了一系列绘图方法，让我们可以直接绘图。</p>
-</li>
-</ul>
-
           
+PIL：Python Imaging Library，已经是Python平台事实上的图像处理标准库了。PIL功能非常强大，但API却非常简单易用。
+
+安装PIL
+在命令行下直接通过pip安装：1$ pip install pillow
+
+
+##操作图像
+
+通过 Image 类中的 open() 方
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/13/学习笔记_常用第三方模块-PIL/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1085,31 +1076,21 @@
       
         
           
-            <h2 id="摘要算法简介"><a href="#摘要算法简介" class="headerlink" title="摘要算法简介"></a>摘要算法简介</h2><ul>
-<li><p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。</p>
-</li>
-<li><p>摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。</p>
-</li>
-<li><p>我们以常见的摘要算法MD5为例，计算出一个字符串的MD5值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import hashlib</div><div class="line"></div><div class="line">md5 = hashlib.md5()</div><div class="line">md5.update(&apos;how to use md5 in python hashlib?&apos;.encode(&apos;utf-8&apos;))</div><div class="line">print(md5.hexdigest())</div><div class="line">#计算结果如下：</div><div class="line"></div><div class="line">d26a53750bc40b38b65a520292f69306</div></pre></td></tr></table></figure>
-</li>
-<li><p>如果数据量很大，可以分块多次调用<code>update()</code>，最后计算的结果是一样的。</p>
-</li>
-<li><p>另一种常见的摘要算法是SHA1，调用SHA1和调用MD5完全类似。</p>
-</li>
-<li><p>MD5是最常见的摘要算法，速度很快，生成结果是固定的128 bit字节，通常用一个32位的16进制字符串表示。</p>
-</li>
-<li>SHA1的结果是160 bit字节，通常用一个40位的16进制字符串表示。</li>
-</ul>
-<p>##摘要算法应用</p>
-<ul>
-<li>储存用户的登陆密码。<ul>
-<li>当用户登录时，首先计算用户输入的密码的MD5，然后和数据库存储的MD5对比，如果一致，说明口令输入正确，如果不一致，口令肯定错误。</li>
-</ul>
-</li>
-</ul>
+          摘要算法简介
+Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。
 
-          
+摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）。
+
+我们以常见的摘要算法MD5为例，计算出一个字符串的MD5值：
+12345678im
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/13/学习笔记_hashlib/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1219,38 +1200,23 @@
       
         
           
-            <ul>
-<li>Python的内建模块<code>itertools</code>提供了非常有用的用于操作迭代对象的函数。</li>
-</ul>
-<h2 id="无限迭代器"><a href="#无限迭代器" class="headerlink" title="无限迭代器"></a>无限迭代器</h2><ul>
-<li><p><code>count(x, y)</code>      从x开始的整数循环器，每次增加y，如果不指定y则默认y为1</p>
-</li>
-<li><p><code>cycle(&#39;abc&#39;)</code>    重复序列的元素，既a, b, c, a, b, c …</p>
-</li>
-<li><p><code>repeat(x,y)</code>     重复x这个参数y次，如果不指定y即无限重复。</p>
-</li>
-<li><p>无限序列只有在<code>for</code>迭代时才会无限地迭代下去，如果只是创建了一个迭代对象，它不会事先把无限个元素生成出来，事实上也不可能在内存中创建无限多个元素。（迭代器）</p>
-</li>
-<li><p>无限序列虽然可以无限迭代下去，但是通常我们会通过<code>takewhile()</code>等函数根据条件判断来截取出一个有限的序列。</p>
-</li>
-<li><p>例子：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; natuals = itertools.count(1)</div><div class="line">&gt;&gt;&gt; ns = itertools.takewhile(lambda x: x &lt;= 10, natuals)</div><div class="line">&gt;&gt;&gt; list(ns)</div><div class="line">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</div></pre></td></tr></table></figure>
-<h2 id="chain"><a href="#chain" class="headerlink" title="chain()"></a>chain()</h2><ul>
-<li>chain()可以把一组迭代对象串联起来，形成一个更大的迭代器。</li>
-</ul>
-<p>##groupby()</p>
-<ul>
-<li><p>groupby()把迭代器中相邻的重复元素挑出来放在一起。</p>
-</li>
-<li><p>实际上挑选规则是通过函数完成的（即第二个参数可以是函数），只要作用于函数的两个元素返回的值相等，这两个元素就被认为是在一组的，而函数返回值作为组的key。</p>
-</li>
-<li><p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; for key, group in itertools.groupby(&apos;AaaBBbcCAAa&apos;, lambda c: c.upper()):</div><div class="line">...     print(key, list(group))</div><div class="line">...</div><div class="line">A [&apos;A&apos;, &apos;a&apos;, &apos;a&apos;]</div><div class="line">B [&apos;B&apos;, &apos;B&apos;, &apos;b&apos;]</div><div class="line">C [&apos;c&apos;, &apos;C&apos;]</div><div class="line">A [&apos;A&apos;, &apos;A&apos;, &apos;a&apos;]</div></pre></td></tr></table></figure></li>
-</ul>
-
           
+Python的内建模块itertools提供了非常有用的用于操作迭代对象的函数。
+
+无限迭代器
+count(x, y)      从x开始的整数循环器，每次增加y，如果不指定y则默认y为1
+
+cycle(&#39;abc&#39;)    重复序列的元素，既a, b, c, a, b, c …
+
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/13/学习笔记_itertools/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1360,271 +1326,23 @@
       
         
           
-            <ul>
-<li><p>Python提供了一个<code>struct</code>模块来解决bytes和其他二进制数据类型的转换。</p>
-</li>
-<li><p><code>struct</code>的<code>pack</code>函数把任意数据类型变成<code>bytes</code>。</p>
-<ul>
-<li><code>pack(fmt, v1, v2, ...)</code>  按照给定的格式(fmt)，把数据封装成字符串(实际上是类似于c结构体的字节流)</li>
-</ul>
-</li>
-<li><p><code>unpack</code>把bytes变成相应的数据类型。</p>
-<ul>
-<li><code>unpack(fmt, string)</code>  按照给定的格式(fmt)解析字节流string，返回解析出来的tuple。</li>
-</ul>
-</li>
-<li><p><code>struct</code>中支持的格式如下表。</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Format</th>
-<th>C Type</th>
-<th>Python</th>
-<th>字节数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>x</td>
-<td>pad byte</td>
-<td>no value</td>
-<td>1</td>
-</tr>
-<tr>
-<td>c</td>
-<td>char</td>
-<td>string of length 1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>b</td>
-<td>signed char</td>
-<td>integer</td>
-<td>1</td>
-</tr>
-<tr>
-<td>B</td>
-<td>unsigned char</td>
-<td>integer</td>
-<td>1</td>
-</tr>
-<tr>
-<td>?</td>
-<td>_Bool</td>
-<td>bool</td>
-<td>1</td>
-</tr>
-<tr>
-<td>h</td>
-<td>short</td>
-<td>integer</td>
-<td>2</td>
-</tr>
-<tr>
-<td>H</td>
-<td>unsigned short</td>
-<td>integer</td>
-<td>2</td>
-</tr>
-<tr>
-<td>i</td>
-<td>int</td>
-<td>integer</td>
-<td>4</td>
-</tr>
-<tr>
-<td>I</td>
-<td>unsigned int</td>
-<td>integer or long</td>
-<td>4</td>
-</tr>
-<tr>
-<td>l</td>
-<td>long</td>
-<td>integer</td>
-<td>4</td>
-</tr>
-<tr>
-<td>L</td>
-<td>unsigned long</td>
-<td>long</td>
-<td>4</td>
-</tr>
-<tr>
-<td>q</td>
-<td>long long</td>
-<td>long</td>
-<td>8</td>
-</tr>
-<tr>
-<td>Q</td>
-<td>unsigned long long</td>
-<td>long</td>
-<td>8</td>
-</tr>
-<tr>
-<td>f</td>
-<td>float</td>
-<td>float</td>
-<td>4</td>
-</tr>
-<tr>
-<td>d</td>
-<td>double</td>
-<td>float</td>
-<td>8</td>
-</tr>
-<tr>
-<td>s</td>
-<td>char[]</td>
-<td>string</td>
-<td>1</td>
-</tr>
-<tr>
-<td>p</td>
-<td>char[]</td>
-<td>string</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-
           
-        
-      
-    </div>
+Python提供了一个struct模块来解决bytes和其他二进制数据类型的转换。
 
-    <div>
-      
-    </div>
+struct的pack函数把任意数据类型变成bytes。
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
+pack(fmt, v1, v2, ...)  按照给定的格式(fmt)，把数据封装成字符串(实际上是类似于c结构体的字节流)
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/09/学习笔记_base64/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/09/学习笔记_base64/" itemprop="url">学习笔记_base64</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-09T10:44:04+08:00">
-                2016-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一，Base64编码可用于在HTTP环境下传递较长的标识信息。</p>
-</li>
-<li><p>Python内置的base64可以直接进行base64的编解码。</p>
-<ul>
-<li>编码<code>base64.b64encode(\***)</code></li>
-<li>解码<code>base64.b64decode(\***)</code></li>
-</ul>
-</li>
-<li><p>Base64编码会把3字节的二进制数据编码为4字节的文本数据，长度增加33%，好处是编码后的文本数据可以在邮件正文、网页等直接显示。</p>
-</li>
-<li><p>如果要编码的二进制数据不是3的倍数，最后会剩下1个或2个字节怎么办？Base64用<code>\x00</code>字节在末尾补足后，再在编码的末尾加上1个或2个<code>=</code>号，表示补了多少字节，解码的时候，会自动去掉。</p>
-</li>
-<li><p>由于标准的Base64编码后可能出现字符<code>+</code>和<code>\</code>，在URL中就不能直接作为参数，所以又有一种”url safe”的base64编码，其实就是把字符<code>+</code>和<code>/</code>分别变成<code>-</code>和<code>_</code>。</p>
-<ul>
-<li><code>base64.urlsafe_b64encode()</code></li>
-<li><code>bese64.urlsafe_b64decode()</code></li>
-</ul>
-</li>
-<li><p>由于<code>=</code>字符也可能出现在Base64编码中，但<code>=</code>用在URL、Cookie里面会造成歧义，所以，很多Base64编码后会把=去掉。去掉<code>=</code>后怎么解码呢？因为Base64是把3个字节变为4个字节，所以，Base64编码的长度永远是4的倍数，因此，需要加上<code>=</code>把Base64字符串的长度变为4的倍数，就可以正常解码了。</p>
-</li>
-</ul>
-
-          
+unpack把byt
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/13/学习笔记_struct/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1734,51 +1452,22 @@
       
         
           
-            <ul>
-<li><code>collections</code>是python内建的一个集合模块，提供了许多有用的集合类。</li>
-</ul>
-<p>##namedtuple</p>
-<ul>
-<li><p><code>namedtuple</code>是一个函数，它用来创建一个自定义的<code>tuple</code>对象，并且规定<code>了tuple</code>元素的个数，并可以用属性而不是索引来引用<code>tuple</code>的某个元素。</p>
-</li>
-<li><p>这样一来，我们用<code>namedtuple</code>可以很方便地定义一种数据类型，它具备tuple的不变性，又可以根据属性来引用，使用十分方便。</p>
-</li>
-</ul>
-<p>##deque</p>
-<ul>
-<li><p><code>deque</code>是为了高效实现插入和删除操作的双向列表，适合用于队列和栈。（因为list的插入和删除效率很低。</p>
-</li>
-<li><p><code>deque</code>除了实现<code>list</code>的<code>append()</code>和<code>pop()</code>外，还支持<code>appendleft()</code>和<code>popleft()</code>，这样就可以非常高效地往头部添加或删除元素。</p>
-</li>
-</ul>
-<p>##defaultdict</p>
-<ul>
-<li><p>使用<code>dict</code>时，如果引用的<code>Key</code>不存在，就会抛出<code>KeyError</code>。如果希望<code>key</code>不存在时，返回一个默认值，就可以用<code>defaultdict</code>。</p>
-</li>
-<li><p>注意默认值是调用函数返回的，而函数在创建<code>defaultdict</code>对象时传入。</p>
-</li>
-<li><p>除了在Key不存在时返回默认值，<code>defaultdict</code>的其他行为跟<code>dict</code>是完全一样的。</p>
-</li>
-</ul>
-<p>##OrderedDict</p>
-<ul>
-<li><p>使用<code>dict</code>时，<code>Key</code>是无序的。如果要保持<code>Key</code>的顺序，可以用<code>OrderedDict</code>。</p>
-</li>
-<li><p>注意，<code>OrderedDict</code>的<code>Key</code>会按照插入的顺序排列，不是<code>Key</code>本身排序。</p>
-</li>
-<li><p><code>OrderedDict</code>可以实现一个FIFO（先进先出）的<code>dict</code>，当容量超出限制时，先删除最早添加的Key。</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">from collections import OrderedDict</div><div class="line"></div><div class="line">class LastUpdatedOrderedDict(OrderedDict):</div><div class="line"></div><div class="line">    def __init__(self, capacity):</div><div class="line">        super(LastUpdatedOrderedDict, self).__init__()</div><div class="line">        self._capacity = capacity</div><div class="line"></div><div class="line">    def __setitem__(self, key, value):</div><div class="line">        containsKey = 1 if key in self else 0</div><div class="line">        if len(self) - containsKey &gt;= self._capacity:</div><div class="line">            last = self.popitem(last=False)</div><div class="line">            print(&apos;remove:&apos;, last)</div><div class="line">        if containsKey:</div><div class="line">            del self[key]</div><div class="line">            print(&apos;set:&apos;, (key, value))</div><div class="line">        else:</div><div class="line">            print(&apos;add:&apos;, (key, value))</div><div class="line">        OrderedDict.__setitem__(self, key, value)</div></pre></td></tr></table></figure>
-<p>##Counter</p>
-<ul>
-<li><p><code>Counter</code>是一个简单的计数器，例如，可以统计字符出现的个数。</p>
-</li>
-<li><p><code>Counter</code>实际上也是<code>dict</code>的一个子类。</p>
-</li>
-</ul>
-
           
+collections是python内建的一个集合模块，提供了许多有用的集合类。
+
+##namedtuple
+
+namedtuple是一个函数，它用来创建一个自定义的tuple对象，并且规定了tuple元素的个数，并可以用属性而不是索引来引用tuple的某个元素。
+
+这样一来，我们用namedtu
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/09/学习笔记_collections/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1860,7 +1549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1873,7 +1562,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -1882,8 +1571,35 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ReedSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ReedSun" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-address-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1969,6 +1685,8 @@
   
 
 
+  
+
 
 
 
@@ -1996,6 +1714,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   

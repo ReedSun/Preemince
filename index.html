@@ -21,6 +21,8 @@
 
 
 
+  <meta name="google-site-verification" content="i23ZM3JwzP7RudPF0vEeoCb9wYU2xOmiRjeOKDrPyWU" />
+
 
 
 
@@ -79,6 +81,8 @@
 
 
 
+
+  <link rel="alternate" href="/atom.xml" title="Preeminent" type="application/atom+xml" />
 
 
 
@@ -142,6 +146,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?688e202055dc896dd0b15268cd5cdc8e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -244,6 +258,124 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2017/08/02/关于函数重载的一种实现方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/02/关于函数重载的一种实现方法/" itemprop="url">关于函数重载的一种实现方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-02T16:12:01+08:00">
+                2017-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          关于函数重载的一种实现方法前言什么是函数重载，函数重载就是允许某个函数有各种不同输入，根据不同的输入，返回不同的结果。举个例子， jQuery 中的 text() 函数允许接收一到两个参数，如果输入一个参数，则读取 DOM 元素的文本，如果输入两个参数，则为设置 DOM 元素的文本，这就是典型的函数
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/02/关于函数重载的一种实现方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://reedsun.top/2017/05/17/Storge 在 Safari 的无痕浏览模式中的坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -312,32 +444,16 @@
       
         
           
-            <h1 id="关于-Storge-在-Safari-的无痕浏览模式中的坑"><a href="#关于-Storge-在-Safari-的无痕浏览模式中的坑" class="headerlink" title="关于 Storge 在 Safari 的无痕浏览模式中的坑"></a>关于 Storge 在 Safari 的无痕浏览模式中的坑</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天遇到了一个诡异的bug，一个网页在微信浏览器中是可以正常显示的，而在一些用户的 Safari 中却无法正常渲染。真是日了狗了！检查一下报错，发现这个报错很可疑：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">QuotaExceededError</div><div class="line">The quota has been exceeded.</div></pre></td></tr></table></figure>
-<p>Google了半天，终于发现了问题的原因可能是出在 Safari 的无痕浏览当中。</p>
-<blockquote>
-<p>Safari在所谓的private mode下不允许使用LocalStorage功能，只有在用户自身开启non-private mode的情况下才可以正常使用LocalStorage。</p>
-</blockquote>
-<p>果断开无痕浏览试一试，果然网页就打不开了 - -！</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Safari 的无痕浏览模式会这样处理 <code>Storge</code> 对象：</p>
-<ul>
-<li><p><code>Storage</code> 对象仍然存在。</p>
-</li>
-<li><p>但是 <code>setItem()</code> 会报异常：QuotaExceededError。</p>
-</li>
-<li><p><code>getItem()</code> 和 <code>removeItem()</code> 方法会直接忽略。</p>
-</li>
-</ul>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>既然知道了问题的原因，解决起来自然也就简单许多了，由于这个问题的解决方案与业务息息相关，我这里就提供几个简单的思路。</p>
-<ol>
-<li><p>在 Safari 的无痕模式中不执行 <code>Storage.setItem()</code> 的部分，简单粗暴。</p>
-</li>
-<li><p>使用 cookie 替代 <code>Storage</code> 对象。</p>
-</li>
-</ol>
-<p>至于判断是否可用 <code>Stroage</code> 对象，我们可以用 <code>try...catch...</code> 语句来判断。</p>
-
-          
+          关于 Storge 在 Safari 的无痕浏览模式中的坑前言今天遇到了一个诡异的bug，一个网页在微信浏览器中是可以正常显示的，而在一些用户的 Safari 中却无法正常渲染。真是日了狗了！检查一下报错，发现这个报错很可疑：
+12QuotaExceededErrorThe quota has be
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/17/Storge 在 Safari 的无痕浏览模式中的坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -447,34 +563,17 @@
       
         
           
-            <h1 id="ES6-中-Class-学习笔记"><a href="#ES6-中-Class-学习笔记" class="headerlink" title="ES6 中 Class 学习笔记"></a>ES6 中 Class 学习笔记</h1><p>ES6 中的 <code>class</code> （类）实际上就是基于原型继承的语法糖，可以让我们用更简单更清晰的语法来创建类。</p>
-<p>这篇文章即为我学习 <code>class</code> 的学习笔记，其中内容大部分参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="external">类 - JavaScript | MDN</a> 。</p>
-<h2 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h2><p>定义类有两种方式，类表达式和类声明。这一点跟函数很类似，函数使用 <code>function</code> 关键词来声明函数，而类则使用 <code>class</code> 关键词来声明类。</p>
-<h3 id="类声明"><a href="#类声明" class="headerlink" title="类声明"></a>类声明</h3><p>如下所示即为类声明：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  // xxxx</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>建议: 类名首字母最好大写。</p>
-<p>注意：类声明不会声明前置，这点与函数不同，要注意。</p>
-<h3 id="类表达式"><a href="#类表达式" class="headerlink" title="类表达式"></a>类表达式</h3><p>类表达式可以命名也可以是匿名的。如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 匿名</div><div class="line">let People = class &#123;</div><div class="line">  // xxx</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 命名</div><div class="line">let People = class People &#123;</div><div class="line">  // xxx</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意：类表达式同样会收到不声明前置的影响</p>
-<h2 id="类体和类方法"><a href="#类体和类方法" class="headerlink" title="类体和类方法"></a>类体和类方法</h2><p>一个类的类体是又一对中括号 <code>{}</code> 组成的，在其中我们将定义方法或构造函数。这个很像一个对象，但与对象不同的是，类体内不需要逗号分隔不同的方法。</p>
-<p>###　构造函数</p>
-<p>构造函数( <code>constructor</code> )用于：创建或初始化一个<strong>使用这个类创建的实例</strong>。概念似乎很拗口，但是一看例子就知道其含义了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  constructor (name, age) &#123;</div><div class="line">    this.name = name</div><div class="line">    this.age = age</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let me = new People(&apos;ReedSun&apos;, 23)</div><div class="line">console.log(me.name)  // &apos;ReedSun&apos;</div><div class="line">console.log(me.age)  // 23</div></pre></td></tr></table></figure>
-<p>有了例子，我们就能看明白了，构造函数 <code>constructor</code> 接收的参数为我们实例化这个类时传入的参数。</p>
-<p>注意：一个类方法中只能有一个构造函数，如果有多个构造函数则会抛出异常。</p>
-<p>同时，一个构造函数可以使用 <code>super</code> 关键词来调用一个父类构造函数。</p>
-<h3 id="原型方法"><a href="#原型方法" class="headerlink" title="原型方法"></a>原型方法</h3><p>原型方法直接写在类体中就可以</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  constructor (name) &#123;</div><div class="line">    this.name = name</div><div class="line">  &#125;</div><div class="line">  getName () &#123;</div><div class="line">    console.log(&apos;Name: &apos; + this.name)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let me = new People(&apos;ReedSun&apos;)</div><div class="line">me.getName()  // name: ReedSun</div></pre></td></tr></table></figure>
-<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p>静态方法需要使用 <code>static</code> 来声明，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  constructor (name) &#123;</div><div class="line">    this.name = name</div><div class="line">  &#125;</div><div class="line">  static walk (num) &#123;</div><div class="line">    console.log(&apos;我走了&apos; + num + &apos;步&apos;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">People.walk(100)  // 我走了100步</div></pre></td></tr></table></figure>
-<p><strong>静态方法是类本身的方法，原型方法是类的实例的方法。</strong>你懂了嘛？我反正懂了~</p>
-<h2 id="创建子类"><a href="#创建子类" class="headerlink" title="创建子类"></a>创建子类</h2><p>为一个类创建子类需要使用 <code>extends</code> 关键字，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">  constructor (name) &#123;</div><div class="line">    this.name</div><div class="line">  &#125;</div><div class="line">  getHeight () &#123;</div><div class="line">    console.log(this.name + &apos; is people.&apos;)</div><div class="line">  &#125;</div><div class="line">  getWord () &#123;</div><div class="line">    console.log(this.name + &apos; is saying.&apos;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Teen extends People &#123;</div><div class="line">  constructor (name) &#123;</div><div class="line">    super()</div><div class="line">    this.name = name</div><div class="line">  &#125;</div><div class="line">  getHeight () &#123;</div><div class="line">    console.log(this.name + &apos; is teen.&apos;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let me = new Teen(&apos;ReedSun&apos;)</div><div class="line">me.getHeight()  // ReedSun is teen.</div><div class="line">me.getWord()  // ReedSun is saying.</div></pre></td></tr></table></figure>
-<p>注意：如果子类中存在构造函数，则需要在使用 <code>this</code> 之前首先调用 <code>super()</code>。</p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="external">类 - JavaScript | MDN</a></p>
-
-          
+          ES6 中 Class 学习笔记ES6 中的 class （类）实际上就是基于原型继承的语法糖，可以让我们用更简单更清晰的语法来创建类。
+这篇文章即为我学习 class 的学习笔记，其中内容大部分参考 类 - JavaScript | MDN 。
+定义类定义类有两种方式，类表达式和类声明。这一点跟函
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/14/ES6 中 Class 学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -584,35 +683,15 @@
       
         
           
-            <h1 id="解决动态网页在微信浏览器中每次返回都会重新加载的问题"><a href="#解决动态网页在微信浏览器中每次返回都会重新加载的问题" class="headerlink" title="解决动态网页在微信浏览器中每次返回都会重新加载的问题"></a>解决动态网页在微信浏览器中每次返回都会重新加载的问题</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>假设我们我们有一个搜索结果列表页面，其内容为我们通过 AJAX 从后端动态获取的。搜索页面中的每一个条目是一个超链接，我们可以点击超链接去请求另一个网页查看条目详情。这是一种很常见的情况。可是在微信浏览器，我们会遇到这样一个问题：当我们想从条目详情返回条目列表页面时，微信浏览器会重新刷新条目列表页面，我们会找不到刚才浏览的位置，又要重新滚动，上滑加载，等等等等，过了好久才能找到刚才浏览的位置，继续浏览。</p>
-<p>这个问题的本质原因是微信浏览器的后退功能并不会保存网页快照，而是简单粗暴的重新加载网页。</p>
-<p>这是一个很影响用户体验的问题。有解决办法吗？</p>
-<p>当然有，最好的解决办法就是做一个 SPA 单页应用来实现。但是如果我们的网页已经存在，再重新成单页应用会增加很多工作量怎么办呢？这篇文章将介绍通过缓存来实现记录原有位置的功能。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>既然微信浏览器的后退功能我们无法修改，那我们的思路可以是自己保存网页的信息，当我们重新加载时先进行判断，判断本地是否有缓存的网页信息，如果有，则读取网页信息，将网页复原的原位置。如果没有，则像之前那样向后台发送 AJAX 来获取数据。</p>
-<p>这样我们将大问题分解成了这几个小问题</p>
-<ul>
-<li><p>如果缓存数据</p>
-</li>
-<li><p>什么时候缓存数据</p>
-</li>
-<li><p>缓存哪些数据</p>
-</li>
-<li><p>如何判断复原网页</p>
-</li>
-</ul>
-<p>##　如何缓存数据</p>
-<p>我这里的想法是使用 LocalStorge 来存储数据。 LocalStorge 只能存储字符串数据，如果我们的数据不是字符串，我们可以将其转换为 JSON 格式在存储。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// data 是我们要缓存的数据</div><div class="line">localStorge.setItem(&apos;listData&apos;, JSON.strinify(data))</div></pre></td></tr></table></figure>
-<h2 id="什么时候缓存参数"><a href="#什么时候缓存参数" class="headerlink" title="什么时候缓存参数"></a>什么时候缓存参数</h2><p>我这里的想法是在我们点击查看商品详情之前，先进行缓存，然后进行跳转。这时我们就不能使用 <code>&lt;a href=&quot;xxx&quot;&gt;</code> 了，而要使用 <code>window.location.href</code> 来做跳转</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// .list-item 是我们点击跳转的列表条目</div><div class="line">let item = document.getElementByClassName(&apos;.list-item&apos;)</div><div class="line">item.addEventListener(&apos;click&apos;, function () &#123;</div><div class="line">  localStorge.setItem(&apos;listData&apos;, JSON.strinify(data))</div><div class="line">  window.loaction.href = &apos;xxx&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h3 id="缓存哪些数据"><a href="#缓存哪些数据" class="headerlink" title="缓存哪些数据"></a>缓存哪些数据</h3><p>我这里的想法是要缓存从后端获取的全部数据，key值（我这里是搜索关键字），滚动位置，如果我们是按页码加载的话还要缓存页码位置以便回到列表页浏览后继续加载。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let item = document.getElementByClassName(&apos;.list-item&apos;)</div><div class="line">item.addEventListener(&apos;click&apos;, function () &#123;</div><div class="line">  var data = &#123;</div><div class="line">    data: response,  // 从后台获取的数据</div><div class="line">    key: key</div><div class="line">    scrollTop: document.body.scrollTop,</div><div class="line">    page: page</div><div class="line">  &#125;</div><div class="line">  localStorge.setItem(&apos;listData&apos;, JSON.strinify(data))</div><div class="line">  window.loaction.href = &apos;xxx&apos;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>###　如何判断复原网页</p>
-<p>关于如何判断数据这个就比较业务化了，大体思路还是按照key进行判断。复原网页就比较简单了，判断通过之后，将data数据渲染到 HTML 上，将滚动距离重新赋值给 <code>document.body.scrollTop</code> 即可。</p>
-<p>如果判断不通过则可以通过如下方式删除缓存，然后重新获取数据即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localStorge.removeItem(&apos;listData&apos;)</div></pre></td></tr></table></figure>
-
-          
+          解决动态网页在微信浏览器中每次返回都会重新加载的问题前言假设我们我们有一个搜索结果列表页面，其内容为我们通过 AJAX 从后端动态获取的。搜索页面中的每一个条目是一个超链接，我们可以点击超链接去请求另一个网页查看条目详情。这是一种很常见的情况。可是在微信浏览器，我们会遇到这样一个问题：当我们想从条目
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/09/解决动态生成的网页在微信浏览器中每次返回都会重新生成的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -722,52 +801,15 @@
       
         
           
-            <h1 id="关于Number-toFixed-函数的总结"><a href="#关于Number-toFixed-函数的总结" class="headerlink" title="关于Number.toFixed()函数的总结"></a>关于Number.toFixed()函数的总结</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天工作中遇到了一个需求，需要将类似于 <code>1.99999</code> 这样的数字格式化为 <code>2.00</code> 这样的两位小数。本来打算自己实现一个类似的功能函数，但是没想到看起来容易，实际实现起来却还是有点复杂的，就例如逢9进位这样的功能就让我想的有点头疼。索性考虑起来大谷歌来实现这样的功能。</p>
-<p>没想到谷歌一下发现，居然 JS 中现成的函数 <code>Number.toFixed()</code> 来实现我这样的需求。赶紧查阅了<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed" target="_blank" rel="external">MDN</a>，然后写下这篇文章来总结一下 <code>Number.toFixed()</code> 的各个方面。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">numObj.toFixed(digits)</div></pre></td></tr></table></figure>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>digits</code></td>
-<td>小数点后数字的个数；介于 0 到 20 （包括）之间，实现环境可能支持更大范围。如果忽略该参数，则默认为 0</td>
-</tr>
-</tbody>
-</table>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>该方法不会改变原数值。</p>
-<p>该方法会返回一个数值的字符串表现形式，保留 <code>digits</code> 位小数。</p>
-<p>如果有必要会进行四舍五入。</p>
-<p>如果原数字位数不足 <code>digits</code> 位则会补零。</p>
-<p>如果数值大于 1e+21，该方法会简单调用 <code>Number.prototype.toString()</code> 并返回一个指数记数法格式的字符串。</p>
-<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><table>
-<thead>
-<tr>
-<th>可能抛出的异常</th>
-<th>原因</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>RangeError</code></td>
-<td>如果 <code>digits</code> 参数太小或太大则可能抛出此异常。一般来说 0 到 20（包括）之间的值不会引起 RangeError。实现环境（implementations）也可以支持更大或更小的值</td>
-</tr>
-<tr>
-<td><code>TypeErrpr</code></td>
-<td>如果该方法在一个非Number类型的对象上调用将会抛出此异常</td>
-</tr>
-</tbody>
-</table>
-<h2 id="真实需求"><a href="#真实需求" class="headerlink" title="真实需求"></a>真实需求</h2><p>在实际情况中我们可能会面对这样的需求：如果数字小数点后位数大于两位则格式化到两位，如果不大于两位则不格式化。即不需要 <code>Number.toFixed()</code> 函数的补零功能。我们可以这样实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function () &#123;</div><div class="line">  let valueStr = value.toString()</div><div class="line">  if (valueStr.indexOf(&apos;.&apos;) !== -1 &amp;&amp; valueStr.split(&apos;.&apos;)[1].length &gt; 2) &#123;</div><div class="line">    return value.toFixed(2)</div><div class="line">  &#125; else &#123;</div><div class="line">    return value</div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这个函数中，我们通过判断 <code>&#39;.&#39;</code> 是否存在，以及 <code>&#39;.&#39;</code> 之后数字的个数来判断我们是否需要格式化，这样就完美解决了我们的需求。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed" target="_blank" rel="external">Number.prototype.toFixed() - JavaScript | MDN</a></p>
-
-          
+          关于Number.toFixed()函数的总结前言今天工作中遇到了一个需求，需要将类似于 1.99999 这样的数字格式化为 2.00 这样的两位小数。本来打算自己实现一个类似的功能函数，但是没想到看起来容易，实际实现起来却还是有点复杂的，就例如逢9进位这样的功能就让我想的有点头疼。索性考虑起来大谷
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/08/关于Number.toFixed()的总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -877,20 +919,16 @@
       
         
           
-            <h1 id="关于-Date-函数在-iOS-中的一个小坑"><a href="#关于-Date-函数在-iOS-中的一个小坑" class="headerlink" title="关于 Date() 函数在 iOS 中的一个小坑"></a>关于 Date() 函数在 iOS 中的一个小坑</h1><h2 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h2><p>今天遇到了一个诡异的 bug 。一个 <code>Vux</code> 的日期选择组件在 PC 端和安卓端都能正常显示和使用，而在 <code>iOS</code> 端却不能正常出现。经过漫长的调试，终于发现问题出在这一行代码上：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var startDate = new Date(&apos;2017-5-3&apos;)</div></pre></td></tr></table></figure>
-<p>这行代码在 PC 端和安卓端都是正常的，而在 <code>iOS</code> 端则会提示 <code>Invalid Date</code> 无效日期。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p><code>new Date(dateString)</code> 实际上是调用了 <code>Date.parse()</code> 这个函数。关于这个函数， <code>ECMAScript</code> 规范规定：</p>
-<blockquote>
-<p>如果一个字符串不符合标准格式，则函数可以使用任何由引擎决定的策略或解析算法。 <code>Date.parse()</code> 对于因包含有无效元素而无法识别的 <code>ISO</code> 格式字符串或者日期应该返回 <code>NaN</code> 。</p>
-</blockquote>
-<p>简单的说这个函数在不同的浏览器引擎中会存在偏差，导致对字符串的解析不一致或部分浏览器无法解析。问题应该就是出在这里！是 <code>Safari</code> 不能识别这串字符串。</p>
-<p>经过测试，将代码改为如下样子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var startDate = new Date(&apos;2017-05-03&apos;)</div></pre></td></tr></table></figure>
-<p>这样代码就可以 <code>iOS</code> 端正常运行了。坑爹的 <code>Safari</code> 。</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/parse" target="_blank" rel="external">Date.parse - JavaScript | MDN</a></p>
-
-          
+          关于 Date() 函数在 iOS 中的一个小坑bug今天遇到了一个诡异的 bug 。一个 Vux 的日期选择组件在 PC 端和安卓端都能正常显示和使用，而在 iOS 端却不能正常出现。经过漫长的调试，终于发现问题出在这一行代码上：
+1var startDate = new Date(&apos;2
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/04/关于 Date() 函数在 iOS 中的一个小坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1000,14 +1038,16 @@
       
         
           
-            <h1 id="简单筛选iOS和安卓的版本的函数"><a href="#简单筛选iOS和安卓的版本的函数" class="headerlink" title="简单筛选iOS和安卓的版本的函数"></a>简单筛选iOS和安卓的版本的函数</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本</p>
-<p>函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果当前设备版本大于你输入的版本，则返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function filterVersion (iOS, Android) &#123;</div><div class="line">  if (navigator.userAgent.indexOf(&apos;Mac OS X&apos;) !== -1) &#123;</div><div class="line">    var reg = /OS\s[\d\_]*\slike\sMac\sOS\sX/.exec(navigator.userAgent)</div><div class="line">    if (reg) &#123;</div><div class="line">      var version = parseFloat(reg[0].slice(3, -14).replace(/_/g, &apos;.&apos;))</div><div class="line">      return version &gt;= iOS</div><div class="line">      return false</div><div class="line">    &#125;</div><div class="line">  &#125; else if (navigator.userAgent.indexOf(&apos;Android&apos;) !== -1) &#123;</div><div class="line">    var reg = /Android\s[\d\.]*;/.exec(navigator.userAgent)</div><div class="line">    if (reg) &#123;</div><div class="line">      var version = parseFloat(reg[0].slice(8, -1))</div><div class="line">      return version &gt;= Android</div><div class="line">    &#125; else &#123;</div><div class="line">      return false</div><div class="line">    &#125; </div><div class="line">  &#125; else &#123;</div><div class="line">    return false</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>比如一个功能xxx，你你只想在iOS 10.0以上的版本，及安卓 7.0以上的版本上使用，则可以这样写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function xxx () &#123;</div><div class="line">  if (!filterVersion(10, 7)) &#123;</div><div class="line">    return</div><div class="line">  &#125;</div><div class="line">  // ....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>这个判断方法是根据浏览器提供的UA，即 <code>window.navigator.userAgent</code> 来做出判断的，这个属性就提供了安卓或iOS的系统版本信息。</p>
-
-          
+          简单筛选iOS和安卓的版本的函数需求现如今，移动端大行其道，我们终于不太需要再为了IE6, IE7, IE8…做可怕的兼容了。但是，仍然有一些库或框架不能再低版本的iOS和安卓中正常运行，所以我就写了一个小函数来筛选iOS和安卓的版本
+函数的期盼输入为你期望的iOS和安卓版本，输出为一个布尔值，如果
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/02/根据iOS和安卓的版本进行筛选的小函数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1117,34 +1157,16 @@
       
         
           
-            <h3 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h3><p>对于一个大型的 Webapp 来说，把所有 JS 文件都放在同一个文件中是肯定不合理的！这会大大影响它的性能。webpack 允许我们把代码分割成几块。如果一些代码仅会在一些特定的情况下才执行时，webpack 会按需加载他们。</p>
-<h4 id="require-ensure"><a href="#require-ensure" class="headerlink" title="require.ensure"></a>require.ensure</h4><p>我们可以使用 <code>require.ensure</code> 来定义一个分割点来实现代码分割。如下实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// main.js</div><div class="line">document.write(&apos;I will perform right now&apos;)</div><div class="line">setTimeout(function()&#123;</div><div class="line">	require.ensure([&apos;./a&apos;], function(require) &#123;</div><div class="line">	  var content = require(&apos;./a&apos;);</div><div class="line">	  document.open();</div><div class="line">	  document.write(content);</div><div class="line">	  document.close();</div><div class="line">	&#125;);</div><div class="line">&#125;, 3000)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// a.js</div><div class="line">module.exports = &apos;I will perform in 3 seconds.&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// webpack.config.js</div><div class="line">module.exports = &#123;</div><div class="line">  entry: &apos;./index.js&apos;,</div><div class="line">  output: &#123;</div><div class="line">    filename: &apos;bundle.js&apos;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>webpack.config.js</code> 不需要做任何特殊处理，我们会发现 webpack 打包生成了两个文件 <code>bundle.js</code> 和 <code>0.bundle.js</code> ，打开网页我们会发现3秒之后 <code>0.bundle.js</code> 才会加载。</p>
-<h4 id="bundle-loader"><a href="#bundle-loader" class="headerlink" title="bundle-loader"></a>bundle-loader</h4><p>除了用上面的 <code>require.ensure</code>，我们还可以用 <code>bundle-loader</code> 来实现代码分割。实例与 <code>require.ensure</code> 类似，只有 <code>main.js</code> 文件略有不同。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">document.write(&apos;I will perform right now&apos;)</div><div class="line">setTimeout(function()&#123;</div><div class="line">	var load = require(&apos;bundle-loader!./a.js&apos;)</div><div class="line">	load(function(content) &#123;</div><div class="line">	  document.open();</div><div class="line">	  document.write(content);</div><div class="line">	  document.close();</div><div class="line">	&#125;);</div><div class="line">&#125;, 3000)</div></pre></td></tr></table></figure>
-<p>webpack 同样打包生成了两个文件 <code>bundle.js</code> 和 <code>0.bundle.js</code> ，同时也实现了按需加载。</p>
-<p>####　通用的代码块</p>
-<p>我们先来看一个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// main1.js</div><div class="line">import Vue from &apos;vue&apos;</div><div class="line">var vm = new Vue(&#123;</div><div class="line">	el: &apos;#a&apos;,</div><div class="line">	data: &#123;</div><div class="line">		a: &quot;Hello&quot;</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// main2.js</div><div class="line">import Vue from &apos;vue&apos;</div><div class="line">var vm = new Vue(&#123;</div><div class="line">	el: &apos;#b&apos;,</div><div class="line">	data: &#123;</div><div class="line">		b: &quot;ReedSun&quot;</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// index.html</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;div id=&quot;a&quot;&gt;&#123;&#123;a&#125;&#125;&lt;/div&gt;</div><div class="line">		&lt;div id=&quot;b&quot;&gt;&#123;&#123;b&#125;&#125;&lt;/div&gt;</div><div class="line">		&lt;script src=&quot;bundle1.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script src=&quot;bundle2.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// webpack.config.js</div><div class="line">module.exports = &#123;</div><div class="line">	entry: &#123;</div><div class="line">		bundle1: &apos;./main1.js&apos;,</div><div class="line">		bundle2: &apos;./main2.js&apos;</div><div class="line">	&#125;,</div><div class="line">	output: &#123;</div><div class="line">		filename: &apos;[name].js&apos;</div><div class="line">	&#125;,</div><div class="line">	resolve: &#123;</div><div class="line">		alias: &#123;</div><div class="line">			&apos;vue&apos;: &apos;vue/dist/vue.js&apos;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>webpack.config.js</code>中的 <code>resolve</code> 是别名的意思，通过配置它，我们可以直接使用 <code>require(&#39;vue&#39;)</code>， 而不用使用 <code>require(&#39;vue/dist/vue.js&#39;)</code> 了。</p>
-<p>这是一个用Vue渲染页面的简单用例，我们使用 webpack 打包后惊人的发现， webpack在两个脚本中将 <code>Vue</code> 打包了两次！ 这怎么能行！还好，万能的 webpack 提供了 <code>CommonsChunkPlugin</code> 插件，这个插件可以将不同脚本中引用的相同的代码块提取出来，打包成一个单独通用代码块，厉害了我的哥！</p>
-<p>使用 <code>CommonsChunkPlugin</code> 插件，我们需要对 <code>index.html</code> 和 <code>webpack.config.js</code> 做如下修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// index.html</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;div id=&quot;a&quot;&gt;&#123;&#123;a&#125;&#125;&lt;/div&gt;</div><div class="line">		&lt;div id=&quot;b&quot;&gt;&#123;&#123;b&#125;&#125;&lt;/div&gt;</div><div class="line">		&lt;script src=&quot;common.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script src=&quot;bundle1.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script src=&quot;bundle2.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var CommonsChunkPlugin = require(&quot;webpack/lib/optimize/CommonsChunkPlugin&quot;)</div><div class="line">module.exports = &#123;</div><div class="line">	entry: &#123;</div><div class="line">		bundle1: &apos;./main1.js&apos;,</div><div class="line">		bundle2: &apos;./main2.js&apos;</div><div class="line">	&#125;,</div><div class="line">	output: &#123;</div><div class="line">		filename: &apos;[name].js&apos;</div><div class="line">	&#125;,</div><div class="line">	resolve: &#123;</div><div class="line">		alias: &#123;</div><div class="line">			&apos;vue&apos;: &apos;vue/dist/vue.js&apos;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	plugins: [</div><div class="line">		new CommonsChunkPlugin(&apos;common&apos;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>嗯~这样一来，通用的依赖只会被 Webpack 打包一次，优化了好多性能。</p>
-<h4 id="Vendor-chunk"><a href="#Vendor-chunk" class="headerlink" title="Vendor chunk"></a>Vendor chunk</h4><p>上例中，我们用 <code>CommonsChunkPlugin</code> 将通用的代码块分离出来。当然，我们也可以用它来将第三方库类文件和我们自己写的代码分离。示例代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">\\ index.html</div><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;div id=&quot;a&quot;&gt;&#123;&#123;a&#125;&#125;&lt;/div&gt;</div><div class="line">		&lt;script src=&quot;vendor.js&quot;&gt;&lt;/script&gt;</div><div class="line">		&lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">\\ main.js</div><div class="line">import Vue from &apos;vue&apos;</div><div class="line">var vm = new Vue(&#123;</div><div class="line">	el: &apos;#a&apos;,</div><div class="line">	data: &#123;</div><div class="line">		a: &quot;Hello&quot;</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">\\ webpack.config.js</div><div class="line">var CommonsChunkPlugin = require(&quot;webpack/lib/optimize/CommonsChunkPlugin&quot;)</div><div class="line">module.exports = &#123;</div><div class="line">	entry: &#123;</div><div class="line">		app: &apos;./main.js&apos;,</div><div class="line">		vendor: [&apos;vue&apos;]</div><div class="line">	&#125;,</div><div class="line">	output: &#123;</div><div class="line">		filename: &apos;bundle.js&apos;</div><div class="line">	&#125;,</div><div class="line">	resolve: &#123;</div><div class="line">		alias: &#123;</div><div class="line">			&apos;vue&apos;: &apos;vue/dist/vue.js&apos;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	plugins: [</div><div class="line">		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */&apos;vendor&apos;, /* filename= */&apos;vendor.js&apos;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>执行 <code>webpack</code> 之后，程序会把代码打包到两个文件 <code>bundls.js</code> 和 <code>vendor.js</code> ，这样就把我们自己的代码和我们引入的第三方库进行了分离。</p>
-
-          
+          代码分割对于一个大型的 Webapp 来说，把所有 JS 文件都放在同一个文件中是肯定不合理的！这会大大影响它的性能。webpack 允许我们把代码分割成几块。如果一些代码仅会在一些特定的情况下才执行时，webpack 会按需加载他们。
+require.ensure我们可以使用 require.en
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/17/webpack学习笔记 （下）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1254,31 +1276,17 @@
       
         
           
-            <h2 id="关于栅格系统"><a href="#关于栅格系统" class="headerlink" title="关于栅格系统"></a>关于栅格系统</h2><p>相信大家都用过 <code>Bootstrap</code> （神马！你没用过？这么流行你还不快去试试），栅格系统就是 <code>Bootstrap</code> 的核心，现在许多 UI 库中也增加了对栅格系统的支持。</p>
-<p>栅格系统是通过对元素增加各种不同的类名从而在不同的屏幕宽度下实现不同的效果，从而实现响应式的功能。</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天，我自己模仿实现了一个简单的栅格系统，<a href="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/senior8/senior8_question2.html" target="_blank" rel="external">戳这里看效果</a>，看起来栅格系统很高大上，其实栅格系统的实现很简单，主要用到的还是浮动。这篇文章就是打算记录一下我是如果实现一个简单的栅格系统的。</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>实现栅格系统，首要要确定两个内容。</p>
-<ul>
-<li><p>我们打算将屏幕分为几类，每一类的类前缀是什么。</p>
-</li>
-<li><p>我们打算支持的列数是多少。</p>
-</li>
-</ul>
-<p>这里我选择与 <code>bootstrap</code> 相同， 即将屏幕分为四类：<strong>超小屏幕</strong> 手机 (&lt;768px) 、<strong>小屏幕</strong> 平板 (≥768px) 、 <strong>中等屏幕</strong> 桌面显示器 (≥992px) 、 <strong>大屏幕</strong> 大屏幕显示器 (≥1200px) ，类前缀分别为：<code>.col-xs-</code> 、 <code>.col-sm-</code> 、 <code>.col-md-</code> 、 <code>.col-lg-</code> 。列数 12。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>确定了我们的屏幕分类和列数之后，我们就可以开始实现了。首先我们给所有栅格系统的 <code>class</code> 增加浮动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.col-sm-1, .col-sm-2, ... , .col-lg-12 &#123;</div><div class="line">    float: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>声明了浮动，接下来我们来声明宽度。我们从最小屏幕开始，最小屏幕不需要使用 <code>@media</code>来声明， 即如果我们只声明了最小宽度时他的类名，其元素将在所有情况下生效。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.col-sm-1 &#123;</div><div class="line">    width: 8.333333%  // 十二分之一</div><div class="line">&#125;</div><div class="line">.col-sm-2 &#123;</div><div class="line">    width: 16.66667%  // 十二分之二      </div><div class="line">&#125;</div><div class="line">// ...</div><div class="line">.col-sm-12 &#123;</div><div class="line">    width: 100%  // 十二分之十二</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样最小宽度的情况我们就写好了。接下来我们来写其他情况</p>
-<p>其他情况也需要声明浮动和宽度，但是需要声明最小屏幕宽度，我们以中等屏幕宽度举例，中等屏幕宽度即为屏幕大于992px的情况：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@media (min-width:992) &#123;</div><div class="line">    .col-md-1 &#123;</div><div class="line">        width: 8.333333%  // 十二分之一</div><div class="line">    &#125;</div><div class="line">    .col-md-2 &#123;</div><div class="line">        width: 16.66667%  // 十二分之二      </div><div class="line">    &#125;</div><div class="line">    // ...</div><div class="line">    .col-md-12 &#123;</div><div class="line">        width: 100%  // 十二分之十二</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其他情况同理，这样我们就能实现一个简单的栅格系统很啦。</p>
-<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><p>很多小伙伴肯定会想，我们只声明了最小宽度，却没有声明最大宽度，这里是不是有问题呀。</p>
-<p>其实不是的。这里的想法是这样的，比如我们这里写了中等屏幕宽度和超小屏幕宽度两种情况的 <code>class</code> ，那在超小屏幕上和小屏幕上都会按超小屏幕声明的宽度来执行。而在中等屏幕宽度和大屏幕上，中等屏幕宽度的声明会覆盖超小屏幕的声明，则会按中等屏幕声明来执行。</p>
-<p>好高明啊哈哈哈~</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>虽然现在的 UI 库大都会封装这些功能，但是自己实现一个了解一下原理对我们也是大有碑益的，至少~不会让我们变成一个“胶水程序员”。</p>
-
-          
+          关于栅格系统相信大家都用过 Bootstrap （神马！你没用过？这么流行你还不快去试试），栅格系统就是 Bootstrap 的核心，现在许多 UI 库中也增加了对栅格系统的支持。
+栅格系统是通过对元素增加各种不同的类名从而在不同的屏幕宽度下实现不同的效果，从而实现响应式的功能。
+前言今天，我自己模
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/16/实现一个简单的栅格系统/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1388,289 +1396,16 @@
       
         
           
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这几天晚上在跟着<a href="https://github.com/ruanyf/webpack-demos" target="_blank" rel="external">阮一峰的Webpack教程</a>复习Webpack，发现Webpack确实是一个非常优秀的前端工具，能做的事真是超级多。当然能做的事情越多，他的配置文件可能就越复杂。像我记性这么差的人。还是写个博客记录一下吧！毕竟好记性不如烂笔头！</p>
-<h2 id="关于webpack"><a href="#关于webpack" class="headerlink" title="关于webpack"></a>关于webpack</h2><p>webpack的配置文件是 <code>webpack.config.js</code> ， <code>webpack.config.js</code> 通过 <code>module.exports</code> 输出配置文件。</p>
-<p>有了 <code>webpack.config.js</code> 之后，我们就可以通过在命令行执行如下命令使用webpack打包我们的代码了。</p>
-<ul>
-<li><code>$ webpack</code> =&gt; 基本操作，为开发环境打包代码</li>
-<li><code>$ webpack -p</code> =&gt; 为生产环境打包代码（压缩代码）</li>
-<li><code>$ webpack --watch</code> =&gt; 增量打包代码 （每次修改文件即会自动重新打包文件）</li>
-<li><code>$ webpack -d</code> =&gt; 打包同时生成source maps位置文件</li>
-<li><code>$ webpack --colors</code> =&gt; 让打包信息使用不同的颜色，易于观察</li>
-</ul>
-<p>我们可以使用 <code>npm</code> 配置文件 <code>package.json</code> 的 <code>scripts</code> 命令简化我们的操作，示例如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// package.json</div><div class="line">&#123;</div><div class="line">    // ...</div><div class="line">    &quot;script&quot;: &#123;</div><div class="line">        &quot;dev&quot; : &quot;webpack --watch --colors&quot;</div><div class="line">    &#125;,</div><div class="line">    // ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="关于webpack-Dev-Server"><a href="#关于webpack-Dev-Server" class="headerlink" title="关于webpack Dev Server"></a>关于webpack Dev Server</h2><p>关于 <code>webpack Dev Server</code> ，<a href="https://github.com/webpack/webpack-dev-server" target="_blank" rel="external">webpack的GitHub</a>是这么介绍它的：</p>
-<blockquote>
-<p>Serves a webpack app. Updates the browser on changes.</p>
-</blockquote>
-<p><code>webpack Dev Server</code>是一个小型的服务器，为我们的webpack应用服务。与 <code>webpack</code> 类似，我们在命令行中通过执行如下指令打开服务器、打包代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ webpack-dev-server</div></pre></td></tr></table></figure></p>
-<p>我们打开了服务器，就可以在浏览器中通过<code>http://loaclhost:8080</code>访问网页，查看我们打包的代码。</p>
-<p>同时， <code>webpack-dev-server</code> 还支持热重载，即我们更新了我们代码，页面将自动刷新并打包我们的代码。</p>
-<h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><h3 id="入口文件"><a href="#入口文件" class="headerlink" title="入口文件"></a>入口文件</h3><p>入口文件是 <code>webpack</code> 运行并打包文件的入口文件。Webpack 会分析入口文件，解析包含依赖关系的各个文件。将这些文件（模块）都打包到 bundle.js 。我们通过 <code>entry</code> 属性来指定它。如下示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// webpack.config.js</div><div class="line">module.exports = &#123;</div><div class="line">    entry: &apos;./main.js&apos;,</div><div class="line">    output: &#123;</div><div class="line">        filename: &apos;bundles.js&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>此时入口文件是 <code>main.js</code>， <code>webpack</code> 会将 <code>main.js</code> 打包到 <code>bundles.js</code> 文件中。</p>
-<p>入口文件也可以是多个文件，这对一个多页应用来说很有帮助。如下示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">    entry: &#123;</div><div class="line">        bundle1: &apos;./main1.js&apos;,</div><div class="line">        bundle2: &apos;./main2.js&apos;</div><div class="line">    &#125;,</div><div class="line">    output: &apos;[name].js]&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>此时入口文件有两个，分别是 <code>main1.js</code> 和 <code>main2.js</code> ， <code>webpack</code> 会将这两个文件分别打包到 <code>bundle1.js</code> 和 <code>bundle2.js</code> 中。</p>
-<h3 id="加载器（loader）"><a href="#加载器（loader）" class="headerlink" title="加载器（loader）"></a>加载器（loader）</h3><p>加载器是需要用webpack打包的资源文件的预处理器。我在这里将介绍 <code>Bable-loader</code> 、 <code>CSS-loader</code> 和 <code>Image-loader</code> 这三个加载器。</p>
-<p>加载器需要在配置文件中的 <code>module.loaders</code>中定义，如下示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module.explorts = &#123;</div><div class="line">    // ..</div><div class="line">    module: &#123;</div><div class="line">        loaders: &#123;</div><div class="line">            test: /\.js[x]?$/,  // 正则匹配需要用加载器预处理的文件</div><div class="line">            exclude: /node_modules/,  // 正则匹配排除的文件或文件夹, 忽略则匹配所有涉及的文件</div><div class="line">            include: /src/,  // 正则匹配包含的文件或文件，忽略则匹配所有涉及的文件</div><div class="line">            loader: &apos;babel-loader&apos;  // 加载器</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="bable-loader"><a href="#bable-loader" class="headerlink" title="bable-loader"></a>bable-loader</h4><p><code>Bable-loader</code> 可以将 JSX/ES6 文件转化为 ES5 规范下的 JS 文件。如下示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  // ...</div><div class="line">  module: &#123;</div><div class="line">    loaders:[</div><div class="line">      &#123;</div><div class="line">        test: /\.js[x]?$/,</div><div class="line">        exclude: /node_modules/,</div><div class="line">        loader: &apos;babel-loader?presets[]=es2015&apos;</div><div class="line">      &#125;,</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>这里 <code>babel-loader</code> 需要用到 <code>babel-preset-es2015</code> 插件，将 <code>ES2015</code> 语法转化为 <code>ES5</code> 语法，如上示例是一种写法，还有另一种写法，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">  loaders: [</div><div class="line">    &#123;</div><div class="line">      test: /\.jsx?$/,</div><div class="line">      exclude: /node_modules/,</div><div class="line">      loader: &apos;babel&apos;,</div><div class="line">      query: &#123;</div><div class="line">        presets: [&apos;es2015&apos;]</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="css-loader"><a href="#css-loader" class="headerlink" title="css-loader"></a>css-loader</h4><p>如果我们在被 Webpack 处理的文件中引入了 CSS 文件，我们就需要使用 <code>CSS-loader</code> 来处理这些 CSS 文件，如下示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  // ..</div><div class="line">  module: &#123;</div><div class="line">    loaders:[</div><div class="line">      &#123; </div><div class="line">          test: /\.css$/, </div><div class="line">          loader: &apos;style-loader!css-loader&apos; &#125;,</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>注意，我们这里使用两个加载器来转换 CSS 文件， 一个是 <code>css-loader</code> 来编译CSS文件， 另一个是 <code>style-loader</code> 将 CSS 代码引入 HTML 文件中。</p>
-<p>两个不同的加载器需要用 <code>!</code> 来连接。</p>
-<h4 id="image-loader"><a href="#image-loader" class="headerlink" title="image-loader"></a>image-loader</h4><p>Webpack 也可以打包图片到JS中，如下示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  // ...</div><div class="line">  module: &#123;</div><div class="line">    loaders:[</div><div class="line">      &#123; </div><div class="line">          test: /\.(png|jpg)$/, </div><div class="line">          loader: &apos;url-loader?limit=8192&apos; &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>看这里 <code>url-loader?limit=8192</code> ，我们之前在 <code>bable-loader</code> 里见过， 这次的查询关键词是 <code>limit</code> ，意义是最大限制，即 如果小于 8192B 的图片文件将会被转换，小于8192B 的图片文件将不会被转换。</p>
-<h3 id="插件（plugin）"><a href="#插件（plugin）" class="headerlink" title="插件（plugin）"></a>插件（plugin）</h3><p>Webpack有一套插件系统来扩展他的功能，我们之前说了加载器是在配置文件中的 <code>modules.loaders</code> 中声明，而插件就是在 <code>plugins</code> 中声明。</p>
-<p>我们在这里介绍三个插件 <code>uglifyJsPlugin</code> 、 <code>html-webpack-plugin</code> 和 <code>open-browser-webpack-plugin</code> 。</p>
-<p>如它的名字， <code>uglifyJsPlugin</code> 作用是压缩JS代码，是 Webpack 自带的插件。</p>
-<p><code>html-webpack-plugin</code> 和 <code>open-browser-webpack-plugin</code> 都是 Webpack 的第三方插件。 <code>html-webpack-plugin</code> 的作用是自动生成一个 HTML 文件。 <code>open-browser-webpack-plugin</code> 的作用是可以在 Webpack 加载时自动打开一个浏览器页面，这个可就厉害了，配合 <code>webpack-dev-server</code> 我们可以在 Webpack 执行后，不用动手就看到效果。</p>
-<p>如下示例展示了这三个插件的声明方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var webpack = require(&apos;webpack&apos;);</div><div class="line">var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;</div><div class="line">module.exports = &#123;</div><div class="line">  // ..</div><div class="line">  plugins: [</div><div class="line">    new uglifyJsPlugin(&#123;</div><div class="line">      compress: &#123;</div><div class="line">        warnings: false</div><div class="line">      &#125;</div><div class="line">    &#125;),</div><div class="line">    new HtmlwebpackPlugin(&#123;</div><div class="line">      title: &apos;Webpack-demos&apos;,</div><div class="line">      filename: &apos;index.html&apos;</div><div class="line">    &#125;),</div><div class="line">    new OpenBrowserPlugin(&#123;</div><div class="line">      url: &apos;http://localhost:8080&apos;</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>这样，我们不需要写 HTML 文件，运行 <code>webpack-dev-server</code> ， Webpack就自动为我们打包代码、压缩代码、创建 HTML 文件、打开浏览器。帅！</p>
-<h3 id="环境标识"><a href="#环境标识" class="headerlink" title="环境标识"></a>环境标识</h3><p>Webpack 允许我们使用环境标识来区分开发环境和生产环境，从而让我们在开发环境中执行一些额外的代码。</p>
-<p>比如，如果我们只想在开发环境中执行 <code>document.write(new Date())</code> 我们可以这样写我们的入口文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">document.write(&apos;&lt;h1&gt;Hello World&lt;/h1&gt;&apos;);</div><div class="line"></div><div class="line">if (devEnvironment) &#123;</div><div class="line">  document.write(new Date());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后在配置文件中使用 <code>DefinePlugin</code> 插件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var webpack = require(&apos;webpack&apos;);</div><div class="line"></div><div class="line">var devFlagPlugin = new webpack.DefinePlugin(&#123;</div><div class="line">  devEnvironment: JSON.stringify(JSON.parse(process.env.DEBUG || &apos;false&apos;))</div><div class="line">&#125;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &apos;./main.js&apos;,</div><div class="line">  output: &#123;</div><div class="line">    filename: &apos;bundle.js&apos;</div><div class="line">  &#125;,</div><div class="line">  plugins: [devFlagPlugin]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>最后，我们只需要在执行 Webpack 命令时传入环境标识，Webpack就会为我们将环境标识设为我们需要的值，从而确定执不执行一些代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ env DEBUG=true webpack  // 此时为开发环境，执行额外代码</div><div class="line">$ webpack  // 此时为生产环境，不执行额外代码</div></pre></td></tr></table></figure>
-<p>(未完待续)</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2017/03/20/HTML5_CSS3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/20/HTML5_CSS3/" itemprop="url">学习笔记-HTML5_CSS3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T20:42:37+08:00">
-                2017-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="HTML5是什么？有哪些新特性？有哪些新增标签？如何让低版本的-IE-支持-HTML5新标签"><a href="#HTML5是什么？有哪些新特性？有哪些新增标签？如何让低版本的-IE-支持-HTML5新标签" class="headerlink" title="HTML5是什么？有哪些新特性？有哪些新增标签？如何让低版本的 IE 支持 HTML5新标签"></a>HTML5是什么？有哪些新特性？有哪些新增标签？如何让低版本的 IE 支持 HTML5新标签</h3><ul>
-<li>HTML5是超文本标记语言的第五次重大修改，2014年10月29日标准规范制定完成。</li>
-<li>新特性：<ul>
-<li><strong>语义特性</strong>：HTML5增加了许多新标签，可以赋予网页更好的意义和价值。使文档语义化。</li>
-<li><strong>本地存储特性</strong>：基于HTML5开发的网页APP拥有更短的启动时间，更快的联网速度，这些全得益于HTML5 APP Cache，以及本地存储功能。</li>
-<li><strong>设备兼容特性</strong>：HTML5提供了更多的数据和应用接口，使外部应用可以直接与浏览器内部的数据直接相连。例如视频影音可直接与摄像头相联。</li>
-<li><strong>连接特性</strong>： HTML5有更有效的连接工作效率，使得基于页面的实时聊天技术、更快速的网页游戏体验，更优化的在线交流得到实现。</li>
-<li><strong>网页多媒体特性</strong>：HTML5支持了网页端的Audio、Video等多媒体功能。同时也提供了基于SVG,Cancas,WebGL及CSS3的3D功能。</li>
-<li><strong>性能与集成特性</strong>：HTML5通过XMLHttpRequest2等技术，更好的解决了跨域等问题。</li>
-<li><strong>CSS3特性</strong>：CSS3提供了更多的风格和更强的效果。</li>
-</ul>
-</li>
-<li><p>新增标签：</p>
-<p>  |标签|描述|<br>  |-|-|<br>  |canvas|定义图形标签，比如图表和其他图像。该标签基于JavaScript的绘图API|<br>  |audio|定义音频内容标签|<br>  |video|定义视频（video或者movie）|<br>  |source|定义多媒体资源<code>&lt;video&gt;</code>和<code>&lt;audio&gt;</code>|<br>  |embed|定义嵌入的内容，比如插件|<br>  |track|为诸如<code>&lt;video&gt;</code>和<code>&lt;audio&gt;</code>的元素之类的媒介规定外部文本轨道<br>  |datalist|定义选项列表。与input元素配合使用该元素，来定义input可能的值<br>  |keygen|规定用于表单的秘钥对生成器字段（已被废弃）|<br>  |output|定义不同类型的输出，比如脚本的输出|<br>  |article|定义页面正文内容|<br>  |aside|定义页面内容之外的内容|<br>  |bdi|设置一段文本，使其脱离其父元素的文本方向设置<br>  |command|定义命令按钮，比如单选按钮、复选框或按钮<br>  |details|用于描述文档或文档的某个部分的细节<br>  |dialog|定义对话框，比如提示框|<br>  |summary|标签包含details元素的标题|<br>  |figure|规定独立的流内容（图像、图表、照片、代码等等）<br>  |figcaption|定义<code>&lt;figure&gt;</code>元素标题<br>  |footer|定义section或document的页脚<br>  |header|定义了文档的头部区域|<br>  |mark|定义带有记号的文本|<br>  |meter|用来显示已知范围的标量值或者分数值|<br>  |nav|定义导航栏|<br>  |progress|用来显示一项任务的完成进度，通常情况下，该元素都显示为一个进度条形式|<br>  |ruby|被用来展示东亚（中文）文字注音或字符注释<br>  |rt|定义字符（中文注音或字符）的解释或发音<br>  |rp|在 ruby 注释中使用，定义不支持 ruby 元素的浏览器所显示的内容<br>  |section|定义文档中的节（section、区段）<br>  |time|用来表示24小时制时间或者公历日期，若表示日期则也可包含时间和时区<br>  |wbr|规定在文本中的何处适合添加换行符</p>
-</li>
-<li><p>让低版本的 IE 支持 HTML5新标签可以通过在HTML文件最开头声明DOCTYPE：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="input-有哪些新增类型？"><a href="#input-有哪些新增类型？" class="headerlink" title="input 有哪些新增类型？"></a>input 有哪些新增类型？</h3><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>color</td>
-<td>用于指定颜色的控件</td>
-</tr>
-<tr>
-<td>date</td>
-<td>用于输入日期的控件（年、月、日，不包括时间）</td>
-</tr>
-<tr>
-<td>datatime</td>
-<td>基于UTC时区的日期时间输入控件（时，分，秒及几分之一秒）</td>
-</tr>
-<tr>
-<td>datatime-loacl</td>
-<td>用于输入日期时间控件，不包含时区</td>
-</tr>
-<tr>
-<td>email</td>
-<td>用于编辑e-mail的字段</td>
-</tr>
-<tr>
-<td>month</td>
-<td>用于输入年月的控件，不带时区</td>
-</tr>
-<tr>
-<td>number</td>
-<td>用于输入浮点数的控件</td>
-</tr>
-<tr>
-<td>range</td>
-<td>用于输入不精确值得控件</td>
-</tr>
-<tr>
-<td>search</td>
-<td>用于输入搜索字符串的单行文本字段，换行会被从输入的值中自动移除</td>
-</tr>
-<tr>
-<td>tel</td>
-<td>用于输入电话号码的控件</td>
-</tr>
-<tr>
-<td>time</td>
-<td>用于输入不含时区的时间控件</td>
-</tr>
-<tr>
-<td>url</td>
-<td>用于编辑URL的字段</td>
-</tr>
-<tr>
-<td>week</td>
-<td>用于输入一个由星期-年组成的日期，日期不包括时区</td>
-</tr>
-</tbody>
-</table>
-<h3 id="浏览器本地存储中-cookie-和-localStorage-有什么区别？-localStorage-如何存储删除数据。"><a href="#浏览器本地存储中-cookie-和-localStorage-有什么区别？-localStorage-如何存储删除数据。" class="headerlink" title="浏览器本地存储中 cookie 和 localStorage 有什么区别？ localStorage 如何存储删除数据。"></a>浏览器本地存储中 cookie 和 localStorage 有什么区别？ localStorage 如何存储删除数据。</h3><ul>
-<li><code>cookie</code>和<code>loaclStorage</code>的区别：<ul>
-<li><strong>储存方式不同</strong>：<code>loaclStorage</code>不会自动把数据发送给服务器，仅在本地保存，<code>cookie</code>数据始终在同源的http请求中携带，即<code>cookie</code>在浏览器和服务器间来回传递。</li>
-<li><strong>大小限制不同</strong>：<code>cookie</code>的数据不能超过4k，而<code>loaclStorage</code>则大的多，可以达到5M或更大。</li>
-<li><strong>数据有效期不同*</strong>：<code>cookie</code>只在设置的cookie过期时间之前一直有效；而<code>loaclStorage</code>则是始终生效，除非清除缓存。</li>
-</ul>
-</li>
-<li><p>localStorage 如何存储删除数据。</p>
-<ul>
-<li><p>存储数据：</p>
-<ul>
-<li><p><code>localStorage.setItem(&#39;myName&#39;, &#39;ReedSun&#39;);</code></p>
-<p>  该方法接受一个键名作为参数，并把该键名从存储中删除。 </p>
-</li>
-</ul>
-</li>
-<li><p>删除数据：</p>
-<ul>
-<li><p><code>loaclStorage.remove(&#39;myName&#39;)</code></p>
-<p>  该方法接受一个键名作为参数，并把该键名从存储中删除。</p>
-</li>
-<li><p><code>loaclStorge.clear()</code></p>
-<p>  调用该方法会清空存储中的所有键名。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="CSS3效果简单示例"><a href="#CSS3效果简单示例" class="headerlink" title="CSS3效果简单示例"></a>CSS3效果简单示例</h3><ul>
-<li><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/senior7/senior7_question4.html" target="_blank" rel="external">示例</a></li>
-</ul>
-<h3 id="全屏图加过渡色的效果"><a href="#全屏图加过渡色的效果" class="headerlink" title="全屏图加过渡色的效果"></a>全屏图加过渡色的效果</h3><ul>
-<li><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/senior7/senior7_question5.html" target="_blank" rel="external">demo</a></li>
-</ul>
-<h3 id="简单的loading-动画效果"><a href="#简单的loading-动画效果" class="headerlink" title="简单的loading 动画效果"></a>简单的loading 动画效果</h3><ul>
-<li><a href="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/senior7/senior7_question6.html" target="_blank" rel="external">demo</a></li>
-</ul>
-
-          
+          前言这几天晚上在跟着阮一峰的Webpack教程复习Webpack，发现Webpack确实是一个非常优秀的前端工具，能做的事真是超级多。当然能做的事情越多，他的配置文件可能就越复杂。像我记性这么差的人。还是写个博客记录一下吧！毕竟好记性不如烂笔头！
+关于webpackwebpack的配置文件是 web
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/14/webpack学习笔记 （上）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1752,7 +1487,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1765,7 +1500,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -1774,8 +1509,35 @@
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ReedSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/ReedSun" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-address-book"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1861,6 +1623,8 @@
   
 
 
+  
+
 
 
 
@@ -1888,6 +1652,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
