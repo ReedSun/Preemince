@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Preeminent</title>
-  <subtitle>I have on idea about subtitle yet</subtitle>
+  <subtitle>我不是前端工程师，我是网页毁灭者。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://reedsun.top/"/>
