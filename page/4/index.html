@@ -383,7 +383,7 @@ Python内置的base64可以直接进行base64的编解码。
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_datetime/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/09/学习笔记_collections/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -402,7 +402,7 @@ Python内置的base64可以直接进行base64的编解码。
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/10/08/学习笔记_datetime/" itemprop="url">学习笔记_datetime</a></h2>
+                <a class="post-title-link" href="/2016/10/09/学习笔记_collections/" itemprop="url">学习笔记_collections</a></h2>
         
 
         <div class="post-meta">
@@ -414,8 +414,8 @@ Python内置的base64可以直接进行base64的编解码。
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
-                2016-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-09T10:44:04+08:00">
+                2016-10-09
               </time>
             
 
@@ -452,17 +452,17 @@ Python内置的base64可以直接进行base64的编解码。
         
           
           
-datetime是python中处理日期和时间的标准库
+collections是python内建的一个集合模块，提供了许多有用的集合类。
 
-##获取当前的时间
+##namedtuple
 
-注意到datetime是模块，datetime模块还包含一个datetime类，通过from datetime import datetime导入的才是datetime这个类。
+namedtuple是一个函数，它用来创建一个自定义的tuple对象，并且规定了tuple元素的个数，并可以用属性而不是索引来引用tuple的某个元素。
 
-如果仅导入import datetim
+这样一来，我们用namedtu
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/10/08/学习笔记_datetime/#more" rel="contents">
+            <a class="btn" href="/2016/10/09/学习笔记_collections/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -629,129 +629,6 @@ Python的multiprocessing模块不但支持多进程，其中managers子模块还
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_正则表达式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/10/08/学习笔记_正则表达式/" itemprop="url">学习笔记_正则表达式</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
-                2016-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-正则表达式是一种用来匹配字符串的强有力的武器。它的设计思想是用一种描述性的语言来给字符串定义一个规则，凡是符合规则的字符串，我们就认为它“匹配”了，否则，该字符串就是不合法的。
-
-在正则表达式中，如果直接给出字符，就是精确匹配。用\d可以匹配一个数字，\w可以匹配一个字母或数字，所以：
-
-&#39
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/10/08/学习笔记_正则表达式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_ThreadLocal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -873,7 +750,7 @@ Python的multiprocessing模块不但支持多进程，其中managers子模块还
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_多线程/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_进程 vs. 线程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -892,7 +769,7 @@ Python的multiprocessing模块不但支持多进程，其中managers子模块还
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/10/08/学习笔记_多线程/" itemprop="url">学习笔记_多线程</a></h2>
+                <a class="post-title-link" href="/2016/10/08/学习笔记_进程 vs. 线程/" itemprop="url">学习笔记_进程 vs. 线程</a></h2>
         
 
         <div class="post-meta">
@@ -942,13 +819,15 @@ Python的multiprocessing模块不但支持多进程，其中managers子模块还
         
           
           
-Python的标准库提供了两个模块：_thread和threading来支持多线程，_thread是低级模块，threading是高级模块，对_thread进行了封装。绝大多数情况下，我们只需要使用threading这个高级模块。
+首先，要实现多任务，通常我们会设计Master-Worker模式，Master负责分配任务，Worker负责执行任务，因此，多任务环境下，通常是一个Master，多个Worker。
 
-启动一个线程就是把一个函数传入并创建Thread实例，然后调用s
+多进程的优缺点
+
+多进程模式最大的优点就是稳定性高，因为一个子进程崩溃了，不会影响主进程和其他子进程。（当然主进程
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/10/08/学习笔记_多线程/#more" rel="contents">
+            <a class="btn" href="/2016/10/08/学习笔记_进程 vs. 线程/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1124,7 +1003,7 @@ sub
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_进程 vs. 线程/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_datetime/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -1143,7 +1022,7 @@ sub
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/10/08/学习笔记_进程 vs. 线程/" itemprop="url">学习笔记_进程 vs. 线程</a></h2>
+                <a class="post-title-link" href="/2016/10/08/学习笔记_datetime/" itemprop="url">学习笔记_datetime</a></h2>
         
 
         <div class="post-meta">
@@ -1193,15 +1072,17 @@ sub
         
           
           
-首先，要实现多任务，通常我们会设计Master-Worker模式，Master负责分配任务，Worker负责执行任务，因此，多任务环境下，通常是一个Master，多个Worker。
+datetime是python中处理日期和时间的标准库
 
-多进程的优缺点
+##获取当前的时间
 
-多进程模式最大的优点就是稳定性高，因为一个子进程崩溃了，不会影响主进程和其他子进程。（当然主进程
+注意到datetime是模块，datetime模块还包含一个datetime类，通过from datetime import datetime导入的才是datetime这个类。
+
+如果仅导入import datetim
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/10/08/学习笔记_进程 vs. 线程/#more" rel="contents">
+            <a class="btn" href="/2016/10/08/学习笔记_datetime/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1247,7 +1128,7 @@ sub
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/29/学习笔记_错误、调试和测试/">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_正则表达式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ReedSun">
@@ -1266,7 +1147,251 @@ sub
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/09/29/学习笔记_错误、调试和测试/" itemprop="url">学习笔记_错误、调试和测试</a></h2>
+                <a class="post-title-link" href="/2016/10/08/学习笔记_正则表达式/" itemprop="url">学习笔记_正则表达式</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
+                2016-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+正则表达式是一种用来匹配字符串的强有力的武器。它的设计思想是用一种描述性的语言来给字符串定义一个规则，凡是符合规则的字符串，我们就认为它“匹配”了，否则，该字符串就是不合法的。
+
+在正则表达式中，如果直接给出字符，就是精确匹配。用\d可以匹配一个数字，\w可以匹配一个字母或数字，所以：
+
+&#39
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_正则表达式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/10/08/学习笔记_多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/08/学习笔记_多线程/" itemprop="url">学习笔记_多线程</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-08T13:30:07+08:00">
+                2016-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+Python的标准库提供了两个模块：_thread和threading来支持多线程，_thread是低级模块，threading是高级模块，对_thread进行了封装。绝大多数情况下，我们只需要使用threading这个高级模块。
+
+启动一个线程就是把一个函数传入并创建Thread实例，然后调用s
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/08/学习笔记_多线程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/29/学习笔记_序列化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ReedSun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Preeminent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/29/学习笔记_序列化/" itemprop="url">学习笔记_序列化</a></h2>
         
 
         <div class="post-meta">
@@ -1315,141 +1440,16 @@ sub
       
         
           
-          ##错误
+          
+我们把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思。
 
-在程序运行过程中，总会遇到各种各样的错误。有可能是程序编写的错误，有可能是用户输入的错误，还有可能是完全无法在程序运行过程中预测的错误（异常），比如磁盘满了，网络断了。
+序列化之后，就可以把序列化后的内容写入磁盘，或者通过网络传输到别的机器上。
 
-Python内置的try...except...finally用来处理错误十分方便。出错时，会分析错误信息并定位错误
+反过来，把变
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/09/29/学习笔记_错误、调试和测试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://reedsun.top/2016/09/29/学习笔记_StringIO和BytesIO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ReedSun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Preeminent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/29/学习笔记_StringIO和BytesIO/" itemprop="url">学习笔记_StringIO和BytesIO</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-29T21:46:20+08:00">
-                2016-09-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          ##StringIO
-
-StringIO顾名思义就是在内存中读写str。
-
-要把str写入StringIO，我们需要先创建一个StringIO，然后，像文件一样写入即可。
-
-getvalue()方法用于获得写入后的str。
-
-要读取StringIO，可以用一个str初始化StringIO，然后，像读
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/09/29/学习笔记_StringIO和BytesIO/#more" rel="contents">
+            <a class="btn" href="/2016/09/29/学习笔记_序列化/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1535,7 +1535,7 @@ getvalue()方法用于获得写入后的str。
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">65</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
