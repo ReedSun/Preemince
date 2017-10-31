@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://reedsun.top/"/>
-  <updated>2017-08-21T12:36:44.000Z</updated>
+  <updated>2017-10-31T13:17:40.000Z</updated>
   <id>http://reedsun.top/</id>
   
   <author>
@@ -14,6 +14,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 中的 for...in 和 for...of</title>
+    <link href="http://reedsun.top/2017/10/31/JavaScript%20%E4%B8%AD%20for..in%20%E5%92%8C%20for...of%20%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://reedsun.top/2017/10/31/JavaScript 中 for..in 和 for...of 的区别/</id>
+    <published>2017-10-31T12:46:21.000Z</published>
+    <updated>2017-10-31T13:17:40.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;for…in&quot;&gt;&lt;a href=&quot;#for…in&quot; class=&quot;headerlink&quot; title=&quot;for…in&quot;&gt;&lt;/a&gt;for…in&lt;/h2&gt;&lt;p&gt;&lt;code&gt;for...in&lt;/code&gt; 语句是从 ES1 规范就开始支持的语句，其兼容性自然也非常棒。 
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://reedsun.top/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>分析webpack打包后的文件</title>
@@ -353,27 +371,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;理解元类之前需要学习的知识&quot;&gt;&lt;a href=&quot;#理解元类之前需要学习的知识&quot; class=&quot;headerlink&quot; title=&quot;理解元类之前需要学习的知识&quot;&gt;&lt;/a&gt;理解元类之前需要学习的知识&lt;/h2&gt;&lt;p&gt; 如果说让我们创建一个类，最先想到的肯定是用&lt;cod
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://reedsun.top/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用python的email、smtplib、poplib模块收发邮件</title>
-    <link href="http://reedsun.top/2016/10/21/%E4%BD%BF%E7%94%A8python%E7%9A%84email%E3%80%81smtplib%E3%80%81poplib%E6%A8%A1%E5%9D%97%E6%94%B6%E5%8F%91%E9%82%AE%E4%BB%B6/"/>
-    <id>http://reedsun.top/2016/10/21/使用python的email、smtplib、poplib模块收发邮件/</id>
-    <published>2016-10-21T02:53:32.000Z</published>
-    <updated>2017-05-31T14:53:12.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;一封电子邮件的旅程是：&lt;ul&gt;
-&lt;li&gt;MUA：Mail User Agent——邮件用户代理。(即类似Outlook的电子邮件软件）&lt;/li&gt;
-&lt;li&gt;MTA：Mail Transfer Agent——邮件传输代理，就是那些Email服务提供商，比如网易、新浪
     
     </summary>
     
