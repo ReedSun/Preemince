@@ -2,7 +2,7 @@
   "name": "reedsun-homepage",
   "private": true,
   "scripts": {
-    "start": "cross-env PORT=2222 umi dev",
+    "start": "umi dev",
     "build": "umi build",
     "test": "umi test",
     "lint": "eslint --ext .js src mock tests",
@@ -30,7 +30,5 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "dependencies": {
-    "cross-env": "^5.2.0"
-  }
+  "dependencies": {}
 }
