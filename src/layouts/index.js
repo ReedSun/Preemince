@@ -4,7 +4,7 @@
  * File Created: Sunday, 9th September 2018 7:40:34 pm
  * Author: ReedSun (sunhongzhao@foxmail.com)
  * -----
- * Last Modified: Monday, 10th September 2018 7:59:23 pm
+ * Last Modified: Monday, 10th September 2018 8:01:57 pm
  * Modified By: ReedSun (sunhongzhao@foxmail.com>)
  * -----
  * Copyright 2018 - 2018, Shanjing
@@ -31,9 +31,9 @@ function BasicLayout(props) {
           </Link>
           <Link
             className={classNames(styles.menuItem, {
-              [styles.actionMenuItem]: location.pathname.slice(0, 9) === '/torphies',
+              [styles.actionMenuItem]: location.pathname.slice(0, 9) === '/trophies',
             })}
-            to="/torphies"
+            to="/trophies"
           >
             成就
           </Link>
