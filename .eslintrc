@@ -63,8 +63,9 @@
   },
   "parserOptions": {
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+      "experimentalObjectRestSpread": true,
+      "legacyDecorators": true
+    },
   },
   "settings": {
     "polyfills": ["fetch", "promises"]
