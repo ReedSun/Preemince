@@ -4,7 +4,7 @@
  * File Created: Sunday, 9th September 2018 7:40:34 pm
  * Author: ReedSun (sunhongzhao@foxmail.com)
  * -----
- * Last Modified: Monday, 10th September 2018 8:01:57 pm
+ * Last Modified: Thursday, 20th September 2018 8:57:04 pm
  * Modified By: ReedSun (sunhongzhao@foxmail.com>)
  * -----
  * Copyright 2018 - 2018, Shanjing
@@ -12,6 +12,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Link from 'umi/link';
+import TrainWord from '@/components/TrainWord';
 import styles from './index.less';
 
 function BasicLayout(props) {
@@ -19,7 +20,9 @@ function BasicLayout(props) {
   return (
     <div>
       <div className={styles.header}>
-        <div className={styles.logo}>ReedSun</div>
+        <div className={styles.logo}>
+          <TrainWord>ReedSun</TrainWord>
+        </div>
         <div className={styles.menu}>
           <Link
             className={classNames(styles.menuItem, {
