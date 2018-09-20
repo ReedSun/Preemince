@@ -1,0 +1,58 @@
+/*
+ * File: index.less
+ * Project: reedsun-homepage
+ * File Created: Thursday, 20th September 2018 9:00:29 pm
+ * Author: ReedSun (sunhongzhao@foxmail.com)
+ * -----
+ * Last Modified: Thursday, 20th September 2018 9:50:08 pm
+ * Modified By: ReedSun (sunhongzhao@foxmail.com>)
+ * -----
+ * Copyright 2018 - 2018, Shanjing
+ */
+@keyframes run {
+  0% {
+    left: -1em;
+  }
+  100% {
+    left: 5em;
+  }
+}
+
+@keyframes runReverse {
+  0% {
+    left: 1em;
+  }
+  100% {
+    left: -5em;
+  }
+}
+
+.wrapper {
+  text-align: left;
+  position: relative;
+  width: 5em;
+
+  .trainWrapper,
+  .text {
+    position: absolute;
+    height: 100%;
+  }
+
+  .trainWrapper {
+    z-index: 2;
+    width: 1em;
+    overflow: hidden;
+    border-radius: 15%;
+    animation: run 2.5s infinite;
+  }
+
+  .text {
+    z-index: 1;
+  }
+
+  .train {
+    position: absolute;
+    width: 5em;
+    animation: runReverse 2.5s infinite;
+  }
+}
