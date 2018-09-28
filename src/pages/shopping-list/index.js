@@ -4,13 +4,14 @@
  * File Created: Thursday, 27th September 2018 10:34:53 pm
  * Author: ReedSun (sunhongzhao@foxmail.com)
  * -----
- * Last Modified: Friday, 28th September 2018 8:44:53 pm
+ * Last Modified: Friday, 28th September 2018 8:48:16 pm
  * Modified By: ReedSun (sunhongzhao@foxmail.com>)
  * -----
  * Copyright 2018 - 2018, Shanjing
  */
 import React, { PureComponent } from 'react';
-import { Breadcrumb, Button, Dropdown, Icon, Menu, Table } from 'antd';
+import { Breadcrumb, Button, Dropdown, Icon, Menu } from 'antd';
+import Table from '@/components/Table';
 import AV from '@/utils/leancloud';
 
 export default class ShoppingList extends PureComponent {
