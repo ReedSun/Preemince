@@ -4,13 +4,13 @@
  * File Created: Thursday, 27th September 2018 10:34:53 pm
  * Author: ReedSun (sunhongzhao@foxmail.com)
  * -----
- * Last Modified: Friday, 28th September 2018 8:39:35 pm
+ * Last Modified: Friday, 28th September 2018 8:44:53 pm
  * Modified By: ReedSun (sunhongzhao@foxmail.com>)
  * -----
  * Copyright 2018 - 2018, Shanjing
  */
 import React, { PureComponent } from 'react';
-import { Breadcrumb, Table } from 'antd';
+import { Breadcrumb, Button, Dropdown, Icon, Menu, Table } from 'antd';
 import AV from '@/utils/leancloud';
 
 export default class ShoppingList extends PureComponent {
@@ -25,6 +25,21 @@ export default class ShoppingList extends PureComponent {
       this.setState({ data });
     });
   }
+
+  getTableActionMenu = item => (
+    <Menu onClick={this.handleClickAction}>
+      <Menu.Item key="edit" item={item}>
+        修改商品
+      </Menu.Item>
+      <Menu.Item key="done" item={item}>
+        我已购买
+      </Menu.Item>
+    </Menu>
+  );
+
+  handleClickAction = () => {
+    // @TODO
+  };
 
   render() {
     const { data } = this.state;
@@ -109,7 +124,13 @@ export default class ShoppingList extends PureComponent {
       {
         title: '操作',
         key: 'action',
-        render: () => '@TODO',
+        render: val => (
+          <Dropdown overlay={this.getTableActionMenu(val)}>
+            <Button type="primary" ghost>
+              选择操作 <Icon type="down" />
+            </Button>
+          </Dropdown>
+        ),
       },
     ];
 
