@@ -4,13 +4,13 @@
  * File Created: Thursday, 27th September 2018 10:34:53 pm
  * Author: ReedSun (sunhongzhao@foxmail.com)
  * -----
- * Last Modified: Friday, 28th September 2018 8:28:15 pm
+ * Last Modified: Friday, 28th September 2018 8:39:35 pm
  * Modified By: ReedSun (sunhongzhao@foxmail.com>)
  * -----
  * Copyright 2018 - 2018, Shanjing
  */
 import React, { PureComponent } from 'react';
-import { Table } from 'antd';
+import { Breadcrumb, Table } from 'antd';
 import AV from '@/utils/leancloud';
 
 export default class ShoppingList extends PureComponent {
@@ -75,7 +75,15 @@ export default class ShoppingList extends PureComponent {
           {
             title: '官方购买地址',
             dataIndex: 'official',
-            render: val => <a href={val.link}>{val.name}</a>,
+            render: val => (
+              <Breadcrumb>
+                <Breadcrumb.Item>
+                  <a href={val.link} rel="noopener noreferrer" target="_blank">
+                    {val.name}
+                  </a>
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            ),
           },
           {
             title: '心理价位',
@@ -84,7 +92,17 @@ export default class ShoppingList extends PureComponent {
           {
             title: '关注地址',
             dataIndex: 'psychological.follow',
-            render: () => '@TODO',
+            render: val => (
+              <Breadcrumb>
+                {val.map(i => (
+                  <Breadcrumb.Item>
+                    <a href={i.link} rel="noopener noreferrer" target="_blank">
+                      {i.name}
+                    </a>
+                  </Breadcrumb.Item>
+                ))}
+              </Breadcrumb>
+            ),
           },
         ],
       },
